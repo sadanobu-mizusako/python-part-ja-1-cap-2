@@ -1,0 +1,50 @@
+{
+    "CarCategories": [
+        {"CategoryName": "Sedan"},
+        {"CategoryName": "Coupe"}
+    ],
+    "CarModels": [
+        {"ModelName": "Sedan X", "CategoryID": 1},
+        {"ModelName": "Coupe Z", "CategoryID": 2}
+    ],
+    "CarGrades": [
+        {"GradeName": "X", "ModelID": 1},
+        {"GradeName": "Z", "ModelID": 2}
+    ],
+    "Engines": [
+        {"EngineType": "Gasoline"},
+        {"EngineType": "Hybrid"}
+    ],
+    "Bases": [
+        {"GradeID": 1, "EngineID": 1, "BasePrice": 20000},
+        {"GradeID": 1, "EngineID": 2, "BasePrice": 25000}
+    ],
+    "Colors": [
+        {"ColorName": "Metallic Silver", "AdditionalCost": 500},
+        {"ColorName": "Matte Black", "AdditionalCost": 750}
+    ],
+    "Exteriors": [
+        {"Item": "Alloy 18 inch", "AdditionalCost": 800},
+        {"Item": "Steel 20 inch", "AdditionalCost": 600}
+    ],
+    "GradeExteriors": [
+        {"GradeID": 1, "ExteriorID": 1},
+        {"GradeID": 2, "ExteriorID": 1}
+    ],
+    "Interiors": [
+        {"Item": "Leather", "AdditionalCost": 1500},
+        {"Item": "Fabric", "AdditionalCost": 0}
+    ],
+    "GradeInteriors": [
+        {"GradeID": 1, "InteriorID": 1},
+        {"GradeID": 2, "InteriorID": 1}
+    ],
+    "Customizations": [
+        {"UserID": 101, "BaseID": 1, "ColorID": 2, "ExteriorID": 1, "InteriorID": 1},
+        {"UserID": 102, "BaseID": 2, "ColorID": 1, "ExteriorID": 2, "InteriorID": 2}
+    ],
+    "Users": [
+        {"UserName": "JohnDoe", "Email": "john.doe@example.com"},
+        {"UserName": "JaneSmith", "Email": "jane.smith@example.com"}
+    ]
+}
