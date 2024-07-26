@@ -21,8 +21,6 @@ if target_model=="":
                 idx += 1
             else:
                 break
-        if idx >= len(df):
-            break
 
 else:
     idx2 = 0
