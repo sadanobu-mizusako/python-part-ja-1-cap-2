@@ -59,6 +59,7 @@ CREATE TABLE CarModels (
     ModelID INTEGER PRIMARY KEY AUTOINCREMENT,
     ModelName TEXT,
     CategoryID INTEGER,
+    ImageURL TEXT,
     FOREIGN KEY (CategoryID) REFERENCES CarCategories (CategoryID)
 );
 
@@ -86,12 +87,14 @@ CREATE TABLE Bases (
 CREATE TABLE Colors (
     ColorID INTEGER PRIMARY KEY AUTOINCREMENT,
     ColorName TEXT,
+    ImageURL TEXT,
     AdditionalCost INTEGER
 );
 
 CREATE TABLE Exteriors (
     ExteriorID INTEGER PRIMARY KEY AUTOINCREMENT,
     Item TEXT,
+    ImageURL TEXT,
     AdditionalCost INTEGER
 );
 
@@ -106,6 +109,7 @@ CREATE TABLE GradeExteriors (
 CREATE TABLE Interiors (
     InteriorID INTEGER PRIMARY KEY AUTOINCREMENT,
     Item TEXT,
+    ImageURL TEXT,
     AdditionalCost INTEGER
 );
 

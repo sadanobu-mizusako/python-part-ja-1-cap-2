@@ -4,8 +4,8 @@
         {"CategoryName": "Coupe"}
     ],
     "CarModels": [
-        {"ModelName": "Sedan X", "CategoryID": 1},
-        {"ModelName": "Coupe Z", "CategoryID": 2}
+        {"ModelName": "Sedan X", "ImageURL": "https://toyota.jp/pages/contents/carlineup/image/car/crown/30.png", "CategoryID": 1},
+        {"ModelName": "Coupe Z", "ImageURL": "https://toyota.jp/pages/contents/carlineup/image/car/gr86/30.png", "CategoryID": 2}
     ],
     "CarGrades": [
         {"GradeName": "X", "ModelID": 1},
@@ -20,20 +20,20 @@
         {"GradeID": 1, "EngineID": 2, "BasePrice": 25000}
     ],
     "Colors": [
-        {"ColorName": "Metallic Silver", "AdditionalCost": 500},
-        {"ColorName": "Matte Black", "AdditionalCost": 750}
+        {"ColorName": "Metallic Silver", "ImageURL": "https://toyota.jp/tcv/resources/yaris/001_p_007/images/color/bc_3t3.jpg", "AdditionalCost": 500},
+        {"ColorName": "Matte Black", "ImageURL": "https://toyota.jp/tcv/resources/yaris/001_p_007/images/color/bc_2sq.jpg", "AdditionalCost": 750}
     ],
     "Exteriors": [
-        {"Item": "Alloy 18 inch", "AdditionalCost": 800},
-        {"Item": "Steel 20 inch", "AdditionalCost": 600}
+        {"Item": "Alloy 18 inch", "ImageURL": "https://toyota.jp/tcv/resources/yaris/001_p_007/images/ex/10x.jpg", "AdditionalCost": 800},
+        {"Item": "Steel 20 inch", "ImageURL": "https://toyota.jp/tcv/resources/yaris/001_p_007/images/ex/vr61.jpg", "AdditionalCost": 600}
     ],
     "GradeExteriors": [
         {"GradeID": 1, "ExteriorID": 1},
         {"GradeID": 2, "ExteriorID": 1}
     ],
     "Interiors": [
-        {"Item": "Leather", "AdditionalCost": 1500},
-        {"Item": "Fabric", "AdditionalCost": 0}
+        {"Item": "Leather", "ImageURL": "https://toyota.jp/tcv/resources/yaris/001_p_007/images/in/ebmu.jpg", "AdditionalCost": 1500},
+        {"Item": "Fabric", "ImageURL": "https://toyota.jp/tcv/resources/yaris/001_p_007/images/in/ebnu.jpg", "AdditionalCost": 0}
     ],
     "GradeInteriors": [
         {"GradeID": 1, "InteriorID": 1},
