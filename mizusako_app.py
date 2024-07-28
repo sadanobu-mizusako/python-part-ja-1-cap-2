@@ -15,6 +15,22 @@ class Customization():
         customized_options = new_options
 
 class CustomizationPage():
+    def __init__(self):
+        if "customize" not in st.session_state:
+            st.session_state.customize = []#カスタマイズ変数の初期化
+        if "model_decided" not in st.session_state:
+            st.session_state.model_decided = False
+        if "grade_decided" not in st.session_state:
+            st.session_state.grade_decided = False
+        if "user_registered" not in st.session_state:
+            st.session_state.user_registered = False
+        if "parts_decided" not in st.session_state:
+            st.session_state.parts_decided = False
+
+        self.target_grade = None
+        self.target_grade_id = None
+        self.target_parts_ids = []
+        
     def load_data(self):
         df_models = pd.read_csv("asset/models.csv")
         df_parts = pd.read_csv("asset/exterior_parts.csv")
@@ -60,6 +76,15 @@ class CustomizationPage():
                     col.image(image_url, caption="", use_column_width=True)
         return selected_images
 
+    def saved_customize(self):
+        st.title("保存済みのカスタマイズ")
+        self.customization_placeholder = st.empty()
+        self.customization_placeholder.write(st.session_state.customize)
+
+    def update_saved_customize(self):
+        self.customization_placeholder.write(st.session_state.customize)
+
+
     def model_seletion(self):
         st.title("モデル選択")        
         self.target_model = self._show_selection(df=self.df_models, 
@@ -77,9 +102,14 @@ class CustomizationPage():
         st.image(self.df_models.query("model_id==@self.target_model_id").img_url.iloc[0])
         self.target_grade = self._show_selection(df=self.df_grades_target, label="グレードを選択してください", 
                                                  target_columns="name_desc")
+        self.target_grade_id = (
+            self.df_grades_target.query("name_desc==@self.target_grade").grade_id.iloc[0] 
+            if self.target_grade!="" else None
+        )
         return self.target_grade!=""
     
     def show_total_price(self):
+        st.title("合計金額")
         self.target_model_price = self.df_grades_target.query("name_desc==@self.target_grade").price.iloc[0]
         self.target_model_price = int(self.target_model_price)
         self.header_placeholder = st.empty()# ヘッダーに初期メッセージを表示
@@ -98,32 +128,36 @@ class CustomizationPage():
         st.title("ディーラー予約フォーム")        
         st.write("こちらの内容で予約する場合にはフォームを入力・送信してください。")
         st.write("オプションを追加したい方は下からご希望のオプションを選択ください。")
+        if st.checkbox("予約フォームを開く"):
+            # ユーザーの氏名の入力
+            name = st.text_input("氏名")
 
-        # ユーザーの氏名の入力
-        name = st.text_input("氏名")
+            # ユーザーのメールアドレスの入力
+            email = st.text_input("メールアドレス")
 
-        # ユーザーのメールアドレスの入力
-        email = st.text_input("メールアドレス")
-
-        # 都道府県の選択
-        prefecture = st.selectbox(
-            "都道府県",
-            (
-                "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
-                "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
-                "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県",
-                "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県",
-                "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
-                "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
+            # 都道府県の選択
+            prefecture = st.selectbox(
+                "都道府県",
+                (
+                    "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
+                    "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
+                    "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県",
+                    "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県",
+                    "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
+                    "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
+                )
             )
-        )
 
-        # フォームの送信ボタン
-        return st.button("この内容でディーラーを予約する")
+            # フォームの送信ボタン
+            if st.button("この内容でディーラーを予約する"):
+                st.write("登録が完了しました。後日ディーラーからアポイントのご連絡をいたします。")
+                return True
+            else:
+                return False
+        return False
 
     def parts_selection(self):
         st.title("オプション追加") 
-        self.target_grade_id = self.df_grades_target.query("name_desc==@self.target_grade").grade_id.iloc[0]
         self.df_parts_target = self.df_parts.query("model_id==@self.target_model_id and grade_id==@self.target_grade_id")
         self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
                             key_prefix=f"parts_gradeid_{self.target_grade_id}", 
@@ -132,35 +166,63 @@ class CustomizationPage():
 
         return len(self.target_parts_ids)>0
 
+    def save_customize(self):
+        st.title("カスタマイズを保存")
+        if st.button("保存"):
+            customize = {"target_model_id":self.target_model_id, 
+                         "target_grade_id":self.target_grade_id, 
+                         "target_parts_ids": self.target_parts_ids}
+            st.session_state.customize.append(customize)
+            st.write("カスタマイズを保存しました。新しいカスタマイズを作成しましょう")
+            # self.target_model=""#モデルを初期化
+            # self.target_grade=""#グレードを初期化
+            return True
+        return False
+
+
 if __name__ == "__main__":
     page = CustomizationPage()
 
     # データの取得
     page.load_data()
 
+    # 保存済みカスタマイズの表示
+    page.saved_customize()
+
     # モデル選択の誘導
-    model_decided = page.model_seletion()
+    st.session_state.model_decided = page.model_seletion()
 
     # グレードの選択の誘導
-    if model_decided:
-        grade_decided = page.grade_seletion()
-    else:
-        grade_decided = False
-
-    if grade_decided:
+    if st.session_state.model_decided:
+        st.session_state.grade_decided = page.grade_seletion()
+        
+    if st.session_state.grade_decided:
         # ディーラー予約誘導        
-        user_registered = page.user_registration()
+        st.session_state.user_registered = page.user_registration()
+        if st.session_state.user_registered:
+            st.session_state.model_decided = False
+            st.session_state.grade_decided = False
+            st.session_state.parts_decided = False
+
         # 現在価格の表示
         page.show_total_price()
-    else:
-        user_registered = False
 
     # パーツの選択の誘導
-    if grade_decided and (user_registered==False):
-        parts_decided = page.parts_selection()
-    else:
-        parts_decided = False
+    if st.session_state.grade_decided and (st.session_state.user_registered==False):
+        st.session_state.parts_decided = page.parts_selection()
     
     # 価格の更新
-    if parts_decided:
+    if st.session_state.parts_decided:
         page.updade_price()
+
+    # セッションにカスタマイズを保存
+    if st.session_state.grade_decided:
+        st.session_state.customize_saved = page.save_customize()
+        if st.session_state.customize_saved:
+            st.session_state.model_decided = False
+            st.session_state.grade_decided = False
+            st.session_state.user_registered = False
+            st.session_state.parts_decided = False
+
+    # カスタマイズ表示の更新
+    page.update_saved_customize()
