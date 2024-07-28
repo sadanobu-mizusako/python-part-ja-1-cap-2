@@ -43,8 +43,8 @@ class CustomizationPage():
         self.df_parts = df_parts
         self.df_grades = df_grades
 
-    def _show_selection(self, df, target_columns, label):
-        user_choise = st.selectbox(label=label,options=[""]+df[target_columns].tolist())
+    def _show_selection(self, df, target_columns, label, key):
+        user_choise = st.selectbox(label=label,options=[""]+df[target_columns].tolist(), key=key)
         return user_choise
 
     def _show_data_as_table(self, df, caption_column, image_column, colum_count):
@@ -75,7 +75,20 @@ class CustomizationPage():
                         selected_images.append(target_id)
                     col.image(image_url, caption="", use_column_width=True)
         return selected_images
-
+    
+    # コールバック関数を定義してセレクトボックスの値をリセット
+    def _reset_selectbox(self):
+        st.session_state.select_model = ""
+        st.session_state.select_grade = ""
+        st.session_state.model_decided = False
+        st.session_state.grade_decided = False
+        st.session_state.parts_decided = False
+        customize = {"target_model_id":self.target_model_id, 
+                        "target_grade_id":self.target_grade_id, 
+                        "target_parts_ids": self.target_parts_ids}
+        st.session_state.customize.append(customize)
+        st.write("カスタマイズを保存しました。新しいカスタマイズを作成しましょう")
+    
     def saved_customize(self):
         st.title("保存済みのカスタマイズ")
         self.customization_placeholder = st.empty()
@@ -89,7 +102,7 @@ class CustomizationPage():
         st.title("モデル選択")        
         self.target_model = self._show_selection(df=self.df_models, 
                             label="モデルを選択してください", 
-                            target_columns="model_name")
+                            target_columns="model_name", key="select_model")
         if self.target_model=="":
             self._show_data_as_table(self.df_models, caption_column="model_name", 
                                      image_column="img_url", colum_count=4)
@@ -101,7 +114,7 @@ class CustomizationPage():
         self.df_grades_target = self.df_grades.query("model_id==@self.target_model_id")
         st.image(self.df_models.query("model_id==@self.target_model_id").img_url.iloc[0])
         self.target_grade = self._show_selection(df=self.df_grades_target, label="グレードを選択してください", 
-                                                 target_columns="name_desc")
+                                                 target_columns="name_desc", key="select_grade")
         self.target_grade_id = (
             self.df_grades_target.query("name_desc==@self.target_grade").grade_id.iloc[0] 
             if self.target_grade!="" else None
@@ -168,17 +181,7 @@ class CustomizationPage():
 
     def save_customize(self):
         st.title("カスタマイズを保存")
-        if st.button("保存"):
-            customize = {"target_model_id":self.target_model_id, 
-                         "target_grade_id":self.target_grade_id, 
-                         "target_parts_ids": self.target_parts_ids}
-            st.session_state.customize.append(customize)
-            st.write("カスタマイズを保存しました。新しいカスタマイズを作成しましょう")
-            # self.target_model=""#モデルを初期化
-            # self.target_grade=""#グレードを初期化
-            return True
-        return False
-
+        return st.button(label="保存", on_click=self._reset_selectbox)
 
 if __name__ == "__main__":
     page = CustomizationPage()
@@ -199,10 +202,6 @@ if __name__ == "__main__":
     if st.session_state.grade_decided:
         # ディーラー予約誘導        
         st.session_state.user_registered = page.user_registration()
-        if st.session_state.user_registered:
-            st.session_state.model_decided = False
-            st.session_state.grade_decided = False
-            st.session_state.parts_decided = False
 
         # 現在価格の表示
         page.show_total_price()
@@ -218,11 +217,11 @@ if __name__ == "__main__":
     # セッションにカスタマイズを保存
     if st.session_state.grade_decided:
         st.session_state.customize_saved = page.save_customize()
-        if st.session_state.customize_saved:
-            st.session_state.model_decided = False
-            st.session_state.grade_decided = False
-            st.session_state.user_registered = False
-            st.session_state.parts_decided = False
+        # if st.session_state.customize_saved:
+        #     st.session_state.model_decided = False
+        #     st.session_state.grade_decided = False
+        #     st.session_state.user_registered = False
+        #     st.session_state.parts_decided = False
 
     # カスタマイズ表示の更新
     page.update_saved_customize()
