@@ -1,3 +1,5 @@
+# グレードによって表示するカスタマイズを変更するためサンプルアプリ
+
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -5,6 +7,9 @@ import requests
 import os
 
 class Customization():
+    """
+    カスタマイズを管理するクラス。本アプリに統合できていない
+    """
     def __init__(self, option_id, model_id, grade_id):
         user_id = None
         option_id = None
@@ -15,7 +20,17 @@ class Customization():
         customized_options = new_options
 
 class CustomizationPage():
+    """
+    ページをコントロールするクラス。機能が複雑化してしまっているので分割して継承させた方がいいかも？以下、分割すべき機能の案：
+    - セッション管理
+    - 汎用的なビジュアルコンポーネント
+    - ページのデザインパーツ（上記との違いはユーザー操作のコンテクストの影響を受けるかどうか）
+    - DBマネジメント（ここではpandas.readでcsvからの読み込みのみ実施しているが、将来的にはDBへの読み書きができるように修正する必要）
+    """
     def __init__(self):
+        """
+        各種変数の初期化を実施
+        """
         if "customize" not in st.session_state:
             st.session_state.customize = []#カスタマイズ変数の初期化
         if "model_decided" not in st.session_state:
@@ -32,6 +47,9 @@ class CustomizationPage():
         self.target_parts_ids = []
         
     def load_data(self):
+        """
+        とりあえずの処置としてcsvからデータを読み込み
+        """
         df_models = pd.read_csv("asset/models.csv")
         df_parts = pd.read_csv("asset/exterior_parts.csv")
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
@@ -44,10 +62,24 @@ class CustomizationPage():
         self.df_grades = df_grades
 
     def _show_selection(self, df, target_columns, label, key):
+        """
+        リストから1つのオプションを選択するためのビジュアル要素。keyを指定することで、st.session_state[key]から選択肢にアクセスできるようになる
+        - df: オプション選択肢を含んだデータフレーム
+        - target_columns: 対象となる列名
+        - label: ページに表示するラベル
+        - key: st.session_stateに保存するための変数名
+        """
         user_choise = st.selectbox(label=label,options=[""]+df[target_columns].tolist(), key=key)
         return user_choise
 
     def _show_data_as_table(self, df, caption_column, image_column, colum_count):
+        """
+        複数の画像を並べて表示するためのビジュアル要素
+        - df: オプション選択肢を含んだデータフレーム
+        - caption_column: 画像のキャプションを指定する列名
+        - image_column: 画像のURLを指定する列名
+        - colum_count: 横何列に並べるかを指定する
+        """
         idx = 0
         for _ in range(len(df)-1):
             cols = st.columns(colum_count)
@@ -59,6 +91,15 @@ class CustomizationPage():
                     break
 
     def _show_data_as_table_and_select(self, df, key_prefix, caption_column, image_column, id_column, colum_count):
+        """
+        複数の画像と「チェックボックス」を並べて表示してユーザーに選択させるためのビジュアル要素
+        - df: オプション選択肢を含んだデータフレーム
+        - key_prefix: keyの前に共通でつけるプレフィックス。各オブジェクトのkeyはkey_prefix_[要素の番号]の形式でsession_stateに保存される
+        - caption_column: 画像のキャプションを指定する列名
+        - image_column: 画像のURLを指定する列名
+        - id_column: 対象を識別するidを指定する列名　#ここでは使用していない。。
+        - colum_count: 横何列に並べるかを指定する
+        """
         selected_images = []
         image_urls = df[image_column].tolist()
         names = df[caption_column].tolist()
@@ -76,8 +117,10 @@ class CustomizationPage():
                     col.image(image_url, caption="", use_column_width=True)
         return selected_images
     
-    # コールバック関数を定義してセレクトボックスの値をリセット
     def _reset_selectbox(self):
+        """
+        セレクトボックスの値をリセットするためのコールバック関数。保存ボタンを押した後に呼び出すこと想定している
+        """
         st.session_state.select_model = ""
         st.session_state.select_grade = ""
         st.session_state.model_decided = False
@@ -88,17 +131,33 @@ class CustomizationPage():
                         "target_parts_ids": self.target_parts_ids}
         st.session_state.customize.append(customize)
         st.write("カスタマイズを保存しました。新しいカスタマイズを作成しましょう")
-    
+
+    def save_customize(self):
+        """
+        カスタマイズの保存
+        """
+        st.title("カスタマイズを保存")
+        return st.button(label="保存", on_click=self._reset_selectbox) 
+       
     def saved_customize(self):
+        """
+        保存済みのカスタマイズを表示する
+        """
         st.title("保存済みのカスタマイズ")
         self.customization_placeholder = st.empty()
         self.customization_placeholder.write(st.session_state.customize)
 
     def update_saved_customize(self):
+        """
+        保存済みのカスタマイズを更新する
+        """
         self.customization_placeholder.write(st.session_state.customize)
 
 
     def model_seletion(self):
+        """
+        モデル選択を誘導するページのパーツ
+        """
         st.title("モデル選択")        
         self.target_model = self._show_selection(df=self.df_models, 
                             label="モデルを選択してください", 
@@ -109,6 +168,9 @@ class CustomizationPage():
         return self.target_model!=""
     
     def grade_seletion(self):
+        """
+        グレード選択を誘導するページのパーツ
+        """
         st.title("グレード選択")
         self.target_model_id = self.df_models.query("model_name==@self.target_model").model_id.iloc[0]
         self.df_grades_target = self.df_grades.query("model_id==@self.target_model_id")
@@ -122,14 +184,20 @@ class CustomizationPage():
         return self.target_grade!=""
     
     def show_total_price(self):
+        """
+        合計金額を表示するページのパーツ
+        """
         st.title("合計金額")
         self.target_model_price = self.df_grades_target.query("name_desc==@self.target_grade").price.iloc[0]
         self.target_model_price = int(self.target_model_price)
-        self.header_placeholder = st.empty()# ヘッダーに初期メッセージを表示
+        self.header_placeholder = st.empty()# ヘッダーに初期メッセージを表示。このように定義することで、ページの下部からでも更新をかけることができる
         billing_message = f"現在の金額は{self.target_model_price}円です。\n - 基本料金：{self.target_model_price}円"
         self.header_placeholder.write(billing_message)
 
     def updade_price(self):
+        """
+        合計金額を更新する
+        """
         parts_name_list = self.df_parts.query("option_grade_id in @self.target_parts_ids").name.tolist()
         price_list = self.df_parts.query("option_grade_id in @self.target_parts_ids").price.astype(int).tolist()      
         billing_message = f"現在の金額は{self.target_model_price+sum(price_list)}円です。\n - 基本料金：{self.target_model_price}円"
@@ -138,6 +206,9 @@ class CustomizationPage():
         self.header_placeholder.write(billing_message)  
 
     def user_registration(self):
+        """
+        ユーザー登録用のフォーム
+        """
         st.title("ディーラー予約フォーム")        
         st.write("こちらの内容で予約する場合にはフォームを入力・送信してください。")
         st.write("オプションを追加したい方は下からご希望のオプションを選択ください。")
@@ -170,6 +241,9 @@ class CustomizationPage():
         return False
 
     def parts_selection(self):
+        """
+        オプション選択
+        """
         st.title("オプション追加") 
         self.df_parts_target = self.df_parts.query("model_id==@self.target_model_id and grade_id==@self.target_grade_id")
         self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
@@ -178,10 +252,6 @@ class CustomizationPage():
                             id_column="option_grade_id", colum_count=4)
 
         return len(self.target_parts_ids)>0
-
-    def save_customize(self):
-        st.title("カスタマイズを保存")
-        return st.button(label="保存", on_click=self._reset_selectbox)
 
 if __name__ == "__main__":
     page = CustomizationPage()
@@ -217,11 +287,6 @@ if __name__ == "__main__":
     # セッションにカスタマイズを保存
     if st.session_state.grade_decided:
         st.session_state.customize_saved = page.save_customize()
-        # if st.session_state.customize_saved:
-        #     st.session_state.model_decided = False
-        #     st.session_state.grade_decided = False
-        #     st.session_state.user_registered = False
-        #     st.session_state.parts_decided = False
 
     # カスタマイズ表示の更新
     page.update_saved_customize()
