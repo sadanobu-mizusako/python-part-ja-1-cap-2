@@ -126,11 +126,11 @@ class CustomizationPage():
         st.session_state.model_decided = False
         st.session_state.grade_decided = False
         st.session_state.parts_decided = False
-        customize = {"target_model_id":self.target_model_id, 
-                        "target_grade_id":self.target_grade_id, 
-                        "target_parts_ids": self.target_parts_ids}
+        customize = {"total_price":self.total_price,
+                     "target_model":self.target_model, 
+                     "target_grade":self.target_grade, 
+                     "target_parts_ids": self.target_parts_ids}
         st.session_state.customize.append(customize)
-        st.write("カスタマイズを保存しました。新しいカスタマイズを作成しましょう")
 
     def save_customize(self):
         """
@@ -191,6 +191,7 @@ class CustomizationPage():
         self.target_model_price = self.df_grades_target.query("name_desc==@self.target_grade").price.iloc[0]
         self.target_model_price = int(self.target_model_price)
         self.header_placeholder = st.empty()# ヘッダーに初期メッセージを表示。このように定義することで、ページの下部からでも更新をかけることができる
+        self.total_price = self.target_model_price
         billing_message = f"現在の金額は{self.target_model_price}円です。\n - 基本料金：{self.target_model_price}円"
         self.header_placeholder.write(billing_message)
 
@@ -199,8 +200,9 @@ class CustomizationPage():
         合計金額を更新する
         """
         parts_name_list = self.df_parts.query("option_grade_id in @self.target_parts_ids").name.tolist()
-        price_list = self.df_parts.query("option_grade_id in @self.target_parts_ids").price.astype(int).tolist()      
-        billing_message = f"現在の金額は{self.target_model_price+sum(price_list)}円です。\n - 基本料金：{self.target_model_price}円"
+        price_list = self.df_parts.query("option_grade_id in @self.target_parts_ids").price.astype(int).tolist()
+        self.total_price = self.target_model_price+sum(price_list)
+        billing_message = f"現在の金額は{self.total_price}円です。\n - 基本料金：{self.target_model_price}円"
         for name, price in zip(parts_name_list, price_list):
             billing_message += f"\n - {name}: {price}"
         self.header_placeholder.write(billing_message)  
@@ -212,33 +214,31 @@ class CustomizationPage():
         st.title("ディーラー予約フォーム")        
         st.write("こちらの内容で予約する場合にはフォームを入力・送信してください。")
         st.write("オプションを追加したい方は下からご希望のオプションを選択ください。")
-        if st.checkbox("予約フォームを開く"):
-            # ユーザーの氏名の入力
-            name = st.text_input("氏名")
+        # ユーザーの氏名の入力
+        name = st.text_input("氏名")
 
-            # ユーザーのメールアドレスの入力
-            email = st.text_input("メールアドレス")
+        # ユーザーのメールアドレスの入力
+        email = st.text_input("メールアドレス")
 
-            # 都道府県の選択
-            prefecture = st.selectbox(
-                "都道府県",
-                (
-                    "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
-                    "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
-                    "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県",
-                    "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県",
-                    "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
-                    "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
-                )
+        # 都道府県の選択
+        prefecture = st.selectbox(
+            "都道府県",
+            (
+                "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
+                "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
+                "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県",
+                "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県",
+                "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
+                "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
             )
+        )
 
-            # フォームの送信ボタン
-            if st.button("この内容でディーラーを予約する"):
-                st.write("登録が完了しました。後日ディーラーからアポイントのご連絡をいたします。")
-                return True
-            else:
-                return False
-        return False
+        # フォームの送信ボタン
+        if st.button("この内容でディーラーを予約する"):
+            st.write("登録が完了しました。後日ディーラーからアポイントのご連絡をいたします。")
+            return True
+        else:
+            return False
 
     def parts_selection(self):
         """
@@ -254,39 +254,44 @@ class CustomizationPage():
         return len(self.target_parts_ids)>0
 
 if __name__ == "__main__":
+    tab1, tab2 = st.tabs(["モデル選択", "カスタマイズの比較検討・ディーラー予約"])
     page = CustomizationPage()
 
     # データの取得
     page.load_data()
 
-    # 保存済みカスタマイズの表示
-    page.saved_customize()
+    with tab1:
+        if len(st.session_state.customize)>0:
+            st.write(f"{len(st.session_state.customize)}件のカスタマイズが保存されています。新しいカスタマイズを作成するか、右のタブで保存したカスタマイズの比較や、ディーラー予約をしましょう。")
 
-    # モデル選択の誘導
-    st.session_state.model_decided = page.model_seletion()
+        # モデル選択の誘導
+        st.session_state.model_decided = page.model_seletion()
 
-    # グレードの選択の誘導
-    if st.session_state.model_decided:
-        st.session_state.grade_decided = page.grade_seletion()
+        # グレードの選択の誘導
+        if st.session_state.model_decided:
+            st.session_state.grade_decided = page.grade_seletion()
+            
+        if st.session_state.grade_decided:
+            # 現在価格の表示
+            page.show_total_price()
+
+        # セッションにカスタマイズを保存
+        if st.session_state.grade_decided:
+            st.session_state.customize_saved = page.save_customize()
+
+        # パーツの選択の誘導
+        if st.session_state.grade_decided:
+            st.session_state.parts_decided = page.parts_selection()
         
-    if st.session_state.grade_decided:
-        # ディーラー予約誘導        
+        # 価格の更新
+        if st.session_state.parts_decided:
+            page.updade_price()
+
+    with tab2:
+        # 保存済みカスタマイズの表示
+        page.saved_customize()
+        st.write("ここはきれいに可視化する！！！！")
+        # # カスタマイズ表示の更新
+        # page.update_saved_customize()
+        # ディーラー予約誘導
         st.session_state.user_registered = page.user_registration()
-
-        # 現在価格の表示
-        page.show_total_price()
-
-    # パーツの選択の誘導
-    if st.session_state.grade_decided and (st.session_state.user_registered==False):
-        st.session_state.parts_decided = page.parts_selection()
-    
-    # 価格の更新
-    if st.session_state.parts_decided:
-        page.updade_price()
-
-    # セッションにカスタマイズを保存
-    if st.session_state.grade_decided:
-        st.session_state.customize_saved = page.save_customize()
-
-    # カスタマイズ表示の更新
-    page.update_saved_customize()
