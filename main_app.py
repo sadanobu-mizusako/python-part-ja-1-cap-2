@@ -6,6 +6,8 @@ import streamlit as st
 import requests
 import os
 
+from db_manager import SQliteManager
+
 class Customization():
     """
     カスタマイズを管理するクラス。本アプリに統合できていない
@@ -56,6 +58,30 @@ class CustomizationPage():
         df_grades = pd.read_csv("asset/grades.csv")
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["desc"])
+        
+        self.df_models = df_models
+        self.df_parts = df_parts
+        self.df_grades = df_grades
+
+    def load_data_from_DB(self):
+        """
+        DBからデータを読み込み
+        """
+        sql_manager = SQliteManager("car_customize.db")
+        df_models = sql_manager.get_df("SELECT ModelID as model_id, ModelName as model_name, ImageURL as img_url from CarModels")
+        df_parts = sql_manager.get_df("""
+                                        SELECT Exteriors.ExteriorID as exterior_id, GradeExteriors.GradeID as grade_id, 
+                                        ModelID as model_id, Item as name, AdditionalCost as price, ImageURL as img_url 
+                                        from Exteriors JOIN GradeExteriors ON Exteriors.ExteriorID == GradeExteriors.ExteriorID
+                                        JOIN CarGrades ON GradeExteriors.GradeID == CarGrades.GradeID
+                                        """)
+        df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
+        df_grades = sql_manager.get_df("""
+                                        SELECT BasePrice as price, ModelID as model_id, CarGrades.GradeID as grade_id, GradeName as grade_name 
+                                        from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
+                                        """)
+        # nameだけではユニークにならないので、IDも追加する
+        df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_id"])
         
         self.df_models = df_models
         self.df_parts = df_parts
@@ -138,7 +164,7 @@ class CustomizationPage():
         """
         st.title("カスタマイズを保存")
         return st.button(label="保存", on_click=self._reset_selectbox) 
-       
+
     def saved_customize(self):
         """
         保存済みのカスタマイズを表示する
@@ -258,7 +284,7 @@ if __name__ == "__main__":
     page = CustomizationPage()
 
     # データの取得
-    page.load_data()
+    page.load_data_from_DB()
 
     with tab1:
         if len(st.session_state.customize)>0:
