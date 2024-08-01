@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import sqlite3
 import json
+import pandas as pd
 
 class DBManagerBase(ABC):
     def __init__(self, path: str) -> None:
@@ -22,7 +23,7 @@ class SQliteManager(DBManagerBase):
     def execute(self, sql: str):
         conn = sqlite3.connect(self.path)
         cursor = conn.cursor()
-        cursor.executescript(sql)
+        cursor.execute(sql)
         conn.commit()
         conn.close()
 
@@ -46,6 +47,26 @@ class SQliteManager(DBManagerBase):
         placeholders = ', '.join(['?'] * len(keys))
         values = [tuple(item[key] for key in keys) for item in data]
         self.execute_many(f"INSERT INTO {table} ({columns}) VALUES ({placeholders})", values)
+
+    def get_data(self, sql: str) -> tuple:
+        conn = sqlite3.connect(self.path)
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        conn.commit()
+        conn.close()
+        return data
+    
+    def get_df(self, sql: str) -> pd.DataFrame|None:
+        try:
+            conn = sqlite3.connect(self.path)
+            df = pd.read_sql_query(sql, conn)
+        except sqlite3.Error as e:
+            print(f"An error occurred: {e}")
+            df = None
+        finally:
+            conn.close()
+        return df
 
 if __name__ == "__main__":
 
@@ -147,19 +168,26 @@ CREATE TABLE Users (
 
     #DBを作成
     sql_manager = SQliteManager("car_customize.db")
-    sql_manager.execute_script(create_tables_sql)
+    # sql_manager.execute_script(create_tables_sql)
 
-    #jsonファイルからデータをDBへ挿入
-    data = load_json("db_sample.json")
-    sql_manager.insert_data('CarCategories', data['CarCategories'])
-    sql_manager.insert_data('CarModels', data['CarModels'])
-    sql_manager.insert_data('CarGrades', data['CarGrades'])
-    sql_manager.insert_data('Engines', data['Engines'])
-    sql_manager.insert_data('Bases', data['Bases'])
-    sql_manager.insert_data('Colors', data['Colors'])
-    sql_manager.insert_data('Exteriors', data['Exteriors'])
-    sql_manager.insert_data('GradeExteriors', data['GradeExteriors'])
-    sql_manager.insert_data('Interiors', data['Interiors'])
-    sql_manager.insert_data('GradeInteriors', data['GradeInteriors'])
-    sql_manager.insert_data('Customizations', data['Customizations'])
-    sql_manager.insert_data('Users', data['Users'])
+    # #jsonファイルからデータをDBへ挿入
+    # data = load_json("db_sample.json")
+    # sql_manager.insert_data('CarCategories', data['CarCategories'])
+    # sql_manager.insert_data('CarModels', data['CarModels'])
+    # sql_manager.insert_data('CarGrades', data['CarGrades'])
+    # sql_manager.insert_data('Engines', data['Engines'])
+    # sql_manager.insert_data('Bases', data['Bases'])
+    # sql_manager.insert_data('Colors', data['Colors'])
+    # sql_manager.insert_data('Exteriors', data['Exteriors'])
+    # sql_manager.insert_data('GradeExteriors', data['GradeExteriors'])
+    # sql_manager.insert_data('Interiors', data['Interiors'])
+    # sql_manager.insert_data('GradeInteriors', data['GradeInteriors'])
+    # sql_manager.insert_data('Customizations', data['Customizations'])
+    # sql_manager.insert_data('Users', data['Users'])
+
+    df = sql_manager.get_df("""
+                SELECT Exteriors.ExteriorID as exterior_id, GradeExteriors.GradeID as grade_id, ModelID as model_id, Item as name, AdditionalCost as price, ImageURL as image_url 
+                from Exteriors JOIN GradeExteriors ON Exteriors.ExteriorID == GradeExteriors.ExteriorID
+                JOIN CarGrades ON GradeExteriors.GradeID == CarGrades.GradeID
+                """)
+    print(df)
