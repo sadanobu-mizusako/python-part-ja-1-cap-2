@@ -87,6 +87,7 @@ CREATE TABLE CarModels (
 CREATE TABLE CarGrades (
     GradeID INTEGER PRIMARY KEY AUTOINCREMENT,
     GradeName TEXT,
+    Description TEXT,
     ModelID INTEGER,
     FOREIGN KEY (ModelID) REFERENCES CarModels (ModelID)
 );
@@ -182,5 +183,5 @@ CREATE TABLE Users (
     sql_manager.insert_data('GradeExteriors', data['GradeExteriors'])
     sql_manager.insert_data('Interiors', data['Interiors'])
     sql_manager.insert_data('GradeInteriors', data['GradeInteriors'])
-    sql_manager.insert_data('Customizations', data['Customizations'])
-    sql_manager.insert_data('Users', data['Users'])
+    # sql_manager.insert_data('Customizations', data['Customizations'])
+    # sql_manager.insert_data('Users', data['Users'])

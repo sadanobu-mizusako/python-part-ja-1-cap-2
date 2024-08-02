@@ -77,11 +77,11 @@ class CustomizationPage():
                                         """)
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
         df_grades = sql_manager.get_df("""
-                                        SELECT BasePrice as price, ModelID as model_id, CarGrades.GradeID as grade_id, GradeName as grade_name 
+                                        SELECT BasePrice as price, ModelID as model_id, CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc 
                                         from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
                                         """)
         # nameだけではユニークにならないので、IDも追加する
-        df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_id"])
+        df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
         
         self.df_models = df_models
         self.df_parts = df_parts
@@ -284,7 +284,8 @@ if __name__ == "__main__":
     page = CustomizationPage()
 
     # データの取得
-    page.load_data_from_DB()
+    # page.load_data_from_DB()
+    page.load_data()
 
     with tab1:
         if len(st.session_state.customize)>0:
