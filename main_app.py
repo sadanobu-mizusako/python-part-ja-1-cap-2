@@ -69,13 +69,6 @@ class CustomizationPage():
         self.df_grades["InsuranceCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
         self.df_grades["ResaleValue"] = (self.df_grades["price"] * (1-self.df_grades["MonthlyPriceDropRate"]) ** (self.hold_month)).astype(int)
 
-        # グレード名に価格情報を追加（動作確認用）
-        self.df_grades["name_desc"] = (
-            self.df_grades["name_desc"] + self.df_grades["price"].astype(str) + ", " + self.df_grades["FuelCost"].astype(str) + ", " + 
-            self.df_grades["MainteCost"].astype(str)+ ", " + self.df_grades["InsuranceCost"].astype(str) + ", " +
-            self.df_grades["ResaleValue"].astype(str)
-        )
-
     def load_data(self):
         """
         とりあえずの処置としてcsvからデータを読み込み
