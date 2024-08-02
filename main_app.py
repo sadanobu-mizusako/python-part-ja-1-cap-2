@@ -68,6 +68,8 @@ class CustomizationPage():
         self.df_grades["MainteCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
         self.df_grades["InsuranceCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
         self.df_grades["ResaleValue"] = (self.df_grades["price"] * (1-self.df_grades["MonthlyPriceDropRate"]) ** (self.hold_month)).astype(int)
+        self.df_grades["MonthlyTotalCost"] = self.df_grades["FuelCost"]/30 + self.df_grades["MonthlyMainteCost"] + self.df_grades["MonthlyMainteCost"]
+        self.df_grades["MonthlyRealCost"] = (self.df_grades["MonthlyTotalCost"] + self.df_grades["MonthlyTotalCost"] * self.hold_month - self.df_grades["ResaleValue"])/self.hold_month
 
     def load_data(self):
         """
@@ -89,7 +91,10 @@ class CustomizationPage():
         DBからデータを読み込み
         """
         sql_manager = SQliteManager("car_customize.db")
-        df_models = sql_manager.get_df("SELECT ModelID as model_id, ModelName as model_name, ImageURL as img_url from CarModels")
+        df_models = sql_manager.get_df("""
+                                       SELECT ModelID as model_id, CategoryName as category_name, ModelName as model_name, ImageURL as img_url from CarModels
+                                       JOIN CarCategories ON CarCategories.CategoryID == CarModels.CategoryID
+                                       """)
         df_parts = sql_manager.get_df("""
                                         SELECT Exteriors.ExteriorID as exterior_id, GradeExteriors.GradeID as grade_id, 
                                         ModelID as model_id, Item as name, AdditionalCost as price, ImageURL as img_url 
@@ -101,7 +106,7 @@ class CustomizationPage():
                                         SELECT BasePrice as price, ModelID as model_id, CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc 
                                         from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
                                         """)
-        # nameだけではユニークにならないので、IDも追加する
+        # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
         
         self.df_models = df_models
@@ -178,6 +183,15 @@ class CustomizationPage():
                      "target_grade":self.target_grade, 
                      "target_parts_ids": self.target_parts_ids}
         st.session_state.customize.append(customize)
+
+    def user_request(self):
+        """
+        ユーザーの要望（カテゴリ、予算）の入力フォーム - 入力が正しくない時のためのエラー処理が必要
+        """
+        st.title("ユーザー要望")
+        self.category = st.selectbox("カテゴリー",self.df_models["category_name"].drop_duplicates())
+        self.year_cost = st.text_input("予算（円/年）", "例:700000")
+
     def how_user_drives(self):
         """
         ユーザーの乗り方 - 入力が正しくない時のためのエラー処理が必要
@@ -189,6 +203,19 @@ class CustomizationPage():
         self.hold_month *= 12
         self.hour_per_day = st.selectbox("1日の乗車時間",(i for i in range(1,24))) 
         self._temp_set_dummy_price_info() # 価格情報の更新
+
+    def search_result(self):
+        st.title("検索結果")
+        st.write(self._search_car_meet_customer_needs())
+
+    def _search_car_meet_customer_needs(self):
+        target_model_id = self.df_models[self.df_models['category_name']==self.category]["model_id"]
+        try:
+            search_result_df = self.df_grades[self.df_grades["model_id"].isin(target_model_id)&(self.df_grades["MonthlyRealCost"]<int(self.year_cost)/12)]
+            return search_result_df 
+        except ValueError:
+            print("inputは整数値を入力してください")
+            return None
 
     def save_customize(self):
         """
@@ -323,8 +350,14 @@ if __name__ == "__main__":
         if len(st.session_state.customize)>0:
             st.write(f"{len(st.session_state.customize)}件のカスタマイズが保存されています。新しいカスタマイズを作成するか、右のタブで保存したカスタマイズの比較や、ディーラー予約をしましょう。")
 
+        #ユーザーの要望入力
+        page.user_request()
+
         # ユーザーの乗り方の入力
         page.how_user_drives()
+
+        # 検索結果の表示
+        page.search_result()
 
         # モデル選択の誘導
         st.session_state.model_decided = page.model_seletion()
