@@ -47,7 +47,35 @@ class CustomizationPage():
         self.target_grade = None
         self.target_grade_id = None
         self.target_parts_ids = []
-        
+    
+    def _temp_scaler(self, x):
+        return (x-x.min())/(x.max()-x.min())
+
+    def _temp_set_dummy_price_info(self):
+        """
+        ダミーの価格関連情報をインプットするためのテンポラリ関数。リリースまでにDB側に情報を埋め込むのが望ましいです。
+        """
+        # コスト計算のためのパラメータ
+        self.df_grades["FuelEfficiency"] = 1+self._temp_scaler(self.df_grades["price"].astype(int)) #1~2km/Lくらいに収める
+        self.df_grades["FuelCostPerKilo"] = self.df_grades["FuelEfficiency"]*160#リッター160円で計算
+        self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.05 #月額のメンテコスト
+        self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.05 #月額の保険コスト
+        self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.05 #月額の駐車場コスト
+        self.df_grades["MonthlyPriceDropRate"] = (1-self._temp_scaler(self.df_grades["price"]))*0.02+0.01 #月額の価格下落率
+
+        # コストと売却価格
+        self.df_grades["FuelCost"] = (self.df_grades["FuelCostPerKilo"] * self.hour_per_day * 40 * self.hold_month * 30).astype(int)
+        self.df_grades["MainteCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
+        self.df_grades["InsuranceCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
+        self.df_grades["ResaleValue"] = (self.df_grades["price"] * (1-self.df_grades["MonthlyPriceDropRate"]) ** (self.hold_month)).astype(int)
+
+        # グレード名に価格情報を追加（動作確認用）
+        self.df_grades["name_desc"] = (
+            self.df_grades["name_desc"] + self.df_grades["price"].astype(str) + ", " + self.df_grades["FuelCost"].astype(str) + ", " + 
+            self.df_grades["MainteCost"].astype(str)+ ", " + self.df_grades["InsuranceCost"].astype(str) + ", " +
+            self.df_grades["ResaleValue"].astype(str)
+        )
+
     def load_data(self):
         """
         とりあえずの処置としてcsvからデータを読み込み
@@ -157,6 +185,17 @@ class CustomizationPage():
                      "target_grade":self.target_grade, 
                      "target_parts_ids": self.target_parts_ids}
         st.session_state.customize.append(customize)
+    def how_user_drives(self):
+        """
+        ユーザーの乗り方 - 入力が正しくない時のためのエラー処理が必要
+        """
+        st.title("想定する車の使い方")
+        self.hold_month = 0
+        self.hour_per_day = 0
+        self.hold_month = st.selectbox("使用年数",(i for i in range(1,21))) 
+        self.hold_month *= 12
+        self.hour_per_day = st.selectbox("1日の乗車時間",(i for i in range(1,24))) 
+        self._temp_set_dummy_price_info() # 価格情報の更新
 
     def save_customize(self):
         """
@@ -284,12 +323,15 @@ if __name__ == "__main__":
     page = CustomizationPage()
 
     # データの取得
-    # page.load_data_from_DB()
-    page.load_data()
+    page.load_data_from_DB()
+    # page.load_data()
 
     with tab1:
         if len(st.session_state.customize)>0:
             st.write(f"{len(st.session_state.customize)}件のカスタマイズが保存されています。新しいカスタマイズを作成するか、右のタブで保存したカスタマイズの比較や、ディーラー予約をしましょう。")
+
+        # ユーザーの乗り方の入力
+        page.how_user_drives()
 
         # モデル選択の誘導
         st.session_state.model_decided = page.model_seletion()
