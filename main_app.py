@@ -17,6 +17,7 @@ class Customization():
         option_id = None
         model_id = model_id
         grade_id = grade_id
+        color_id = color_id
         customized_options = {}
     def renuew_options(new_options):
         customized_options = new_options
@@ -43,9 +44,13 @@ class CustomizationPage():
             st.session_state.user_registered = False
         if "parts_decided" not in st.session_state:
             st.session_state.parts_decided = False
+        if "color_decided" not in st.session_state:
+            st.session_state.color_decided = False
 
         self.target_grade = None
         self.target_grade_id = None
+        self.target_color = None
+        self.target_color_id = None
         self.target_parts_ids = []
     
     def _temp_scaler(self, x):
@@ -54,7 +59,18 @@ class CustomizationPage():
     def _temp_set_dummy_price_info(self):
         """
         ダミーの価格関連情報をインプットするためのテンポラリ関数。リリースまでにDB側に情報を埋め込むのが望ましいです。
+
         """
+        # 価格列に非数値データや欠損値がないか確認
+        if self.df_grades["price"].isnull().any():
+            st.error("価格情報に欠損値があります。データを確認してください。")
+            return
+        try:
+            self.df_grades["price"] = self.df_grades["price"].astype(int)
+        except ValueError:
+            st.error("価格情報に非数値データが含まれています。データを確認してください。")
+            return
+          
         # コスト計算のためのパラメータ
         self.df_grades["FuelEfficiency"] = 1+self._temp_scaler(self.df_grades["price"].astype(int)) #1~2km/Lくらいに収める
         self.df_grades["FuelCostPerKilo"] = self.df_grades["FuelEfficiency"]*160#リッター160円で計算
@@ -77,12 +93,15 @@ class CustomizationPage():
         df_parts = pd.read_csv("asset/exterior_parts.csv")
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
         df_grades = pd.read_csv("asset/grades.csv")
+        df_colors = pd.read_csv("asset/colors.csv")
+
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["desc"])
         
         self.df_models = df_models
         self.df_parts = df_parts
         self.df_grades = df_grades
+        self.df_colors = df_colors
 
     def load_data_from_DB(self):
         """
@@ -170,12 +189,15 @@ class CustomizationPage():
         """
         st.session_state.select_model = ""
         st.session_state.select_grade = ""
+        st.session_state.select_color = ""
         st.session_state.model_decided = False
         st.session_state.grade_decided = False
         st.session_state.parts_decided = False
+        st.session_state.color_decided = False
         customize = {"total_price":self.total_price,
                      "target_model":self.target_model, 
                      "target_grade":self.target_grade, 
+                     "target_color":self.target_color,
                      "target_parts_ids": self.target_parts_ids}
         st.session_state.customize.append(customize)
     def how_user_drives(self):
@@ -241,12 +263,38 @@ class CustomizationPage():
         )
         return self.target_grade!=""
     
+    def color_selection(self):
+        """
+        カラー選択を誘導するページのパーツ
+        """
+        st.title("カラー選択")
+
+        self.target_model_id = self.df_models.query("model_name==@self.target_model").model_id.iloc[0]
+        self.target_grade_id = self.df_grades_target.query("name_desc==@self.target_grade").grade_id.iloc[0]
+
+        self.df_colors_target = self.df_colors.query("model_id==@self.target_model_id and grade_id==@self.target_grade_id")
+
+        st.image(self.df_models.query("model_id==@self.target_model_id").img_url.iloc[0])
+
+        self.target_color = self._show_selection(df=self.df_colors_target, label="カラーを選択してください", 
+                                                 target_columns="color_name", key="select_color")
+        self.target_color_id = (
+            self.df_colors_target.query("color_name==@self.target_color").color_id.iloc[0] 
+            if self.target_color!="" else None
+        )
+        return self.target_color!=""   
+    
     def show_total_price(self):
         """
         合計金額を表示するページのパーツ
         """
         st.title("合計金額")
-        self.target_model_price = self.df_grades_target.query("name_desc==@self.target_grade").price.iloc[0]
+        model_price = self.df_grades_target.query("name_desc==@self.target_grade").price.iloc[0]
+        color_price = self.df_colors_target.query("color_name==@self.target_color").price.iloc[0]
+        # 数値型に変換
+        model_price = float(model_price)
+        color_price = float(color_price)
+        self.target_model_price = model_price + color_price
         self.target_model_price = int(self.target_model_price)
         self.header_placeholder = st.empty()# ヘッダーに初期メッセージを表示。このように定義することで、ページの下部からでも更新をかけることができる
         self.total_price = self.target_model_price
@@ -316,8 +364,8 @@ if __name__ == "__main__":
     page = CustomizationPage()
 
     # データの取得
-    page.load_data_from_DB()
-    # page.load_data()
+    # page.load_data_from_DB()
+    page.load_data()
 
     with tab1:
         if len(st.session_state.customize)>0:
@@ -332,17 +380,21 @@ if __name__ == "__main__":
         # グレードの選択の誘導
         if st.session_state.model_decided:
             st.session_state.grade_decided = page.grade_seletion()
-            
+
+        # カラーの選択の誘導
         if st.session_state.grade_decided:
+            st.session_state.color_decided = page.color_selection()               
+            
+        if st.session_state.color_decided:
             # 現在価格の表示
             page.show_total_price()
 
         # セッションにカスタマイズを保存
-        if st.session_state.grade_decided:
+        if st.session_state.color_decided:
             st.session_state.customize_saved = page.save_customize()
 
         # パーツの選択の誘導
-        if st.session_state.grade_decided:
+        if st.session_state.color_decided:
             st.session_state.parts_decided = page.parts_selection()
         
         # 価格の更新
