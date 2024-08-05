@@ -56,11 +56,11 @@ class CustomizationPage():
         ダミーの価格関連情報をインプットするためのテンポラリ関数。リリースまでにDB側に情報を埋め込むのが望ましいです。
         """
         # コスト計算のためのパラメータ
-        self.df_grades["FuelEfficiency"] = 1+self._temp_scaler(self.df_grades["price"].astype(int)) #1~2km/Lくらいに収める
-        self.df_grades["FuelCostPerKilo"] = self.df_grades["FuelEfficiency"]*160#リッター160円で計算
-        self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.05 #月額のメンテコスト
-        self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.05 #月額の保険コスト
-        self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.05 #月額の駐車場コスト
+        self.df_grades["FuelEfficiency"] = (1+self._temp_scaler(self.df_grades["price"].astype(int)))*10 #10~20km/Lくらいに収める
+        self.df_grades["FuelCostPerKilo"] = 160 / self.df_grades["FuelEfficiency"]#リッター160円で計算
+        self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.01 #月額のメンテコスト
+        self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.01 #月額の保険コスト
+        self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.01 #月額の駐車場コスト
         self.df_grades["MonthlyPriceDropRate"] = (1-self._temp_scaler(self.df_grades["price"]))*0.02+0.01 #月額の価格下落率
 
         # コストと売却価格
@@ -68,8 +68,8 @@ class CustomizationPage():
         self.df_grades["MainteCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
         self.df_grades["InsuranceCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
         self.df_grades["ResaleValue"] = (self.df_grades["price"] * (1-self.df_grades["MonthlyPriceDropRate"]) ** (self.hold_month)).astype(int)
-        self.df_grades["MonthlyTotalCost"] = self.df_grades["FuelCost"]/30 + self.df_grades["MonthlyMainteCost"] + self.df_grades["MonthlyMainteCost"]
-        self.df_grades["MonthlyRealCost"] = (self.df_grades["MonthlyTotalCost"] + self.df_grades["MonthlyTotalCost"] * self.hold_month - self.df_grades["ResaleValue"])/self.hold_month
+        self.df_grades["MonthlyTotalCost"] = self.df_grades["FuelCost"]/30 + self.df_grades["MonthlyMainteCost"] + self.df_grades["MonthlyInsuranceCost"]
+        self.df_grades["MonthlyRealCost"] = (self.df_grades["price"] - self.df_grades["ResaleValue"] + self.df_grades["MonthlyTotalCost"] + self.df_grades["MonthlyTotalCost"] * self.hold_month)/self.hold_month
 
     def load_data(self):
         """
@@ -103,8 +103,10 @@ class CustomizationPage():
                                         """)
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
         df_grades = sql_manager.get_df("""
-                                        SELECT BasePrice as price, ModelID as model_id, CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc 
+                                        SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
+                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc 
                                         from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
+                                        JOIN CarModels ON CarModels.ModelID == CarGrades.ModelID
                                         """)
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
@@ -189,8 +191,12 @@ class CustomizationPage():
         ユーザーの要望（カテゴリ、予算）の入力フォーム - 入力が正しくない時のためのエラー処理が必要
         """
         st.title("ユーザー要望")
-        self.category = st.selectbox("カテゴリー",self.df_models["category_name"].drop_duplicates())
-        self.year_cost = st.text_input("予算（円/年）", "例:700000")
+        self.category = st.selectbox("カテゴリー",self.df_models["category_name"].drop_duplicates(),index=None,placeholder="車両カテゴリーを入力ください")
+        self.year_cost = st.text_input("予算（円/年）","年間希望予算を入力ください。例:700000")
+        if self.category != None and self.year_cost != "年間希望予算を入力ください。例:700000":
+            return True
+        else:
+            return False
 
     def how_user_drives(self):
         """
@@ -199,20 +205,49 @@ class CustomizationPage():
         st.title("想定する車の使い方")
         self.hold_month = 0
         self.hour_per_day = 0
-        self.hold_month = st.selectbox("使用年数",(i for i in range(1,21))) 
-        self.hold_month *= 12
-        self.hour_per_day = st.selectbox("1日の乗車時間",(i for i in range(1,24))) 
-        self._temp_set_dummy_price_info() # 価格情報の更新
+        self.hold_month = st.selectbox("使用年数",(i for i in range(1,21)),index=None,placeholder="使用年数を入力ください") 
+        if self.hold_month:
+            self.hold_month *= 12
+        self.hour_per_day = st.selectbox("1日の乗車時間",(i for i in range(1,24)),index=None,placeholder="1日の乗車時間[H]を入力ください") 
+        if self.hold_month != None and self.hour_per_day != None:
+            self._temp_set_dummy_price_info() # 価格情報の更新
+            return True
+        else:
+            return False
 
     def search_result(self):
+        """
+        ユーザーの要望に合う結果を表示する関数
+        """
         st.title("検索結果")
-        st.write(self._search_car_meet_customer_needs())
+        if self._search_car_meet_customer_needs():
+            edited_df = st.data_editor(
+            st.session_state.search_retult,
+            column_config={
+                "image_url": st.column_config.ImageColumn(
+                    "image", 
+                )
+            },
+            hide_index=True,
+            )
+            return edited_df[edited_df["check"]]
+        
+        else:
+            st.write('該当車両がありません')
 
     def _search_car_meet_customer_needs(self):
+        """
+        ユーザーの要望に合う車両を検索する関数
+        入力が正しく、かつデータが存在していればTrueを返す
+        検索結果はst.session_state.search_retultへ代入
+        """
         target_model_id = self.df_models[self.df_models['category_name']==self.category]["model_id"]
         try:
             search_result_df = self.df_grades[self.df_grades["model_id"].isin(target_model_id)&(self.df_grades["MonthlyRealCost"]<int(self.year_cost)/12)]
-            return search_result_df 
+            search_result_df = search_result_df.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyTotalCost', 'ResaleValue'])
+            search_result_df["check"] = False
+            st.session_state.search_retult = search_result_df
+            return not search_result_df.empty
         except ValueError:
             print("inputは整数値を入力してください")
             return None
@@ -351,13 +386,14 @@ if __name__ == "__main__":
             st.write(f"{len(st.session_state.customize)}件のカスタマイズが保存されています。新しいカスタマイズを作成するか、右のタブで保存したカスタマイズの比較や、ディーラー予約をしましょう。")
 
         #ユーザーの要望入力
-        page.user_request()
+        st.session_state.user_request = page.user_request()
 
         # ユーザーの乗り方の入力
-        page.how_user_drives()
+        st.session_state.how_user_drives = page.how_user_drives()
 
         # 検索結果の表示
-        page.search_result()
+        if st.session_state.user_request and st.session_state.how_user_drives:
+            user_select_items = page.search_result()
 
         # モデル選択の誘導
         st.session_state.model_decided = page.model_seletion()
