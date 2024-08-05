@@ -198,7 +198,7 @@ class CustomizationPage():
         st.title("ユーザー要望")
         self.category = st.selectbox("カテゴリー",self.df_models["category_name"].drop_duplicates(),index=None,placeholder="車両カテゴリーを入力ください")
         self.year_cost = st.text_input("予算（円/年）", placeholder = "年間希望予算を入力ください。例:700000")
-        if self.category != None and self.year_cost is not None:#"年間希望予算を入力ください。例:700000":
+        if self.category != None and self.year_cost != None:#"年間希望予算を入力ください。例:700000":
             return True
         else:
             return False
