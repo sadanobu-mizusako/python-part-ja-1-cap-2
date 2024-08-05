@@ -70,6 +70,8 @@ class CustomizationPage():
         self.df_grades["ResaleValue"] = (self.df_grades["price"] * (1-self.df_grades["MonthlyPriceDropRate"]) ** (self.hold_month)).astype(int)
         self.df_grades["MonthlyTotalCost"] = self.df_grades["FuelCost"]/30 + self.df_grades["MonthlyMainteCost"] + self.df_grades["MonthlyInsuranceCost"]
         self.df_grades["MonthlyRealCost"] = (self.df_grades["price"] - self.df_grades["ResaleValue"] + self.df_grades["MonthlyTotalCost"] + self.df_grades["MonthlyTotalCost"] * self.hold_month)/self.hold_month
+        self.df_grades["MonthlyTotalCost"] = self.df_grades["MonthlyTotalCost"].astype(int)
+        self.df_grades["MonthlyRealCost"] = self.df_grades["MonthlyRealCost"].astype(int)
 
     def load_data(self):
         """
@@ -110,6 +112,9 @@ class CustomizationPage():
                                         """)
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
+        
+        # 人気ランキング（本当はユーザーの予約結果から付与するのが望ましい・・・・）
+        df_grades["rank"] = np.random.choice(range(len(df_grades)),size=len(df_grades))
         
         self.df_models = df_models
         self.df_parts = df_parts
@@ -192,8 +197,8 @@ class CustomizationPage():
         """
         st.title("ユーザー要望")
         self.category = st.selectbox("カテゴリー",self.df_models["category_name"].drop_duplicates(),index=None,placeholder="車両カテゴリーを入力ください")
-        self.year_cost = st.text_input("予算（円/年）","年間希望予算を入力ください。例:700000")
-        if self.category != None and self.year_cost != "年間希望予算を入力ください。例:700000":
+        self.year_cost = st.text_input("予算（円/年）", placeholder = "年間希望予算を入力ください。例:700000")
+        if self.category != None and self.year_cost is not None:#"年間希望予算を入力ください。例:700000":
             return True
         else:
             return False
@@ -220,12 +225,27 @@ class CustomizationPage():
         ユーザーの要望に合う結果を表示する関数
         """
         st.title("検索結果")
+        sort_by = "rank" if st.radio(label="並び順", options=("価格順", "人気順"), horizontal=True) == "人気順" else "MonthlyRealCost"
         if self._search_car_meet_customer_needs():
             edited_df = st.data_editor(
-            st.session_state.search_retult,
+            st.session_state.search_result.sort_values(by=sort_by).drop(columns=['rank', 'MonthlyRealCost']),
             column_config={
                 "image_url": st.column_config.ImageColumn(
                     "image", 
+                ),
+                "model_name": st.column_config.TextColumn(
+                    label="モデル",
+                    max_chars=10
+                ),
+                "MonthlyTotalCost": st.column_config.NumberColumn(
+                    label="出費/月",
+                ),
+                "ResaleValue": st.column_config.NumberColumn(
+                    label="売価",
+                ),
+                "name_desc": st.column_config.TextColumn(
+                    label="グレード",
+                    width="medium",
                 )
             },
             hide_index=True,
@@ -239,14 +259,14 @@ class CustomizationPage():
         """
         ユーザーの要望に合う車両を検索する関数
         入力が正しく、かつデータが存在していればTrueを返す
-        検索結果はst.session_state.search_retultへ代入
+        検索結果はst.session_state.search_resultへ代入
         """
         target_model_id = self.df_models[self.df_models['category_name']==self.category]["model_id"]
         try:
             search_result_df = self.df_grades[self.df_grades["model_id"].isin(target_model_id)&(self.df_grades["MonthlyRealCost"]<int(self.year_cost)/12)]
-            search_result_df = search_result_df.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyTotalCost', 'ResaleValue'])
+            search_result_df = search_result_df.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
             search_result_df["check"] = False
-            st.session_state.search_retult = search_result_df
+            st.session_state.search_result = search_result_df
             return not search_result_df.empty
         except ValueError:
             print("inputは整数値を入力してください")
