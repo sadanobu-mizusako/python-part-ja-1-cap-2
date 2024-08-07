@@ -106,15 +106,15 @@ class CustomizationPage():
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
         df_grades = sql_manager.get_df("""
                                         SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
-                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc 
+                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank 
                                         from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
                                         JOIN CarModels ON CarModels.ModelID == CarGrades.ModelID
                                         """)
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
         
-        # 人気ランキング（本当はユーザーの予約結果から付与するのが望ましい・・・・）
-        df_grades["rank"] = np.random.choice(range(len(df_grades)),size=len(df_grades))
+        # # 人気ランキング（本当はユーザーの予約結果から付与するのが望ましい・・・・）
+        # df_grades["rank"] = np.random.choice(range(len(df_grades)),size=len(df_grades))
         
         self.df_models = df_models
         self.df_parts = df_parts

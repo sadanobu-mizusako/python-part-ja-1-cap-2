@@ -89,6 +89,7 @@ CREATE TABLE CarGrades (
     GradeName TEXT,
     Description TEXT,
     ModelID INTEGER,
+    Rank INTEGER,
     FOREIGN KEY (ModelID) REFERENCES CarModels (ModelID)
 );
 
