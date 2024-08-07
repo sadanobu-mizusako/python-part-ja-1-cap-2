@@ -89,7 +89,6 @@ CREATE TABLE CarGrades (
     GradeName TEXT,
     Description TEXT,
     ModelID INTEGER,
-    Rank INTEGER,
     FOREIGN KEY (ModelID) REFERENCES CarModels (ModelID)
 );
 
@@ -103,6 +102,13 @@ CREATE TABLE Bases (
     GradeID INTEGER,
     EngineID INTEGER,
     BasePrice INTEGER,
+    Rank INTEGER,
+    FuelEfficiency REAL,
+    FuelCostPerKilo REAL,
+    MonthlyMainteCost REAL,
+    MonthlyInsuranceCost REAL,
+    MonthlyParkingCost REAL,
+    MonthlyPriceDropRate REAL,
     FOREIGN KEY (GradeID) REFERENCES CarGrades (GradeID),
     FOREIGN KEY (EngineID) REFERENCES Engines (EngineID)
 );

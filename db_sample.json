@@ -206,1610 +206,1342 @@
     {
       "GradeName": "GR SPORT",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 68
+      "ModelID": 1
     },
     {
       "GradeName": "G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 262
+      "ModelID": 1
     },
     {
       "GradeName": "Z Raffine",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 237
+      "ModelID": 1
     },
     {
       "GradeName": "X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 142
+      "ModelID": 1
     },
     {
       "GradeName": "Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 43
+      "ModelID": 1
     },
     {
       "GradeName": "Z Raffine",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 84
+      "ModelID": 1
     },
     {
       "GradeName": "Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 256
+      "ModelID": 1
     },
     {
       "GradeName": "X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 266
+      "ModelID": 1
     },
     {
       "GradeName": "G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 1,
-      "Rank": 185
+      "ModelID": 1
     },
     {
       "GradeName": "G Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 2,
-      "Rank": 40
+      "ModelID": 2
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 2,
-      "Rank": 59
+      "ModelID": 2
     },
     {
       "GradeName": "HYBRID G X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 2,
-      "Rank": 143
+      "ModelID": 2
     },
     {
       "GradeName": "G X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 2,
-      "Rank": 95
+      "ModelID": 2
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 2,
-      "Rank": 253
+      "ModelID": 2
     },
     {
       "GradeName": "HYBRID G Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 2,
-      "Rank": 188
+      "ModelID": 2
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 90
+      "ModelID": 3
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 97
+      "ModelID": 3
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 27
+      "ModelID": 3
     },
     {
       "GradeName": "X (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fMT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 56
+      "ModelID": 3
     },
     {
       "GradeName": "Z (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fMT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 253
+      "ModelID": 3
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 114
+      "ModelID": 3
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 191
+      "ModelID": 3
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 29
+      "ModelID": 3
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 191
+      "ModelID": 3
     },
     {
       "GradeName": "G (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fMT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 85
+      "ModelID": 3
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 3
+      "ModelID": 3
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 146
+      "ModelID": 3
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 61
+      "ModelID": 3
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 226
+      "ModelID": 3
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 160
+      "ModelID": 3
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 38
+      "ModelID": 3
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 3,
-      "Rank": 70
+      "ModelID": 3
     },
     {
       "GradeName": "\u30ab\u30b9\u30bf\u30e0G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 6
+      "ModelID": 4
     },
     {
       "GradeName": "\u30ab\u30b9\u30bf\u30e0G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 171
+      "ModelID": 4
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 123
+      "ModelID": 4
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 70
+      "ModelID": 4
     },
     {
       "GradeName": "G-T",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 194
+      "ModelID": 4
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 160
+      "ModelID": 4
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 259
+      "ModelID": 4
     },
     {
       "GradeName": "\u30ab\u30b9\u30bf\u30e0G-T",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 4,
-      "Rank": 131
+      "ModelID": 4
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 5,
-      "Rank": 251
+      "ModelID": 5
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 5,
-      "Rank": 168
+      "ModelID": 5
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 5,
-      "Rank": 145
+      "ModelID": 5
     },
     {
       "GradeName": "HYBRID Executive Lounge",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 5,
-      "Rank": 151
+      "ModelID": 5
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.5L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 5,
-      "Rank": 104
+      "ModelID": 5
     },
     {
       "GradeName": "HYBRID Executive Lounge",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 5,
-      "Rank": 90
+      "ModelID": 5
     },
     {
       "GradeName": "HYBRID Z Premier",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 6,
-      "Rank": 67
+      "ModelID": 6
     },
     {
       "GradeName": "HYBRID Z Premier",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 6,
-      "Rank": 260
+      "ModelID": 6
     },
     {
       "GradeName": "HYBRID Executive Lounge",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 6,
-      "Rank": 159
+      "ModelID": 6
     },
     {
       "GradeName": "Z Premier",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 6,
-      "Rank": 9
+      "ModelID": 6
     },
     {
       "GradeName": "HYBRID Executive Lounge",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 6,
-      "Rank": 46
+      "ModelID": 6
     },
     {
       "GradeName": "Z Premier",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fAT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 6,
-      "Rank": 114
+      "ModelID": 6
     },
     {
       "GradeName": "HYBRID S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 251
+      "ModelID": 7
     },
     {
       "GradeName": "S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 105
+      "ModelID": 7
     },
     {
       "GradeName": "HYBRID S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 237
+      "ModelID": 7
     },
     {
       "GradeName": "HYBRID S-G 8\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 7,
-      "Rank": 66
+      "ModelID": 7
     },
     {
       "GradeName": "S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 240
+      "ModelID": 7
     },
     {
       "GradeName": "HYBRID S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 65
+      "ModelID": 7
     },
     {
       "GradeName": "S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 70
+      "ModelID": 7
     },
     {
       "GradeName": "HYBRID S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 162
+      "ModelID": 7
     },
     {
       "GradeName": "S-G 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 7,
-      "Rank": 240
+      "ModelID": 7
     },
     {
       "GradeName": "S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 7,
-      "Rank": 123
+      "ModelID": 7
     },
     {
       "GradeName": "S-G 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 7,
-      "Rank": 145
+      "ModelID": 7
     },
     {
       "GradeName": "HYBRID Z 5\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 21
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 142
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID Z 5\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 35
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID X 5\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 142
+      "ModelID": 8
     },
     {
       "GradeName": "X 5\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 240
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 259
+      "ModelID": 8
     },
     {
       "GradeName": "G 5\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 91
+      "ModelID": 8
     },
     {
       "GradeName": "Z 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 202
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID G 5\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 213
+      "ModelID": 8
     },
     {
       "GradeName": "X 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 127
+      "ModelID": 8
     },
     {
       "GradeName": "G 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 126
+      "ModelID": 8
     },
     {
       "GradeName": "Z 5\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 223
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID X 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 235
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID X 5\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 181
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID G 5\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 8,
-      "Rank": 185
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID X 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 3
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 259
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 8,
-      "Rank": 71
+      "ModelID": 8
     },
     {
       "GradeName": "HYBRID S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 111
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 169
+      "ModelID": 9
     },
     {
       "GradeName": "S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 147
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID X 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 180
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 16
+      "ModelID": 9
     },
     {
       "GradeName": "X 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 208
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID X 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 63
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID S-G 8\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 24
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 192
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID X 8\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 104
+      "ModelID": 9
     },
     {
       "GradeName": "S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 78
+      "ModelID": 9
     },
     {
       "GradeName": "X 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 87
+      "ModelID": 9
     },
     {
       "GradeName": "G 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 144
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 243
+      "ModelID": 9
     },
     {
       "GradeName": "X 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 226
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 247
+      "ModelID": 9
     },
     {
       "GradeName": "S-Z 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 60
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 142
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID G 8\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 122
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID G 7\u4eba\u4e57\u308a",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 152
+      "ModelID": 9
     },
     {
       "GradeName": "Z 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 140
+      "ModelID": 9
     },
     {
       "GradeName": "X 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 188
+      "ModelID": 9
     },
     {
       "GradeName": "S-G 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 254
+      "ModelID": 9
     },
     {
       "GradeName": "G 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 201
+      "ModelID": 9
     },
     {
       "GradeName": "S-G 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 139
+      "ModelID": 9
     },
     {
       "GradeName": "G 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 36
+      "ModelID": 9
     },
     {
       "GradeName": "Z 7\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 9,
-      "Rank": 212
+      "ModelID": 9
     },
     {
       "GradeName": "S-G 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 243
+      "ModelID": 9
     },
     {
       "GradeName": "G 8\u4eba\u4e57\u308a",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 8\u540d",
-      "ModelID": 9,
-      "Rank": 247
+      "ModelID": 9
     },
     {
       "GradeName": "HYBRID ACTIVE SPORT",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 143
+      "ModelID": 10
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 64
+      "ModelID": 10
     },
     {
       "GradeName": "HYBRID ACTIVE SPORT",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 211
+      "ModelID": 10
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 207
+      "ModelID": 10
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 206
+      "ModelID": 10
     },
     {
       "GradeName": "HYBRID W\u00d7B",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 167
+      "ModelID": 10
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 250
+      "ModelID": 10
     },
     {
       "GradeName": "W\u00d7B",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 80
+      "ModelID": 10
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 261
+      "ModelID": 10
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 126
+      "ModelID": 10
     },
     {
       "GradeName": "HYBRID W\u00d7B",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 10,
-      "Rank": 202
+      "ModelID": 10
     },
     {
       "GradeName": "Z",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 11,
-      "Rank": 190
+      "ModelID": 11
     },
     {
       "GradeName": "Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 11,
-      "Rank": 81
+      "ModelID": 11
     },
     {
       "GradeName": "Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.0L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 12,
-      "Rank": 145
+      "ModelID": 12
     },
     {
       "GradeName": "X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 12,
-      "Rank": 84
+      "ModelID": 12
     },
     {
       "GradeName": "G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 12,
-      "Rank": 12
+      "ModelID": 12
     },
     {
       "GradeName": "PHEV Z",
       "Description": "PHV\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 12,
-      "Rank": 19
+      "ModelID": 12
     },
     {
       "GradeName": "X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 12,
-      "Rank": 252
+      "ModelID": 12
     },
     {
       "GradeName": "G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.0L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 12,
-      "Rank": 258
+      "ModelID": 12
     },
     {
       "GradeName": "Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 12,
-      "Rank": 228
+      "ModelID": 12
     },
     {
       "GradeName": "Z Executive Package Advanced Drive",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 13,
-      "Rank": 125
+      "ModelID": 13
     },
     {
       "GradeName": "Z Executive Package",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 13,
-      "Rank": 138
+      "ModelID": 13
     },
     {
       "GradeName": "G",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 13,
-      "Rank": 18
+      "ModelID": 13
     },
     {
       "GradeName": "Z Advanced Drive",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 13,
-      "Rank": 232
+      "ModelID": 13
     },
     {
       "GradeName": "G Executive Package",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 13,
-      "Rank": 234
+      "ModelID": 13
     },
     {
       "GradeName": "G A Package",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 13,
-      "Rank": 251
+      "ModelID": 13
     },
     {
       "GradeName": "Z",
       "Description": "FCV\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 13,
-      "Rank": 148
+      "ModelID": 13
     },
     {
       "GradeName": "HYBRID ACTIVE SPORT",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 203
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID W\u00d7B",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 60
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID ACTIVE SPORT",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 243
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 206
+      "ModelID": 14
     },
     {
       "GradeName": "W\u00d7B",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 30
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 49
+      "ModelID": 14
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 207
+      "ModelID": 14
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 226
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 232
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID W\u00d7B",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 146
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 14,
-      "Rank": 239
+      "ModelID": 14
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 251
+      "ModelID": 15
     },
     {
       "GradeName": "HYBRID S",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 10
+      "ModelID": 15
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 206
+      "ModelID": 15
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 1
+      "ModelID": 15
     },
     {
       "GradeName": "G X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 266
+      "ModelID": 15
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 182
+      "ModelID": 15
     },
     {
       "GradeName": "HYBRID S",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 205
+      "ModelID": 15
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 196
+      "ModelID": 15
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.8L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 15,
-      "Rank": 72
+      "ModelID": 15
     },
     {
       "GradeName": "CROSSOVER X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 16,
-      "Rank": 114
+      "ModelID": 16
     },
     {
       "GradeName": "CROSSOVER RS",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.4L\uff0fAT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 16,
-      "Rank": 248
+      "ModelID": 16
     },
     {
       "GradeName": "CROSSOVER G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 16,
-      "Rank": 0
+      "ModelID": 16
     },
     {
       "GradeName": "CROSSOVER RS LANDSCAPE",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.4L\uff0fAT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 16,
-      "Rank": 93
+      "ModelID": 16
     },
     {
       "GradeName": "CROSSOVER Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 16,
-      "Rank": 117
+      "ModelID": 16
     },
     {
       "GradeName": "SPORT Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 17,
-      "Rank": 155
+      "ModelID": 17
     },
     {
       "GradeName": "SPORT RS",
       "Description": "PHV\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 17,
-      "Rank": 224
+      "ModelID": 17
     },
     {
       "GradeName": "Z GR SPORT",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.4L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 18,
-      "Rank": 81
+      "ModelID": 18
     },
     {
       "GradeName": "Z Revo ROCCO Edition",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.4L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 18,
-      "Rank": 145
+      "ModelID": 18
     },
     {
       "GradeName": "Z",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.4L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 18,
-      "Rank": 168
+      "ModelID": 18
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 53
+      "ModelID": 19
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 205
+      "ModelID": 19
     },
     {
       "GradeName": "HYBRID Z Leather Package",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 234
+      "ModelID": 19
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 144
+      "ModelID": 19
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 20
+      "ModelID": 19
     },
     {
       "GradeName": "PHEV Z",
       "Description": "PHV\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 3
+      "ModelID": 19
     },
     {
       "GradeName": "S",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 206
+      "ModelID": 19
     },
     {
       "GradeName": "Z Leather Package",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 258
+      "ModelID": 19
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 26
+      "ModelID": 19
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 208
+      "ModelID": 19
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 214
+      "ModelID": 19
     },
     {
       "GradeName": "Z Leather Package",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 37
+      "ModelID": 19
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 62
+      "ModelID": 19
     },
     {
       "GradeName": "HYBRID Z Leather Package",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 19,
-      "Rank": 215
+      "ModelID": 19
     },
     {
       "GradeName": "G",
       "Description": "EV\u30b7\u30b9\u30c6\u30e0\uff0f\u305d\u306e\u4ed6\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 20,
-      "Rank": 27
+      "ModelID": 20
     },
     {
       "GradeName": "Z",
       "Description": "EV\u30b7\u30b9\u30c6\u30e0\uff0f\u305d\u306e\u4ed6\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 20,
-      "Rank": 208
+      "ModelID": 20
     },
     {
       "GradeName": "G",
       "Description": "EV\u30b7\u30b9\u30c6\u30e0\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 20,
-      "Rank": 208
+      "ModelID": 20
     },
     {
       "GradeName": "Z",
       "Description": "EV\u30b7\u30b9\u30c6\u30e0\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 20,
-      "Rank": 218
+      "ModelID": 20
     },
     {
       "GradeName": "HYBRID Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.2L\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 165
+      "ModelID": 21
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.2L\uff0f\u305d\u306e\u4ed6\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 249
+      "ModelID": 21
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 157
+      "ModelID": 21
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.2L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 91
+      "ModelID": 21
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.2L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 201
+      "ModelID": 21
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 8
+      "ModelID": 21
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 197
+      "ModelID": 21
     },
     {
       "GradeName": "Z",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.2L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 21,
-      "Rank": 110
+      "ModelID": 21
     },
     {
       "GradeName": "HYBRID G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 162
+      "ModelID": 22
     },
     {
       "GradeName": "Adventure",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 14
+      "ModelID": 22
     },
     {
       "GradeName": "HYBRID Adventure OFFROAD package II",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 253
+      "ModelID": 22
     },
     {
       "GradeName": "Adventure OFFROAD package II",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 154
+      "ModelID": 22
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 218
+      "ModelID": 22
     },
     {
       "GradeName": "PHEV Z",
       "Description": "PHV\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 107
+      "ModelID": 22
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 127
+      "ModelID": 22
     },
     {
       "GradeName": "G Z package",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 17
+      "ModelID": 22
     },
     {
       "GradeName": "G",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 82
+      "ModelID": 22
     },
     {
       "GradeName": "HYBRID Adventure",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 26
+      "ModelID": 22
     },
     {
       "GradeName": "HYBRID X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f2.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 21
+      "ModelID": 22
     },
     {
       "GradeName": "X",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 22,
-      "Rank": 135
+      "ModelID": 22
     },
     {
       "GradeName": "\u9078\u629e\u4e2d",
       "Description": "4,800,000 \u5186",
-      "ModelID": 23,
-      "Rank": 117
+      "ModelID": 23
     },
     {
       "GradeName": "VX",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.7L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 24,
-      "Rank": 12
+      "ModelID": 24
     },
     {
       "GradeName": "VX",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.8L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 24,
-      "Rank": 192
+      "ModelID": 24
     },
     {
       "GradeName": "GX",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.8L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 24,
-      "Rank": 173
+      "ModelID": 24
     },
     {
       "GradeName": "ZX",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.8L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 7\u540d",
-      "ModelID": 24,
-      "Rank": 35
+      "ModelID": 24
     },
     {
       "GradeName": "GR SPORT",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 25,
-      "Rank": 205
+      "ModelID": 25
     },
     {
       "GradeName": "GR SPORT (5MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fMT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 25,
-      "Rank": 149
+      "ModelID": 25
     },
     {
       "GradeName": "RC (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 26,
-      "Rank": 92
+      "ModelID": 26
     },
     {
       "GradeName": "SZ (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 26,
-      "Rank": 123
+      "ModelID": 26
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 26,
-      "Rank": 60
+      "ModelID": 26
     },
     {
       "GradeName": "RZ (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 26,
-      "Rank": 167
+      "ModelID": 26
     },
     {
       "GradeName": "SZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 26,
-      "Rank": 106
+      "ModelID": 26
     },
     {
       "GradeName": "\u30e2\u30fc\u30bf\u30fc\u30b9\u30dd\u30fc\u30c4\u53c2\u6226\u7528\u8eca\u4e21 RC",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fMT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 27,
-      "Rank": 74
+      "ModelID": 27
     },
     {
       "GradeName": "RZ High performance",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fMT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 27,
-      "Rank": 104
+      "ModelID": 27
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fMT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 27,
-      "Rank": 203
+      "ModelID": 27
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 27,
-      "Rank": 155
+      "ModelID": 27
     },
     {
       "GradeName": "\u30e2\u30fc\u30bf\u30fc\u30b9\u30dd\u30fc\u30c4\u53c2\u6226\u7528\u8eca\u4e21 RC",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 27,
-      "Rank": 94
+      "ModelID": 27
     },
     {
       "GradeName": "RZ High performance",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 27,
-      "Rank": 108
+      "ModelID": 27
     },
     {
       "GradeName": "RZ(6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f3.0L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 28,
-      "Rank": 119
+      "ModelID": 28
     },
     {
       "GradeName": "SZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 28,
-      "Rank": 0
+      "ModelID": 28
     },
     {
       "GradeName": "SZ-R",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 28,
-      "Rank": 177
+      "ModelID": 28
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f3.0L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 28,
-      "Rank": 171
+      "ModelID": 28
     },
     {
       "GradeName": "\u9078\u629e\u4e2d",
       "Description": "2,659,000 \u5186",
-      "ModelID": 29,
-      "Rank": 211
+      "ModelID": 29
     },
     {
       "GradeName": "G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 110
+      "ModelID": 29
     },
     {
       "GradeName": "Z Raffine",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 47
+      "ModelID": 29
     },
     {
       "GradeName": "X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 252
+      "ModelID": 29
     },
     {
       "GradeName": "Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 26
+      "ModelID": 29
     },
     {
       "GradeName": "Z Raffine",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 171
+      "ModelID": 29
     },
     {
       "GradeName": "Z",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 179
+      "ModelID": 29
     },
     {
       "GradeName": "X",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 40
+      "ModelID": 29
     },
     {
       "GradeName": "G",
       "Description": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\uff0f1.5L\uff0fCVT\uff0fE-Four\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 29,
-      "Rank": 105
+      "ModelID": 29
     },
     {
       "GradeName": "GR SPORT",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 30,
-      "Rank": 71
+      "ModelID": 30
     },
     {
       "GradeName": "GR SPORT (5MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fMT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 30,
-      "Rank": 207
+      "ModelID": 30
     },
     {
       "GradeName": "RC (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 31,
-      "Rank": 33
+      "ModelID": 31
     },
     {
       "GradeName": "SZ (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 31,
-      "Rank": 70
+      "ModelID": 31
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 31,
-      "Rank": 34
+      "ModelID": 31
     },
     {
       "GradeName": "RZ (6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 31,
-      "Rank": 192
+      "ModelID": 31
     },
     {
       "GradeName": "SZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.4L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 31,
-      "Rank": 79
+      "ModelID": 31
     },
     {
       "GradeName": "\u30e2\u30fc\u30bf\u30fc\u30b9\u30dd\u30fc\u30c4\u53c2\u6226\u7528\u8eca\u4e21 RC",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fMT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 32,
-      "Rank": 117
+      "ModelID": 32
     },
     {
       "GradeName": "RZ High performance",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fMT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 32,
-      "Rank": 107
+      "ModelID": 32
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fMT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 32,
-      "Rank": 29
+      "ModelID": 32
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 32,
-      "Rank": 192
+      "ModelID": 32
     },
     {
       "GradeName": "\u30e2\u30fc\u30bf\u30fc\u30b9\u30dd\u30fc\u30c4\u53c2\u6226\u7528\u8eca\u4e21 RC",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 32,
-      "Rank": 14
+      "ModelID": 32
     },
     {
       "GradeName": "RZ High performance",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f1.6L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 32,
-      "Rank": 210
+      "ModelID": 32
     },
     {
       "GradeName": "RZ(6MT)",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f3.0L\uff0fMT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 33,
-      "Rank": 5
+      "ModelID": 33
     },
     {
       "GradeName": "SZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 33,
-      "Rank": 118
+      "ModelID": 33
     },
     {
       "GradeName": "SZ-R",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f2.0L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 33,
-      "Rank": 185
+      "ModelID": 33
     },
     {
       "GradeName": "RZ",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f3.0L\uff0fAT\uff0f2WD\u3000FR\uff0f\u5b9a\u54e1 2\u540d",
-      "ModelID": 33,
-      "Rank": 208
+      "ModelID": 33
     },
     {
       "GradeName": "\u9078\u629e\u4e2d",
       "Description": "4,312,000 \u5186",
-      "ModelID": 34,
-      "Rank": 143
+      "ModelID": 34
     },
     {
       "GradeName": "Z Revo ROCCO Edition",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.4L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 34,
-      "Rank": 211
+      "ModelID": 34
     },
     {
       "GradeName": "Z",
       "Description": "\u30c7\u30a3\u30fc\u30bc\u30eb\uff0f2.4L\uff0fAT\uff0f4WD\uff0f\u5b9a\u54e1 5\u540d",
-      "ModelID": 34,
-      "Rank": 24
+      "ModelID": 34
     },
     {
       "GradeName": "B",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 83
+      "ModelID": 35
     },
     {
       "GradeName": "G SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 110
+      "ModelID": 35
     },
     {
       "GradeName": "B SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 114
+      "ModelID": 35
     },
     {
       "GradeName": "X SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 150
+      "ModelID": 35
     },
     {
       "GradeName": "L",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 172
+      "ModelID": 35
     },
     {
       "GradeName": "B",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 176
+      "ModelID": 35
     },
     {
       "GradeName": "X SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 209
+      "ModelID": 35
     },
     {
       "GradeName": "L SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 234
+      "ModelID": 35
     },
     {
       "GradeName": "L SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 125
+      "ModelID": 35
     },
     {
       "GradeName": "G SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f2WD\u3000FF\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 157
+      "ModelID": 35
     },
     {
       "GradeName": "B SA III",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 145
+      "ModelID": 35
     },
     {
       "GradeName": "L",
       "Description": "\u30ac\u30bd\u30ea\u30f3\uff0f0.7L\uff0fCVT\uff0f4WD\uff0f\u5b9a\u54e1 4\u540d",
-      "ModelID": 35,
-      "Rank": 265
+      "ModelID": 35
     }
   ],
   "Engines": [
@@ -1836,1342 +1568,3218 @@
     {
       "GradeID": 1,
       "EngineID": 1,
-      "BasePrice": 2659000
+      "BasePrice": 2659000,
+      "Rank": 149,
+      "FuelEfficiency": 12.231817166679074,
+      "FuelCostPerKilo": 13.080640253179965,
+      "MonthlyMainteCost": 26590.0,
+      "MonthlyInsuranceCost": 26590.0,
+      "MonthlyParkingCost": 26590.0,
+      "MonthlyPriceDropRate": 0.02553636566664185
     },
     {
       "GradeID": 2,
       "EngineID": 1,
-      "BasePrice": 2294000
+      "BasePrice": 2294000,
+      "Rank": 121,
+      "FuelEfficiency": 11.778952331323358,
+      "FuelCostPerKilo": 13.583551023847644,
+      "MonthlyMainteCost": 22940.0,
+      "MonthlyInsuranceCost": 22940.0,
+      "MonthlyParkingCost": 22940.0,
+      "MonthlyPriceDropRate": 0.026442095337353283
     },
     {
       "GradeID": 3,
       "EngineID": 1,
-      "BasePrice": 2667000
+      "BasePrice": 2667000,
+      "Rank": 71,
+      "FuelEfficiency": 12.24174297128961,
+      "FuelCostPerKilo": 13.070034256988222,
+      "MonthlyMainteCost": 26670.0,
+      "MonthlyInsuranceCost": 26670.0,
+      "MonthlyParkingCost": 26670.0,
+      "MonthlyPriceDropRate": 0.02551651405742078
     },
     {
       "GradeID": 4,
       "EngineID": 1,
-      "BasePrice": 2146000
+      "BasePrice": 2146000,
+      "Rank": 176,
+      "FuelEfficiency": 11.595324946028438,
+      "FuelCostPerKilo": 13.798664612223934,
+      "MonthlyMainteCost": 21460.0,
+      "MonthlyInsuranceCost": 21460.0,
+      "MonthlyParkingCost": 21460.0,
+      "MonthlyPriceDropRate": 0.026809350107943122
     },
     {
       "GradeID": 5,
       "EngineID": 1,
-      "BasePrice": 2763000
+      "BasePrice": 2763000,
+      "Rank": 196,
+      "FuelEfficiency": 12.360852626616046,
+      "FuelCostPerKilo": 12.944090899965872,
+      "MonthlyMainteCost": 27630.0,
+      "MonthlyInsuranceCost": 27630.0,
+      "MonthlyParkingCost": 27630.0,
+      "MonthlyPriceDropRate": 0.02527829474676791
     },
     {
       "GradeID": 6,
       "EngineID": 1,
-      "BasePrice": 2837000
+      "BasePrice": 2837000,
+      "Rank": 144,
+      "FuelEfficiency": 12.452666319263505,
+      "FuelCostPerKilo": 12.84865392662854,
+      "MonthlyMainteCost": 28370.0,
+      "MonthlyInsuranceCost": 28370.0,
+      "MonthlyParkingCost": 28370.0,
+      "MonthlyPriceDropRate": 0.02509466736147299
     },
     {
       "GradeID": 7,
       "EngineID": 1,
-      "BasePrice": 2565000
+      "BasePrice": 2565000,
+      "Rank": 44,
+      "FuelEfficiency": 12.115188962505272,
+      "FuelCostPerKilo": 13.206562480797986,
+      "MonthlyMainteCost": 25650.0,
+      "MonthlyInsuranceCost": 25650.0,
+      "MonthlyParkingCost": 25650.0,
+      "MonthlyPriceDropRate": 0.02576962207498945
     },
     {
       "GradeID": 8,
       "EngineID": 1,
-      "BasePrice": 2344000
+      "BasePrice": 2344000,
+      "Rank": 113,
+      "FuelEfficiency": 11.84098861013921,
+      "FuelCostPerKilo": 13.512385263422608,
+      "MonthlyMainteCost": 23440.0,
+      "MonthlyInsuranceCost": 23440.0,
+      "MonthlyParkingCost": 23440.0,
+      "MonthlyPriceDropRate": 0.026318022779721582
     },
     {
       "GradeID": 9,
       "EngineID": 1,
-      "BasePrice": 2492000
+      "BasePrice": 2492000,
+      "Rank": 113,
+      "FuelEfficiency": 12.024615995434129,
+      "FuelCostPerKilo": 13.306038218663586,
+      "MonthlyMainteCost": 24920.0,
+      "MonthlyInsuranceCost": 24920.0,
+      "MonthlyParkingCost": 24920.0,
+      "MonthlyPriceDropRate": 0.025950768009131743
     },
     {
       "GradeID": 10,
       "EngineID": 2,
-      "BasePrice": 2728100
+      "BasePrice": 2728100,
+      "Rank": 184,
+      "FuelEfficiency": 12.317551304002581,
+      "FuelCostPerKilo": 12.989594770188463,
+      "MonthlyMainteCost": 27281.0,
+      "MonthlyInsuranceCost": 27281.0,
+      "MonthlyParkingCost": 27281.0,
+      "MonthlyPriceDropRate": 0.025364897391994837
     },
     {
       "GradeID": 11,
       "EngineID": 1,
-      "BasePrice": 2726500
+      "BasePrice": 2726500,
+      "Rank": 218,
+      "FuelEfficiency": 12.315566143080474,
+      "FuelCostPerKilo": 12.991688578595822,
+      "MonthlyMainteCost": 27265.0,
+      "MonthlyInsuranceCost": 27265.0,
+      "MonthlyParkingCost": 27265.0,
+      "MonthlyPriceDropRate": 0.025368867713839054
     },
     {
       "GradeID": 12,
       "EngineID": 1,
-      "BasePrice": 2470000
+      "BasePrice": 2470000,
+      "Rank": 171,
+      "FuelEfficiency": 11.997320032755155,
+      "FuelCostPerKilo": 13.336311739885828,
+      "MonthlyMainteCost": 24700.0,
+      "MonthlyInsuranceCost": 24700.0,
+      "MonthlyParkingCost": 24700.0,
+      "MonthlyPriceDropRate": 0.026005359934489693
     },
     {
       "GradeID": 13,
       "EngineID": 2,
-      "BasePrice": 2210000
+      "BasePrice": 2210000,
+      "Rank": 114,
+      "FuelEfficiency": 11.674731382912729,
+      "FuelCostPerKilo": 13.704812106784559,
+      "MonthlyMainteCost": 22100.0,
+      "MonthlyInsuranceCost": 22100.0,
+      "MonthlyParkingCost": 22100.0,
+      "MonthlyPriceDropRate": 0.026650537234174543
     },
     {
       "GradeID": 14,
       "EngineID": 2,
-      "BasePrice": 2476500
+      "BasePrice": 2476500,
+      "Rank": 212,
+      "FuelEfficiency": 12.005384749001216,
+      "FuelCostPerKilo": 13.327352962453881,
+      "MonthlyMainteCost": 24765.0,
+      "MonthlyInsuranceCost": 24765.0,
+      "MonthlyParkingCost": 24765.0,
+      "MonthlyPriceDropRate": 0.02598923050199757
     },
     {
       "GradeID": 15,
       "EngineID": 1,
-      "BasePrice": 2978100
+      "BasePrice": 2978100,
+      "Rank": 263,
+      "FuelEfficiency": 12.62773269808184,
+      "FuelCostPerKilo": 12.670524774752645,
+      "MonthlyMainteCost": 29781.0,
+      "MonthlyInsuranceCost": 29781.0,
+      "MonthlyParkingCost": 29781.0,
+      "MonthlyPriceDropRate": 0.024744534603836323
     },
     {
       "GradeID": 16,
       "EngineID": 1,
-      "BasePrice": 2694000
+      "BasePrice": 2694000,
+      "Rank": 227,
+      "FuelEfficiency": 12.27524256185017,
+      "FuelCostPerKilo": 13.034365650521549,
+      "MonthlyMainteCost": 26940.0,
+      "MonthlyInsuranceCost": 26940.0,
+      "MonthlyParkingCost": 26940.0,
+      "MonthlyPriceDropRate": 0.025449514876299657
     },
     {
       "GradeID": 17,
       "EngineID": 2,
-      "BasePrice": 1501000
+      "BasePrice": 1501000,
+      "Rank": 54,
+      "FuelEfficiency": 10.795056949303953,
+      "FuelCostPerKilo": 14.821598510447554,
+      "MonthlyMainteCost": 15010.0,
+      "MonthlyInsuranceCost": 15010.0,
+      "MonthlyParkingCost": 15010.0,
+      "MonthlyPriceDropRate": 0.0284098861013921
     },
     {
       "GradeID": 18,
       "EngineID": 1,
-      "BasePrice": 2044000
+      "BasePrice": 2044000,
+      "Rank": 251,
+      "FuelEfficiency": 11.468770937244098,
+      "FuelCostPerKilo": 13.950928209788396,
+      "MonthlyMainteCost": 20440.0,
+      "MonthlyInsuranceCost": 20440.0,
+      "MonthlyParkingCost": 20440.0,
+      "MonthlyPriceDropRate": 0.0270624581255118
     },
     {
       "GradeID": 19,
       "EngineID": 2,
-      "BasePrice": 1579000
+      "BasePrice": 1579000,
+      "Rank": 160,
+      "FuelEfficiency": 10.89183354425668,
+      "FuelCostPerKilo": 14.689904996240859,
+      "MonthlyMainteCost": 15790.0,
+      "MonthlyInsuranceCost": 15790.0,
+      "MonthlyParkingCost": 15790.0,
+      "MonthlyPriceDropRate": 0.02821633291148664
     },
     {
       "GradeID": 20,
       "EngineID": 2,
-      "BasePrice": 2050000
+      "BasePrice": 2050000,
+      "Rank": 194,
+      "FuelEfficiency": 11.476215290702003,
+      "FuelCostPerKilo": 13.941878567721847,
+      "MonthlyMainteCost": 20500.0,
+      "MonthlyInsuranceCost": 20500.0,
+      "MonthlyParkingCost": 20500.0,
+      "MonthlyPriceDropRate": 0.02704756941859599
     },
     {
       "GradeID": 21,
       "EngineID": 1,
-      "BasePrice": 2496000
+      "BasePrice": 2496000,
+      "Rank": 227,
+      "FuelEfficiency": 12.029578897739398,
+      "FuelCostPerKilo": 13.300548702504228,
+      "MonthlyMainteCost": 24960.0,
+      "MonthlyInsuranceCost": 24960.0,
+      "MonthlyParkingCost": 24960.0,
+      "MonthlyPriceDropRate": 0.025940842204521204
     },
     {
       "GradeID": 22,
       "EngineID": 2,
-      "BasePrice": 2154000
+      "BasePrice": 2154000,
+      "Rank": 139,
+      "FuelEfficiency": 11.605250750638973,
+      "FuelCostPerKilo": 13.786862812179269,
+      "MonthlyMainteCost": 21540.0,
+      "MonthlyInsuranceCost": 21540.0,
+      "MonthlyParkingCost": 21540.0,
+      "MonthlyPriceDropRate": 0.02678949849872205
     },
     {
       "GradeID": 23,
       "EngineID": 2,
-      "BasePrice": 1655000
+      "BasePrice": 1655000,
+      "Rank": 75,
+      "FuelEfficiency": 10.986128688056775,
+      "FuelCostPerKilo": 14.56381993540081,
+      "MonthlyMainteCost": 16550.0,
+      "MonthlyInsuranceCost": 16550.0,
+      "MonthlyParkingCost": 16550.0,
+      "MonthlyPriceDropRate": 0.02802774262388645
     },
     {
       "GradeID": 24,
       "EngineID": 2,
-      "BasePrice": 1799000
+      "BasePrice": 1799000,
+      "Rank": 225,
+      "FuelEfficiency": 11.164793171046428,
+      "FuelCostPerKilo": 14.330762563065365,
+      "MonthlyMainteCost": 17990.0,
+      "MonthlyInsuranceCost": 17990.0,
+      "MonthlyParkingCost": 17990.0,
+      "MonthlyPriceDropRate": 0.027670413657907143
     },
     {
       "GradeID": 25,
       "EngineID": 2,
-      "BasePrice": 1877000
+      "BasePrice": 1877000,
+      "Rank": 236,
+      "FuelEfficiency": 11.261569765999155,
+      "FuelCostPerKilo": 14.207610779366725,
+      "MonthlyMainteCost": 18770.0,
+      "MonthlyInsuranceCost": 18770.0,
+      "MonthlyParkingCost": 18770.0,
+      "MonthlyPriceDropRate": 0.027476860468001685
     },
     {
       "GradeID": 26,
       "EngineID": 2,
-      "BasePrice": 1888000
+      "BasePrice": 1888000,
+      "Rank": 55,
+      "FuelEfficiency": 11.275217747338644,
+      "FuelCostPerKilo": 14.190413310445,
+      "MonthlyMainteCost": 18880.0,
+      "MonthlyInsuranceCost": 18880.0,
+      "MonthlyParkingCost": 18880.0,
+      "MonthlyPriceDropRate": 0.02744956450532271
     },
     {
       "GradeID": 27,
       "EngineID": 1,
-      "BasePrice": 2287000
+      "BasePrice": 2287000,
+      "Rank": 144,
+      "FuelEfficiency": 11.77026725228914,
+      "FuelCostPerKilo": 13.593574093985199,
+      "MonthlyMainteCost": 22870.0,
+      "MonthlyInsuranceCost": 22870.0,
+      "MonthlyParkingCost": 22870.0,
+      "MonthlyPriceDropRate": 0.026459465495421726
     },
     {
       "GradeID": 28,
       "EngineID": 2,
-      "BasePrice": 1953000
+      "BasePrice": 1953000,
+      "Rank": 5,
+      "FuelEfficiency": 11.355864909799251,
+      "FuelCostPerKilo": 14.089635731923169,
+      "MonthlyMainteCost": 19530.0,
+      "MonthlyInsuranceCost": 19530.0,
+      "MonthlyParkingCost": 19530.0,
+      "MonthlyPriceDropRate": 0.027288270180401503
     },
     {
       "GradeID": 29,
       "EngineID": 1,
-      "BasePrice": 2507000
+      "BasePrice": 2507000,
+      "Rank": 56,
+      "FuelEfficiency": 12.043226879078885,
+      "FuelCostPerKilo": 13.285475861784766,
+      "MonthlyMainteCost": 25070.0,
+      "MonthlyInsuranceCost": 25070.0,
+      "MonthlyParkingCost": 25070.0,
+      "MonthlyPriceDropRate": 0.02591354624184223
     },
     {
       "GradeID": 30,
       "EngineID": 1,
-      "BasePrice": 2299000
+      "BasePrice": 2299000,
+      "Rank": 135,
+      "FuelEfficiency": 11.785155959204943,
+      "FuelCostPerKilo": 13.576400732739563,
+      "MonthlyMainteCost": 22990.0,
+      "MonthlyInsuranceCost": 22990.0,
+      "MonthlyParkingCost": 22990.0,
+      "MonthlyPriceDropRate": 0.026429688081590116
     },
     {
       "GradeID": 31,
       "EngineID": 2,
-      "BasePrice": 2352000
+      "BasePrice": 2352000,
+      "Rank": 267,
+      "FuelEfficiency": 11.850914414749745,
+      "FuelCostPerKilo": 13.501067883914738,
+      "MonthlyMainteCost": 23520.0,
+      "MonthlyInsuranceCost": 23520.0,
+      "MonthlyParkingCost": 23520.0,
+      "MonthlyPriceDropRate": 0.02629817117050051
     },
     {
       "GradeID": 32,
       "EngineID": 2,
-      "BasePrice": 2151000
+      "BasePrice": 2151000,
+      "Rank": 59,
+      "FuelEfficiency": 11.601528573910024,
+      "FuelCostPerKilo": 13.791286120676746,
+      "MonthlyMainteCost": 21510.0,
+      "MonthlyInsuranceCost": 21510.0,
+      "MonthlyParkingCost": 21510.0,
+      "MonthlyPriceDropRate": 0.026796942852179956
     },
     {
       "GradeID": 33,
       "EngineID": 2,
-      "BasePrice": 2100000
+      "BasePrice": 2100000,
+      "Rank": 163,
+      "FuelEfficiency": 11.538251569517854,
+      "FuelCostPerKilo": 13.86691900726913,
+      "MonthlyMainteCost": 21000.0,
+      "MonthlyInsuranceCost": 21000.0,
+      "MonthlyParkingCost": 21000.0,
+      "MonthlyPriceDropRate": 0.02692349686096429
     },
     {
       "GradeID": 34,
       "EngineID": 2,
-      "BasePrice": 1924000
+      "BasePrice": 1924000,
+      "Rank": 70,
+      "FuelEfficiency": 11.319883868086055,
+      "FuelCostPerKilo": 14.134420623438118,
+      "MonthlyMainteCost": 19240.0,
+      "MonthlyInsuranceCost": 19240.0,
+      "MonthlyParkingCost": 19240.0,
+      "MonthlyPriceDropRate": 0.02736023226382789
     },
     {
       "GradeID": 35,
       "EngineID": 2,
-      "BasePrice": 1566500
+      "BasePrice": 1566500,
+      "Rank": 148,
+      "FuelEfficiency": 10.87632447455272,
+      "FuelCostPerKilo": 14.71085203226064,
+      "MonthlyMainteCost": 15665.0,
+      "MonthlyInsuranceCost": 15665.0,
+      "MonthlyParkingCost": 15665.0,
+      "MonthlyPriceDropRate": 0.028247351050894563
     },
     {
       "GradeID": 36,
       "EngineID": 2,
-      "BasePrice": 1753500
+      "BasePrice": 1753500,
+      "Rank": 62,
+      "FuelEfficiency": 11.108340157324005,
+      "FuelCostPerKilo": 14.403592051914977,
+      "MonthlyMainteCost": 17535.0,
+      "MonthlyInsuranceCost": 17535.0,
+      "MonthlyParkingCost": 17535.0,
+      "MonthlyPriceDropRate": 0.027783319685351998
     },
     {
       "GradeID": 37,
       "EngineID": 2,
-      "BasePrice": 1874500
+      "BasePrice": 1874500,
+      "Rank": 65,
+      "FuelEfficiency": 11.258467952058364,
+      "FuelCostPerKilo": 14.211525109928257,
+      "MonthlyMainteCost": 18745.0,
+      "MonthlyInsuranceCost": 18745.0,
+      "MonthlyParkingCost": 18745.0,
+      "MonthlyPriceDropRate": 0.027483064095883275
     },
     {
       "GradeID": 38,
       "EngineID": 2,
-      "BasePrice": 1742500
+      "BasePrice": 1742500,
+      "Rank": 160,
+      "FuelEfficiency": 11.094692175984516,
+      "FuelCostPerKilo": 14.421310430435803,
+      "MonthlyMainteCost": 17425.0,
+      "MonthlyInsuranceCost": 17425.0,
+      "MonthlyParkingCost": 17425.0,
+      "MonthlyPriceDropRate": 0.027810615648030973
     },
     {
       "GradeID": 39,
       "EngineID": 2,
-      "BasePrice": 1929500
+      "BasePrice": 1929500,
+      "Rank": 42,
+      "FuelEfficiency": 11.3267078587558,
+      "FuelCostPerKilo": 14.125905072789214,
+      "MonthlyMainteCost": 19295.0,
+      "MonthlyInsuranceCost": 19295.0,
+      "MonthlyParkingCost": 19295.0,
+      "MonthlyPriceDropRate": 0.0273465842824884
     },
     {
       "GradeID": 40,
       "EngineID": 2,
-      "BasePrice": 2056000
+      "BasePrice": 2056000,
+      "Rank": 203,
+      "FuelEfficiency": 11.483659644159905,
+      "FuelCostPerKilo": 13.932840658628288,
+      "MonthlyMainteCost": 20560.0,
+      "MonthlyInsuranceCost": 20560.0,
+      "MonthlyParkingCost": 20560.0,
+      "MonthlyPriceDropRate": 0.02703268071168019
     },
     {
       "GradeID": 41,
       "EngineID": 2,
-      "BasePrice": 5400000
+      "BasePrice": 5400000,
+      "Rank": 223,
+      "FuelEfficiency": 15.632645971364054,
+      "FuelCostPerKilo": 10.234991587034509,
+      "MonthlyMainteCost": 54000.0,
+      "MonthlyInsuranceCost": 54000.0,
+      "MonthlyParkingCost": 54000.0,
+      "MonthlyPriceDropRate": 0.01873470805727189
     },
     {
       "GradeID": 42,
       "EngineID": 1,
-      "BasePrice": 6200000
+      "BasePrice": 6200000,
+      "Rank": 114,
+      "FuelEfficiency": 16.62522643241768,
+      "FuelCostPerKilo": 9.623929072509625,
+      "MonthlyMainteCost": 62000.0,
+      "MonthlyInsuranceCost": 62000.0,
+      "MonthlyParkingCost": 62000.0,
+      "MonthlyPriceDropRate": 0.016749547135164643
     },
     {
       "GradeID": 43,
       "EngineID": 1,
-      "BasePrice": 6420000
+      "BasePrice": 6420000,
+      "Rank": 175,
+      "FuelEfficiency": 16.898186059207422,
+      "FuelCostPerKilo": 9.468471908132399,
+      "MonthlyMainteCost": 64200.0,
+      "MonthlyInsuranceCost": 64200.0,
+      "MonthlyParkingCost": 64200.0,
+      "MonthlyPriceDropRate": 0.01620362788158515
     },
     {
       "GradeID": 44,
       "EngineID": 1,
-      "BasePrice": 8720000
+      "BasePrice": 8720000,
+      "Rank": 193,
+      "FuelEfficiency": 19.751854884736595,
+      "FuelCostPerKilo": 8.10050503781502,
+      "MonthlyMainteCost": 87200.0,
+      "MonthlyInsuranceCost": 87200.0,
+      "MonthlyParkingCost": 87200.0,
+      "MonthlyPriceDropRate": 0.010496290230526813
     },
     {
       "GradeID": 45,
       "EngineID": 2,
-      "BasePrice": 5598000
+      "BasePrice": 5598000,
+      "Rank": 35,
+      "FuelEfficiency": 15.878309635474825,
+      "FuelCostPerKilo": 10.076639369881853,
+      "MonthlyMainteCost": 55980.0,
+      "MonthlyInsuranceCost": 55980.0,
+      "MonthlyParkingCost": 55980.0,
+      "MonthlyPriceDropRate": 0.01824338072905035
     },
     {
       "GradeID": 46,
       "EngineID": 1,
-      "BasePrice": 8500000
+      "BasePrice": 8500000,
+      "Rank": 197,
+      "FuelEfficiency": 19.478895257946846,
+      "FuelCostPerKilo": 8.214018191546282,
+      "MonthlyMainteCost": 85000.0,
+      "MonthlyInsuranceCost": 85000.0,
+      "MonthlyParkingCost": 85000.0,
+      "MonthlyPriceDropRate": 0.011042209484106304
     },
     {
       "GradeID": 47,
       "EngineID": 1,
-      "BasePrice": 6900000
+      "BasePrice": 6900000,
+      "Rank": 42,
+      "FuelEfficiency": 17.493734335839598,
+      "FuelCostPerKilo": 9.146131805157594,
+      "MonthlyMainteCost": 69000.0,
+      "MonthlyInsuranceCost": 69000.0,
+      "MonthlyParkingCost": 69000.0,
+      "MonthlyPriceDropRate": 0.015012531328320802
     },
     {
       "GradeID": 48,
       "EngineID": 1,
-      "BasePrice": 7120000
+      "BasePrice": 7120000,
+      "Rank": 179,
+      "FuelEfficiency": 17.766693962629347,
+      "FuelCostPerKilo": 9.005614681974356,
+      "MonthlyMainteCost": 71200.0,
+      "MonthlyInsuranceCost": 71200.0,
+      "MonthlyParkingCost": 71200.0,
+      "MonthlyPriceDropRate": 0.01446661207474131
     },
     {
       "GradeID": 49,
       "EngineID": 1,
-      "BasePrice": 8920000
+      "BasePrice": 8920000,
+      "Rank": 130,
+      "FuelEfficiency": 20.0,
+      "FuelCostPerKilo": 8.0,
+      "MonthlyMainteCost": 89200.0,
+      "MonthlyInsuranceCost": 89200.0,
+      "MonthlyParkingCost": 89200.0,
+      "MonthlyPriceDropRate": 0.01
     },
     {
       "GradeID": 50,
       "EngineID": 2,
-      "BasePrice": 6748000
+      "BasePrice": 6748000,
+      "Rank": 170,
+      "FuelEfficiency": 17.30514404823941,
+      "FuelCostPerKilo": 9.245805730018068,
+      "MonthlyMainteCost": 67480.0,
+      "MonthlyInsuranceCost": 67480.0,
+      "MonthlyParkingCost": 67480.0,
+      "MonthlyPriceDropRate": 0.015389711903521178
     },
     {
       "GradeID": 51,
       "EngineID": 1,
-      "BasePrice": 8700000
+      "BasePrice": 8700000,
+      "Rank": 267,
+      "FuelEfficiency": 19.72704037321025,
+      "FuelCostPerKilo": 8.110694608669402,
+      "MonthlyMainteCost": 87000.0,
+      "MonthlyInsuranceCost": 87000.0,
+      "MonthlyParkingCost": 87000.0,
+      "MonthlyPriceDropRate": 0.010545919253579495
     },
     {
       "GradeID": 52,
       "EngineID": 2,
-      "BasePrice": 6550000
+      "BasePrice": 6550000,
+      "Rank": 230,
+      "FuelEfficiency": 17.059480384128637,
+      "FuelCostPerKilo": 9.37894920579508,
+      "MonthlyMainteCost": 65500.0,
+      "MonthlyInsuranceCost": 65500.0,
+      "MonthlyParkingCost": 65500.0,
+      "MonthlyPriceDropRate": 0.015881039231742725
     },
     {
       "GradeID": 53,
       "EngineID": 1,
-      "BasePrice": 3960000
+      "BasePrice": 3960000,
+      "Rank": 41,
+      "FuelEfficiency": 13.84600114146753,
+      "FuelCostPerKilo": 11.555682999390658,
+      "MonthlyMainteCost": 39600.0,
+      "MonthlyInsuranceCost": 39600.0,
+      "MonthlyParkingCost": 39600.0,
+      "MonthlyPriceDropRate": 0.022307997717064938
     },
     {
       "GradeID": 54,
       "EngineID": 2,
-      "BasePrice": 3390000
+      "BasePrice": 3390000,
+      "Rank": 150,
+      "FuelEfficiency": 13.138787562966822,
+      "FuelCostPerKilo": 12.177683765203597,
+      "MonthlyMainteCost": 33900.0,
+      "MonthlyInsuranceCost": 33900.0,
+      "MonthlyParkingCost": 33900.0,
+      "MonthlyPriceDropRate": 0.023722424874066353
     },
     {
       "GradeID": 55,
       "EngineID": 1,
-      "BasePrice": 3440000
+      "BasePrice": 3440000,
+      "Rank": 45,
+      "FuelEfficiency": 13.200823841782674,
+      "FuelCostPerKilo": 12.120455656227678,
+      "MonthlyMainteCost": 34400.0,
+      "MonthlyInsuranceCost": 34400.0,
+      "MonthlyParkingCost": 34400.0,
+      "MonthlyPriceDropRate": 0.023598352316434652
     },
     {
       "GradeID": 56,
       "EngineID": 1,
-      "BasePrice": 3440000
+      "BasePrice": 3440000,
+      "Rank": 125,
+      "FuelEfficiency": 13.200823841782674,
+      "FuelCostPerKilo": 12.120455656227678,
+      "MonthlyMainteCost": 34400.0,
+      "MonthlyInsuranceCost": 34400.0,
+      "MonthlyParkingCost": 34400.0,
+      "MonthlyPriceDropRate": 0.023598352316434652
     },
     {
       "GradeID": 57,
       "EngineID": 2,
-      "BasePrice": 3090000
+      "BasePrice": 3090000,
+      "Rank": 21,
+      "FuelEfficiency": 12.766569890071713,
+      "FuelCostPerKilo": 12.532732078992382,
+      "MonthlyMainteCost": 30900.0,
+      "MonthlyInsuranceCost": 30900.0,
+      "MonthlyParkingCost": 30900.0,
+      "MonthlyPriceDropRate": 0.02446686021985657
     },
     {
       "GradeID": 58,
       "EngineID": 1,
-      "BasePrice": 3660000
+      "BasePrice": 3660000,
+      "Rank": 196,
+      "FuelEfficiency": 13.473783468572421,
+      "FuelCostPerKilo": 11.874912519798151,
+      "MonthlyMainteCost": 36600.0,
+      "MonthlyInsuranceCost": 36600.0,
+      "MonthlyParkingCost": 36600.0,
+      "MonthlyPriceDropRate": 0.023052433062855156
     },
     {
       "GradeID": 59,
       "EngineID": 2,
-      "BasePrice": 3588000
+      "BasePrice": 3588000,
+      "Rank": 200,
+      "FuelEfficiency": 13.384451227077596,
+      "FuelCostPerKilo": 11.954169602135785,
+      "MonthlyMainteCost": 35880.0,
+      "MonthlyInsuranceCost": 35880.0,
+      "MonthlyParkingCost": 35880.0,
+      "MonthlyPriceDropRate": 0.023231097545844813
     },
     {
       "GradeID": 60,
       "EngineID": 1,
-      "BasePrice": 3740000
+      "BasePrice": 3740000,
+      "Rank": 62,
+      "FuelEfficiency": 13.573041514677783,
+      "FuelCostPerKilo": 11.788072690043512,
+      "MonthlyMainteCost": 37400.0,
+      "MonthlyInsuranceCost": 37400.0,
+      "MonthlyParkingCost": 37400.0,
+      "MonthlyPriceDropRate": 0.022853916970644435
     },
     {
       "GradeID": 61,
       "EngineID": 2,
-      "BasePrice": 3090000
+      "BasePrice": 3090000,
+      "Rank": 207,
+      "FuelEfficiency": 12.766569890071713,
+      "FuelCostPerKilo": 12.532732078992382,
+      "MonthlyMainteCost": 30900.0,
+      "MonthlyInsuranceCost": 30900.0,
+      "MonthlyParkingCost": 30900.0,
+      "MonthlyPriceDropRate": 0.02446686021985657
     },
     {
       "GradeID": 62,
       "EngineID": 2,
-      "BasePrice": 3288000
+      "BasePrice": 3288000,
+      "Rank": 79,
+      "FuelEfficiency": 13.012233554182487,
+      "FuelCostPerKilo": 12.29612113352912,
+      "MonthlyMainteCost": 32880.0,
+      "MonthlyInsuranceCost": 32880.0,
+      "MonthlyParkingCost": 32880.0,
+      "MonthlyPriceDropRate": 0.02397553289163503
     },
     {
       "GradeID": 63,
       "EngineID": 2,
-      "BasePrice": 3288000
+      "BasePrice": 3288000,
+      "Rank": 174,
+      "FuelEfficiency": 13.012233554182487,
+      "FuelCostPerKilo": 12.29612113352912,
+      "MonthlyMainteCost": 32880.0,
+      "MonthlyInsuranceCost": 32880.0,
+      "MonthlyParkingCost": 32880.0,
+      "MonthlyPriceDropRate": 0.02397553289163503
     },
     {
       "GradeID": 64,
       "EngineID": 1,
-      "BasePrice": 2996600
+      "BasePrice": 2996600,
+      "Rank": 46,
+      "FuelEfficiency": 12.650686121243703,
+      "FuelCostPerKilo": 12.647535356309213,
+      "MonthlyMainteCost": 29966.0,
+      "MonthlyInsuranceCost": 29966.0,
+      "MonthlyParkingCost": 29966.0,
+      "MonthlyPriceDropRate": 0.024698627757512595
     },
     {
       "GradeID": 65,
       "EngineID": 1,
-      "BasePrice": 3234600
+      "BasePrice": 3234600,
+      "Rank": 39,
+      "FuelEfficiency": 12.945978808407157,
+      "FuelCostPerKilo": 12.359050046960956,
+      "MonthlyMainteCost": 32346.0,
+      "MonthlyInsuranceCost": 32346.0,
+      "MonthlyParkingCost": 32346.0,
+      "MonthlyPriceDropRate": 0.024108042383185688
     },
     {
       "GradeID": 66,
       "EngineID": 1,
-      "BasePrice": 3194600
+      "BasePrice": 3194600,
+      "Rank": 41,
+      "FuelEfficiency": 12.896349785354476,
+      "FuelCostPerKilo": 12.40661137942314,
+      "MonthlyMainteCost": 31946.0,
+      "MonthlyInsuranceCost": 31946.0,
+      "MonthlyParkingCost": 31946.0,
+      "MonthlyPriceDropRate": 0.024207300429291048
     },
     {
       "GradeID": 67,
       "EngineID": 1,
-      "BasePrice": 2390000
+      "BasePrice": 2390000,
+      "Rank": 6,
+      "FuelEfficiency": 11.898061986649793,
+      "FuelCostPerKilo": 13.447568198882122,
+      "MonthlyMainteCost": 23900.0,
+      "MonthlyInsuranceCost": 23900.0,
+      "MonthlyParkingCost": 23900.0,
+      "MonthlyPriceDropRate": 0.026203876026700414
     },
     {
       "GradeID": 68,
       "EngineID": 2,
-      "BasePrice": 1995200
+      "BasePrice": 1995200,
+      "Rank": 119,
+      "FuelEfficiency": 11.40822352911983,
+      "FuelCostPerKilo": 14.02497063557663,
+      "MonthlyMainteCost": 19952.0,
+      "MonthlyInsuranceCost": 19952.0,
+      "MonthlyParkingCost": 19952.0,
+      "MonthlyPriceDropRate": 0.027183552941760343
     },
     {
       "GradeID": 69,
       "EngineID": 1,
-      "BasePrice": 2727500
+      "BasePrice": 2727500,
+      "Rank": 256,
+      "FuelEfficiency": 12.31680686865679,
+      "FuelCostPerKilo": 12.990379869246809,
+      "MonthlyMainteCost": 27275.0,
+      "MonthlyInsuranceCost": 27275.0,
+      "MonthlyParkingCost": 27275.0,
+      "MonthlyPriceDropRate": 0.02536638626268642
     },
     {
       "GradeID": 70,
       "EngineID": 2,
-      "BasePrice": 2337500
+      "BasePrice": 2337500,
+      "Rank": 190,
+      "FuelEfficiency": 11.832923893893149,
+      "FuelCostPerKilo": 13.521594614715164,
+      "MonthlyMainteCost": 23375.0,
+      "MonthlyInsuranceCost": 23375.0,
+      "MonthlyParkingCost": 23375.0,
+      "MonthlyPriceDropRate": 0.026334152212213705
     },
     {
       "GradeID": 71,
       "EngineID": 2,
-      "BasePrice": 2686600
+      "BasePrice": 2686600,
+      "Rank": 179,
+      "FuelEfficiency": 12.266061192585425,
+      "FuelCostPerKilo": 13.04412210960733,
+      "MonthlyMainteCost": 26866.0,
+      "MonthlyInsuranceCost": 26866.0,
+      "MonthlyParkingCost": 26866.0,
+      "MonthlyPriceDropRate": 0.025467877614829153
     },
     {
       "GradeID": 72,
       "EngineID": 1,
-      "BasePrice": 2687500
+      "BasePrice": 2687500,
+      "Rank": 106,
+      "FuelEfficiency": 12.26717784560411,
+      "FuelCostPerKilo": 13.042934733137118,
+      "MonthlyMainteCost": 26875.0,
+      "MonthlyInsuranceCost": 26875.0,
+      "MonthlyParkingCost": 26875.0,
+      "MonthlyPriceDropRate": 0.025465644308791783
     },
     {
       "GradeID": 73,
       "EngineID": 2,
-      "BasePrice": 2035200
+      "BasePrice": 2035200,
+      "Rank": 70,
+      "FuelEfficiency": 11.45785255217251,
+      "FuelCostPerKilo": 13.96422228960021,
+      "MonthlyMainteCost": 20352.0,
+      "MonthlyInsuranceCost": 20352.0,
+      "MonthlyParkingCost": 20352.0,
+      "MonthlyPriceDropRate": 0.027084294895654983
     },
     {
       "GradeID": 74,
       "EngineID": 2,
-      "BasePrice": 2377500
+      "BasePrice": 2377500,
+      "Rank": 24,
+      "FuelEfficiency": 11.88255291694583,
+      "FuelCostPerKilo": 13.465119921479362,
+      "MonthlyMainteCost": 23775.0,
+      "MonthlyInsuranceCost": 23775.0,
+      "MonthlyParkingCost": 23775.0,
+      "MonthlyPriceDropRate": 0.026234894166108344
     },
     {
       "GradeID": 75,
       "EngineID": 2,
-      "BasePrice": 2646600
+      "BasePrice": 2646600,
+      "Rank": 176,
+      "FuelEfficiency": 12.216432169532743,
+      "FuelCostPerKilo": 13.097113607279965,
+      "MonthlyMainteCost": 26466.0,
+      "MonthlyInsuranceCost": 26466.0,
+      "MonthlyParkingCost": 26466.0,
+      "MonthlyPriceDropRate": 0.025567135660934513
     },
     {
       "GradeID": 76,
       "EngineID": 1,
-      "BasePrice": 2430000
+      "BasePrice": 2430000,
+      "Rank": 26,
+      "FuelEfficiency": 11.947691009702474,
+      "FuelCostPerKilo": 13.391708897565838,
+      "MonthlyMainteCost": 24300.0,
+      "MonthlyInsuranceCost": 24300.0,
+      "MonthlyParkingCost": 24300.0,
+      "MonthlyPriceDropRate": 0.026104617980595053
     },
     {
       "GradeID": 77,
       "EngineID": 1,
-      "BasePrice": 2588000
+      "BasePrice": 2588000,
+      "Rank": 97,
+      "FuelEfficiency": 12.143725650760564,
+      "FuelCostPerKilo": 13.175528219379624,
+      "MonthlyMainteCost": 25880.0,
+      "MonthlyInsuranceCost": 25880.0,
+      "MonthlyParkingCost": 25880.0,
+      "MonthlyPriceDropRate": 0.025712548698478874
     },
     {
       "GradeID": 78,
       "EngineID": 1,
-      "BasePrice": 2885500
+      "BasePrice": 2885500,
+      "Rank": 61,
+      "FuelEfficiency": 12.512841509714882,
+      "FuelCostPerKilo": 12.786863789154296,
+      "MonthlyMainteCost": 28855.0,
+      "MonthlyInsuranceCost": 28855.0,
+      "MonthlyParkingCost": 28855.0,
+      "MonthlyPriceDropRate": 0.02497431698057024
     },
     {
       "GradeID": 79,
       "EngineID": 1,
-      "BasePrice": 2628000
+      "BasePrice": 2628000,
+      "Rank": 127,
+      "FuelEfficiency": 12.193354673813246,
+      "FuelCostPerKilo": 13.121901583296022,
+      "MonthlyMainteCost": 26280.0,
+      "MonthlyInsuranceCost": 26280.0,
+      "MonthlyParkingCost": 26280.0,
+      "MonthlyPriceDropRate": 0.025613290652373506
     },
     {
       "GradeID": 80,
       "EngineID": 1,
-      "BasePrice": 2925500
+      "BasePrice": 2925500,
+      "Rank": 18,
+      "FuelEfficiency": 12.562470532767563,
+      "FuelCostPerKilo": 12.736348282979922,
+      "MonthlyMainteCost": 29255.0,
+      "MonthlyInsuranceCost": 29255.0,
+      "MonthlyParkingCost": 29255.0,
+      "MonthlyPriceDropRate": 0.024875058934464876
     },
     {
       "GradeID": 81,
       "EngineID": 1,
-      "BasePrice": 3036600
+      "BasePrice": 3036600,
+      "Rank": 128,
+      "FuelEfficiency": 12.700315144296383,
+      "FuelCostPerKilo": 12.598112580840548,
+      "MonthlyMainteCost": 30366.0,
+      "MonthlyInsuranceCost": 30366.0,
+      "MonthlyParkingCost": 30366.0,
+      "MonthlyPriceDropRate": 0.02459936971140723
     },
     {
       "GradeID": 82,
       "EngineID": 1,
-      "BasePrice": 3890000
+      "BasePrice": 3890000,
+      "Rank": 187,
+      "FuelEfficiency": 13.759150351125339,
+      "FuelCostPerKilo": 11.628625018034915,
+      "MonthlyMainteCost": 38900.0,
+      "MonthlyInsuranceCost": 38900.0,
+      "MonthlyParkingCost": 38900.0,
+      "MonthlyPriceDropRate": 0.022481699297749326
     },
     {
       "GradeID": 83,
       "EngineID": 1,
-      "BasePrice": 3590000
+      "BasePrice": 3590000,
+      "Rank": 237,
+      "FuelEfficiency": 13.386932678230231,
+      "FuelCostPerKilo": 11.951953733224585,
+      "MonthlyMainteCost": 35900.0,
+      "MonthlyInsuranceCost": 35900.0,
+      "MonthlyParkingCost": 35900.0,
+      "MonthlyPriceDropRate": 0.023226134643539544
     },
     {
       "GradeID": 84,
       "EngineID": 2,
-      "BasePrice": 3320000
+      "BasePrice": 3320000,
+      "Rank": 1,
+      "FuelEfficiency": 13.05193677262463,
+      "FuelCostPerKilo": 12.258717061485228,
+      "MonthlyMainteCost": 33200.0,
+      "MonthlyInsuranceCost": 33200.0,
+      "MonthlyParkingCost": 33200.0,
+      "MonthlyPriceDropRate": 0.02389612645475074
     },
     {
       "GradeID": 85,
       "EngineID": 1,
-      "BasePrice": 3050000
+      "BasePrice": 3050000,
+      "Rank": 208,
+      "FuelEfficiency": 12.716940867019034,
+      "FuelCostPerKilo": 12.581642210427724,
+      "MonthlyMainteCost": 30500.0,
+      "MonthlyInsuranceCost": 30500.0,
+      "MonthlyParkingCost": 30500.0,
+      "MonthlyPriceDropRate": 0.024566118265961934
     },
     {
       "GradeID": 86,
       "EngineID": 1,
-      "BasePrice": 3390000
+      "BasePrice": 3390000,
+      "Rank": 226,
+      "FuelEfficiency": 13.138787562966822,
+      "FuelCostPerKilo": 12.177683765203597,
+      "MonthlyMainteCost": 33900.0,
+      "MonthlyInsuranceCost": 33900.0,
+      "MonthlyParkingCost": 33900.0,
+      "MonthlyPriceDropRate": 0.023722424874066353
     },
     {
       "GradeID": 87,
       "EngineID": 2,
-      "BasePrice": 2670000
+      "BasePrice": 2670000,
+      "Rank": 95,
+      "FuelEfficiency": 12.245465148018562,
+      "FuelCostPerKilo": 13.066061441193158,
+      "MonthlyMainteCost": 26700.0,
+      "MonthlyInsuranceCost": 26700.0,
+      "MonthlyParkingCost": 26700.0,
+      "MonthlyPriceDropRate": 0.025509069703962876
     },
     {
       "GradeID": 88,
       "EngineID": 1,
-      "BasePrice": 3270000
+      "BasePrice": 3270000,
+      "Rank": 57,
+      "FuelEfficiency": 12.98990049380878,
+      "FuelCostPerKilo": 12.317261404447162,
+      "MonthlyMainteCost": 32700.0,
+      "MonthlyInsuranceCost": 32700.0,
+      "MonthlyParkingCost": 32700.0,
+      "MonthlyPriceDropRate": 0.02402019901238244
     },
     {
       "GradeID": 89,
       "EngineID": 1,
-      "BasePrice": 3390000
+      "BasePrice": 3390000,
+      "Rank": 189,
+      "FuelEfficiency": 13.138787562966822,
+      "FuelCostPerKilo": 12.177683765203597,
+      "MonthlyMainteCost": 33900.0,
+      "MonthlyInsuranceCost": 33900.0,
+      "MonthlyParkingCost": 33900.0,
+      "MonthlyPriceDropRate": 0.023722424874066353
     },
     {
       "GradeID": 90,
       "EngineID": 1,
-      "BasePrice": 3320000
+      "BasePrice": 3320000,
+      "Rank": 160,
+      "FuelEfficiency": 13.05193677262463,
+      "FuelCostPerKilo": 12.258717061485228,
+      "MonthlyMainteCost": 33200.0,
+      "MonthlyInsuranceCost": 33200.0,
+      "MonthlyParkingCost": 33200.0,
+      "MonthlyPriceDropRate": 0.02389612645475074
     },
     {
       "GradeID": 91,
       "EngineID": 1,
-      "BasePrice": 3050000
+      "BasePrice": 3050000,
+      "Rank": 168,
+      "FuelEfficiency": 12.716940867019034,
+      "FuelCostPerKilo": 12.581642210427724,
+      "MonthlyMainteCost": 30500.0,
+      "MonthlyInsuranceCost": 30500.0,
+      "MonthlyParkingCost": 30500.0,
+      "MonthlyPriceDropRate": 0.024566118265961934
     },
     {
       "GradeID": 92,
       "EngineID": 2,
-      "BasePrice": 3040000
+      "BasePrice": 3040000,
+      "Rank": 31,
+      "FuelEfficiency": 12.704533611255862,
+      "FuelCostPerKilo": 12.593929450369156,
+      "MonthlyMainteCost": 30400.0,
+      "MonthlyInsuranceCost": 30400.0,
+      "MonthlyParkingCost": 30400.0,
+      "MonthlyPriceDropRate": 0.024590932777488275
     },
     {
       "GradeID": 93,
       "EngineID": 2,
-      "BasePrice": 2670000
+      "BasePrice": 2670000,
+      "Rank": 10,
+      "FuelEfficiency": 12.245465148018562,
+      "FuelCostPerKilo": 13.066061441193158,
+      "MonthlyMainteCost": 26700.0,
+      "MonthlyInsuranceCost": 26700.0,
+      "MonthlyParkingCost": 26700.0,
+      "MonthlyPriceDropRate": 0.025509069703962876
     },
     {
       "GradeID": 94,
       "EngineID": 2,
-      "BasePrice": 2970000
+      "BasePrice": 2970000,
+      "Rank": 181,
+      "FuelEfficiency": 12.617682820913672,
+      "FuelCostPerKilo": 12.680616740088105,
+      "MonthlyMainteCost": 29700.0,
+      "MonthlyInsuranceCost": 29700.0,
+      "MonthlyParkingCost": 29700.0,
+      "MonthlyPriceDropRate": 0.02476463435817266
     },
     {
       "GradeID": 95,
       "EngineID": 1,
-      "BasePrice": 3810000
+      "BasePrice": 3810000,
+      "Rank": 165,
+      "FuelEfficiency": 13.659892305019977,
+      "FuelCostPerKilo": 11.713123092573753,
+      "MonthlyMainteCost": 38100.0,
+      "MonthlyInsuranceCost": 38100.0,
+      "MonthlyParkingCost": 38100.0,
+      "MonthlyPriceDropRate": 0.022680215389960047
     },
     {
       "GradeID": 96,
       "EngineID": 2,
-      "BasePrice": 2868000
+      "BasePrice": 2868000,
+      "Rank": 109,
+      "FuelEfficiency": 12.491128812129332,
+      "FuelCostPerKilo": 12.809090547896222,
+      "MonthlyMainteCost": 28680.0,
+      "MonthlyInsuranceCost": 28680.0,
+      "MonthlyParkingCost": 28680.0,
+      "MonthlyPriceDropRate": 0.025017742375741336
     },
     {
       "GradeID": 97,
       "EngineID": 1,
-      "BasePrice": 3670000
+      "BasePrice": 3670000,
+      "Rank": 93,
+      "FuelEfficiency": 13.486190724335591,
+      "FuelCostPerKilo": 11.863987635239567,
+      "MonthlyMainteCost": 36700.0,
+      "MonthlyInsuranceCost": 36700.0,
+      "MonthlyParkingCost": 36700.0,
+      "MonthlyPriceDropRate": 0.023027618551328816
     },
     {
       "GradeID": 98,
       "EngineID": 2,
-      "BasePrice": 3518000
+      "BasePrice": 3518000,
+      "Rank": 58,
+      "FuelEfficiency": 13.2976004367354,
+      "FuelCostPerKilo": 12.032246025229531,
+      "MonthlyMainteCost": 35180.0,
+      "MonthlyInsuranceCost": 35180.0,
+      "MonthlyParkingCost": 35180.0,
+      "MonthlyPriceDropRate": 0.023404799126529194
     },
     {
       "GradeID": 99,
       "EngineID": 1,
-      "BasePrice": 3610000
+      "BasePrice": 3610000,
+      "Rank": 6,
+      "FuelEfficiency": 13.411747189756568,
+      "FuelCostPerKilo": 11.929840142095916,
+      "MonthlyMainteCost": 36100.0,
+      "MonthlyInsuranceCost": 36100.0,
+      "MonthlyParkingCost": 36100.0,
+      "MonthlyPriceDropRate": 0.023176505620486863
     },
     {
       "GradeID": 100,
       "EngineID": 1,
-      "BasePrice": 3320000
+      "BasePrice": 3320000,
+      "Rank": 81,
+      "FuelEfficiency": 13.05193677262463,
+      "FuelCostPerKilo": 12.258717061485228,
+      "MonthlyMainteCost": 33200.0,
+      "MonthlyInsuranceCost": 33200.0,
+      "MonthlyParkingCost": 33200.0,
+      "MonthlyPriceDropRate": 0.02389612645475074
     },
     {
       "GradeID": 101,
       "EngineID": 1,
-      "BasePrice": 3540000
+      "BasePrice": 3540000,
+      "Rank": 266,
+      "FuelEfficiency": 13.324896399414378,
+      "FuelCostPerKilo": 12.007598048344445,
+      "MonthlyMainteCost": 35400.0,
+      "MonthlyInsuranceCost": 35400.0,
+      "MonthlyParkingCost": 35400.0,
+      "MonthlyPriceDropRate": 0.023350207201171244
     },
     {
       "GradeID": 102,
       "EngineID": 2,
-      "BasePrice": 3240000
+      "BasePrice": 3240000,
+      "Rank": 86,
+      "FuelEfficiency": 12.952678726519268,
+      "FuelCostPerKilo": 12.352657189930648,
+      "MonthlyMainteCost": 32400.0,
+      "MonthlyInsuranceCost": 32400.0,
+      "MonthlyParkingCost": 32400.0,
+      "MonthlyPriceDropRate": 0.02409464254696146
     },
     {
       "GradeID": 103,
       "EngineID": 2,
-      "BasePrice": 2868000
+      "BasePrice": 2868000,
+      "Rank": 86,
+      "FuelEfficiency": 12.491128812129332,
+      "FuelCostPerKilo": 12.809090547896222,
+      "MonthlyMainteCost": 28680.0,
+      "MonthlyInsuranceCost": 28680.0,
+      "MonthlyParkingCost": 28680.0,
+      "MonthlyPriceDropRate": 0.025017742375741336
     },
     {
       "GradeID": 104,
       "EngineID": 2,
-      "BasePrice": 3040000
+      "BasePrice": 3040000,
+      "Rank": 165,
+      "FuelEfficiency": 12.704533611255862,
+      "FuelCostPerKilo": 12.593929450369156,
+      "MonthlyMainteCost": 30400.0,
+      "MonthlyInsuranceCost": 30400.0,
+      "MonthlyParkingCost": 30400.0,
+      "MonthlyPriceDropRate": 0.024590932777488275
     },
     {
       "GradeID": 105,
       "EngineID": 2,
-      "BasePrice": 2970000
+      "BasePrice": 2970000,
+      "Rank": 154,
+      "FuelEfficiency": 12.617682820913672,
+      "FuelCostPerKilo": 12.680616740088105,
+      "MonthlyMainteCost": 29700.0,
+      "MonthlyInsuranceCost": 29700.0,
+      "MonthlyParkingCost": 29700.0,
+      "MonthlyPriceDropRate": 0.02476463435817266
     },
     {
       "GradeID": 106,
       "EngineID": 2,
-      "BasePrice": 3238000
+      "BasePrice": 3238000,
+      "Rank": 23,
+      "FuelEfficiency": 12.950197275366635,
+      "FuelCostPerKilo": 12.355024143481259,
+      "MonthlyMainteCost": 32380.0,
+      "MonthlyInsuranceCost": 32380.0,
+      "MonthlyParkingCost": 32380.0,
+      "MonthlyPriceDropRate": 0.02409960544926673
     },
     {
       "GradeID": 107,
       "EngineID": 2,
-      "BasePrice": 3168000
+      "BasePrice": 3168000,
+      "Rank": 261,
+      "FuelEfficiency": 12.863346485024444,
+      "FuelCostPerKilo": 12.438442841158993,
+      "MonthlyMainteCost": 31680.0,
+      "MonthlyInsuranceCost": 31680.0,
+      "MonthlyParkingCost": 31680.0,
+      "MonthlyPriceDropRate": 0.024273307029951115
     },
     {
       "GradeID": 108,
       "EngineID": 2,
-      "BasePrice": 3438000
+      "BasePrice": 3438000,
+      "Rank": 100,
+      "FuelEfficiency": 13.19834239063004,
+      "FuelCostPerKilo": 12.12273445138001,
+      "MonthlyMainteCost": 34380.0,
+      "MonthlyInsuranceCost": 34380.0,
+      "MonthlyParkingCost": 34380.0,
+      "MonthlyPriceDropRate": 0.02360331521873992
     },
     {
       "GradeID": 109,
       "EngineID": 2,
-      "BasePrice": 3238000
+      "BasePrice": 3238000,
+      "Rank": 24,
+      "FuelEfficiency": 12.950197275366635,
+      "FuelCostPerKilo": 12.355024143481259,
+      "MonthlyMainteCost": 32380.0,
+      "MonthlyInsuranceCost": 32380.0,
+      "MonthlyParkingCost": 32380.0,
+      "MonthlyPriceDropRate": 0.02409960544926673
     },
     {
       "GradeID": 110,
       "EngineID": 2,
-      "BasePrice": 3168000
+      "BasePrice": 3168000,
+      "Rank": 18,
+      "FuelEfficiency": 12.863346485024444,
+      "FuelCostPerKilo": 12.438442841158993,
+      "MonthlyMainteCost": 31680.0,
+      "MonthlyInsuranceCost": 31680.0,
+      "MonthlyParkingCost": 31680.0,
+      "MonthlyPriceDropRate": 0.024273307029951115
     },
     {
       "GradeID": 111,
       "EngineID": 1,
-      "BasePrice": 3140300
+      "BasePrice": 3140300,
+      "Rank": 194,
+      "FuelEfficiency": 12.828978386560461,
+      "FuelCostPerKilo": 12.47176471726032,
+      "MonthlyMainteCost": 31403.0,
+      "MonthlyInsuranceCost": 31403.0,
+      "MonthlyParkingCost": 31403.0,
+      "MonthlyPriceDropRate": 0.02434204322687908
     },
     {
       "GradeID": 112,
       "EngineID": 2,
-      "BasePrice": 2028600
+      "BasePrice": 2028600,
+      "Rank": 9,
+      "FuelEfficiency": 11.449663763368818,
+      "FuelCostPerKilo": 13.97420948830758,
+      "MonthlyMainteCost": 20286.0,
+      "MonthlyInsuranceCost": 20286.0,
+      "MonthlyParkingCost": 20286.0,
+      "MonthlyPriceDropRate": 0.027100672473262366
     },
     {
       "GradeID": 113,
       "EngineID": 1,
-      "BasePrice": 3338300
+      "BasePrice": 3338300,
+      "Rank": 238,
+      "FuelEfficiency": 13.074642050671233,
+      "FuelCostPerKilo": 12.237428709704968,
+      "MonthlyMainteCost": 33383.0,
+      "MonthlyInsuranceCost": 33383.0,
+      "MonthlyParkingCost": 33383.0,
+      "MonthlyPriceDropRate": 0.023850715898657535
     },
     {
       "GradeID": 114,
       "EngineID": 1,
-      "BasePrice": 2604800
+      "BasePrice": 2604800,
+      "Rank": 241,
+      "FuelEfficiency": 12.164569840442692,
+      "FuelCostPerKilo": 13.152951735955284,
+      "MonthlyMainteCost": 26048.0,
+      "MonthlyInsuranceCost": 26048.0,
+      "MonthlyParkingCost": 26048.0,
+      "MonthlyPriceDropRate": 0.02567086031911462
     },
     {
       "GradeID": 115,
       "EngineID": 1,
-      "BasePrice": 2418600
+      "BasePrice": 2418600,
+      "Rank": 101,
+      "FuelEfficiency": 11.93354673813246,
+      "FuelCostPerKilo": 13.407581460148469,
+      "MonthlyMainteCost": 24186.0,
+      "MonthlyInsuranceCost": 24186.0,
+      "MonthlyParkingCost": 24186.0,
+      "MonthlyPriceDropRate": 0.02613290652373508
     },
     {
       "GradeID": 116,
       "EngineID": 1,
-      "BasePrice": 3066300
+      "BasePrice": 3066300,
+      "Rank": 16,
+      "FuelEfficiency": 12.737164693912998,
+      "FuelCostPerKilo": 12.561665319163446,
+      "MonthlyMainteCost": 30663.0,
+      "MonthlyInsuranceCost": 30663.0,
+      "MonthlyParkingCost": 30663.0,
+      "MonthlyPriceDropRate": 0.024525670612174
     },
     {
       "GradeID": 117,
       "EngineID": 2,
-      "BasePrice": 2254800
+      "BasePrice": 2254800,
+      "Rank": 233,
+      "FuelEfficiency": 11.730315888731731,
+      "FuelCostPerKilo": 13.639871382636656,
+      "MonthlyMainteCost": 22548.0,
+      "MonthlyInsuranceCost": 22548.0,
+      "MonthlyParkingCost": 22548.0,
+      "MonthlyPriceDropRate": 0.02653936822253654
     },
     {
       "GradeID": 118,
       "EngineID": 2,
-      "BasePrice": 2518300
+      "BasePrice": 2518300,
+      "Rank": 216,
+      "FuelEfficiency": 12.057247078091269,
+      "FuelCostPerKilo": 13.270027475071773,
+      "MonthlyMainteCost": 25183.0,
+      "MonthlyInsuranceCost": 25183.0,
+      "MonthlyParkingCost": 25183.0,
+      "MonthlyPriceDropRate": 0.025885505843817463
     },
     {
       "GradeID": 119,
       "EngineID": 1,
-      "BasePrice": 2616600
+      "BasePrice": 2616600,
+      "Rank": 85,
+      "FuelEfficiency": 12.179210402243232,
+      "FuelCostPerKilo": 13.137140645056132,
+      "MonthlyMainteCost": 26166.0,
+      "MonthlyInsuranceCost": 26166.0,
+      "MonthlyParkingCost": 26166.0,
+      "MonthlyPriceDropRate": 0.025641579195513534
     },
     {
       "GradeID": 120,
       "EngineID": 1,
-      "BasePrice": 2802800
+      "BasePrice": 2802800,
+      "Rank": 124,
+      "FuelEfficiency": 12.410233504553464,
+      "FuelCostPerKilo": 12.89258577941294,
+      "MonthlyMainteCost": 28028.0,
+      "MonthlyInsuranceCost": 28028.0,
+      "MonthlyParkingCost": 28028.0,
+      "MonthlyPriceDropRate": 0.025179532990893073
     },
     {
       "GradeID": 121,
       "EngineID": 1,
-      "BasePrice": 2868300
+      "BasePrice": 2868300,
+      "Rank": 249,
+      "FuelEfficiency": 12.491501029802228,
+      "FuelCostPerKilo": 12.808708866794467,
+      "MonthlyMainteCost": 28683.0,
+      "MonthlyInsuranceCost": 28683.0,
+      "MonthlyParkingCost": 28683.0,
+      "MonthlyPriceDropRate": 0.025016997940395545
     },
     {
       "GradeID": 122,
       "EngineID": 3,
-      "BasePrice": 8300000
+      "BasePrice": 8300000,
+      "Rank": 125,
+      "FuelEfficiency": 19.23075014268344,
+      "FuelCostPerKilo": 8.320008258277634,
+      "MonthlyMainteCost": 83000.0,
+      "MonthlyInsuranceCost": 83000.0,
+      "MonthlyParkingCost": 83000.0,
+      "MonthlyPriceDropRate": 0.011538499714633117
     },
     {
       "GradeID": 123,
       "EngineID": 1,
-      "BasePrice": 7300000
+      "BasePrice": 7300000,
+      "Rank": 77,
+      "FuelEfficiency": 17.99002456636641,
+      "FuelCostPerKilo": 8.893817760489945,
+      "MonthlyMainteCost": 73000.0,
+      "MonthlyInsuranceCost": 73000.0,
+      "MonthlyParkingCost": 73000.0,
+      "MonthlyPriceDropRate": 0.014019950867267178
     },
     {
       "GradeID": 124,
       "EngineID": 1,
-      "BasePrice": 3920000
+      "BasePrice": 3920000,
+      "Rank": 53,
+      "FuelEfficiency": 13.796372118414851,
+      "FuelCostPerKilo": 11.597251699701426,
+      "MonthlyMainteCost": 39200.0,
+      "MonthlyInsuranceCost": 39200.0,
+      "MonthlyParkingCost": 39200.0,
+      "MonthlyPriceDropRate": 0.022407255763170302
     },
     {
       "GradeID": 125,
       "EngineID": 1,
-      "BasePrice": 2750000
+      "BasePrice": 2750000,
+      "Rank": 0,
+      "FuelEfficiency": 12.344723194123922,
+      "FuelCostPerKilo": 12.961003457425425,
+      "MonthlyMainteCost": 27500.0,
+      "MonthlyInsuranceCost": 27500.0,
+      "MonthlyParkingCost": 27500.0,
+      "MonthlyPriceDropRate": 0.025310553611752155
     },
     {
       "GradeID": 126,
       "EngineID": 1,
-      "BasePrice": 3200000
+      "BasePrice": 3200000,
+      "Rank": 29,
+      "FuelEfficiency": 12.903049703466587,
+      "FuelCostPerKilo": 12.400169237278357,
+      "MonthlyMainteCost": 32000.0,
+      "MonthlyInsuranceCost": 32000.0,
+      "MonthlyParkingCost": 32000.0,
+      "MonthlyPriceDropRate": 0.02419390059306683
     },
     {
       "GradeID": 127,
       "EngineID": 4,
-      "BasePrice": 4600000
+      "BasePrice": 4600000,
+      "Rank": 8,
+      "FuelEfficiency": 14.640065510310428,
+      "FuelCostPerKilo": 10.928912844503204,
+      "MonthlyMainteCost": 46000.0,
+      "MonthlyInsuranceCost": 46000.0,
+      "MonthlyParkingCost": 46000.0,
+      "MonthlyPriceDropRate": 0.020719868979379143
     },
     {
       "GradeID": 128,
       "EngineID": 1,
-      "BasePrice": 2970000
+      "BasePrice": 2970000,
+      "Rank": 119,
+      "FuelEfficiency": 12.617682820913672,
+      "FuelCostPerKilo": 12.680616740088105,
+      "MonthlyMainteCost": 29700.0,
+      "MonthlyInsuranceCost": 29700.0,
+      "MonthlyParkingCost": 29700.0,
+      "MonthlyPriceDropRate": 0.02476463435817266
     },
     {
       "GradeID": 129,
       "EngineID": 1,
-      "BasePrice": 3420000
+      "BasePrice": 3420000,
+      "Rank": 195,
+      "FuelEfficiency": 13.176009330256333,
+      "FuelCostPerKilo": 12.143282232852462,
+      "MonthlyMainteCost": 34200.0,
+      "MonthlyInsuranceCost": 34200.0,
+      "MonthlyParkingCost": 34200.0,
+      "MonthlyPriceDropRate": 0.023647981339487333
     },
     {
       "GradeID": 130,
       "EngineID": 1,
-      "BasePrice": 3700000
+      "BasePrice": 3700000,
+      "Rank": 27,
+      "FuelEfficiency": 13.523412491625102,
+      "FuelCostPerKilo": 11.831333259936144,
+      "MonthlyMainteCost": 37000.0,
+      "MonthlyInsuranceCost": 37000.0,
+      "MonthlyParkingCost": 37000.0,
+      "MonthlyPriceDropRate": 0.022953175016749795
     },
     {
       "GradeID": 131,
       "EngineID": 3,
-      "BasePrice": 8610000
+      "BasePrice": 8610000,
+      "Rank": 175,
+      "FuelEfficiency": 19.61537507134172,
+      "FuelCostPerKilo": 8.156866713895354,
+      "MonthlyMainteCost": 86100.0,
+      "MonthlyInsuranceCost": 86100.0,
+      "MonthlyParkingCost": 86100.0,
+      "MonthlyPriceDropRate": 0.01076924985731656
     },
     {
       "GradeID": 132,
       "EngineID": 3,
-      "BasePrice": 8172000
+      "BasePrice": 8172000,
+      "Rank": 98,
+      "FuelEfficiency": 19.07193726891486,
+      "FuelCostPerKilo": 8.38928933878061,
+      "MonthlyMainteCost": 81720.0,
+      "MonthlyInsuranceCost": 81720.0,
+      "MonthlyParkingCost": 81720.0,
+      "MonthlyPriceDropRate": 0.011856125462170278
     },
     {
       "GradeID": 133,
       "EngineID": 3,
-      "BasePrice": 7261000
+      "BasePrice": 7261000,
+      "Rank": 163,
+      "FuelEfficiency": 17.941636268890047,
+      "FuelCostPerKilo": 8.917804240487946,
+      "MonthlyMainteCost": 72610.0,
+      "MonthlyInsuranceCost": 72610.0,
+      "MonthlyParkingCost": 72610.0,
+      "MonthlyPriceDropRate": 0.014116727462219907
     },
     {
       "GradeID": 134,
       "EngineID": 3,
-      "BasePrice": 8460000
+      "BasePrice": 8460000,
+      "Rank": 189,
+      "FuelEfficiency": 19.429266234894165,
+      "FuelCostPerKilo": 8.234999616848452,
+      "MonthlyMainteCost": 84600.0,
+      "MonthlyInsuranceCost": 84600.0,
+      "MonthlyParkingCost": 84600.0,
+      "MonthlyPriceDropRate": 0.011141467530211668
     },
     {
       "GradeID": 135,
       "EngineID": 3,
-      "BasePrice": 7722000
+      "BasePrice": 7722000,
+      "Rank": 39,
+      "FuelEfficiency": 18.5136107595722,
+      "FuelCostPerKilo": 8.64229037100579,
+      "MonthlyMainteCost": 77220.0,
+      "MonthlyInsuranceCost": 77220.0,
+      "MonthlyParkingCost": 77220.0,
+      "MonthlyPriceDropRate": 0.012972778480855604
     },
     {
       "GradeID": 136,
       "EngineID": 3,
-      "BasePrice": 7478000
+      "BasePrice": 7478000,
+      "Rank": 75,
+      "FuelEfficiency": 18.210873718950843,
+      "FuelCostPerKilo": 8.785959557420831,
+      "MonthlyMainteCost": 74780.0,
+      "MonthlyInsuranceCost": 74780.0,
+      "MonthlyParkingCost": 74780.0,
+      "MonthlyPriceDropRate": 0.013578252562098315
     },
     {
       "GradeID": 137,
       "EngineID": 3,
-      "BasePrice": 8022000
+      "BasePrice": 8022000,
+      "Rank": 159,
+      "FuelEfficiency": 18.885828432467306,
+      "FuelCostPerKilo": 8.47196089767173,
+      "MonthlyMainteCost": 80220.0,
+      "MonthlyInsuranceCost": 80220.0,
+      "MonthlyParkingCost": 80220.0,
+      "MonthlyPriceDropRate": 0.012228343135065387
     },
     {
       "GradeID": 138,
       "EngineID": 1,
-      "BasePrice": 3190300
+      "BasePrice": 3190300,
+      "Rank": 27,
+      "FuelEfficiency": 12.891014665376312,
+      "FuelCostPerKilo": 12.41174602257962,
+      "MonthlyMainteCost": 31903.0,
+      "MonthlyInsuranceCost": 31903.0,
+      "MonthlyParkingCost": 31903.0,
+      "MonthlyPriceDropRate": 0.024217970669247378
     },
     {
       "GradeID": 139,
       "EngineID": 1,
-      "BasePrice": 3116300
+      "BasePrice": 3116300,
+      "Rank": 83,
+      "FuelEfficiency": 12.799200972728853,
+      "FuelCostPerKilo": 12.500780348781976,
+      "MonthlyMainteCost": 31163.0,
+      "MonthlyInsuranceCost": 31163.0,
+      "MonthlyParkingCost": 31163.0,
+      "MonthlyPriceDropRate": 0.024401598054542298
     },
     {
       "GradeID": 140,
       "EngineID": 1,
-      "BasePrice": 3388300
+      "BasePrice": 3388300,
+      "Rank": 42,
+      "FuelEfficiency": 13.136678329487083,
+      "FuelCostPerKilo": 12.17963902190236,
+      "MonthlyMainteCost": 33883.0,
+      "MonthlyInsuranceCost": 33883.0,
+      "MonthlyParkingCost": 33883.0,
+      "MonthlyPriceDropRate": 0.02372664334102583
     },
     {
       "GradeID": 141,
       "EngineID": 1,
-      "BasePrice": 2684800
+      "BasePrice": 2684800,
+      "Rank": 83,
+      "FuelEfficiency": 12.263827886548054,
+      "FuelCostPerKilo": 13.046497511229816,
+      "MonthlyMainteCost": 26848.0,
+      "MonthlyInsuranceCost": 26848.0,
+      "MonthlyParkingCost": 26848.0,
+      "MonthlyPriceDropRate": 0.025472344226903892
     },
     {
       "GradeID": 142,
       "EngineID": 2,
-      "BasePrice": 2568300
+      "BasePrice": 2568300,
+      "Rank": 151,
+      "FuelEfficiency": 12.11928335690712,
+      "FuelCostPerKilo": 13.202100758607274,
+      "MonthlyMainteCost": 25683.0,
+      "MonthlyInsuranceCost": 25683.0,
+      "MonthlyParkingCost": 25683.0,
+      "MonthlyPriceDropRate": 0.025761433286185763
     },
     {
       "GradeID": 143,
       "EngineID": 1,
-      "BasePrice": 2498600
+      "BasePrice": 2498600,
+      "Rank": 186,
+      "FuelEfficiency": 12.032804784237822,
+      "FuelCostPerKilo": 13.296982945288818,
+      "MonthlyMainteCost": 24986.0,
+      "MonthlyInsuranceCost": 24986.0,
+      "MonthlyParkingCost": 24986.0,
+      "MonthlyPriceDropRate": 0.025934390431524353
     },
     {
       "GradeID": 144,
       "EngineID": 2,
-      "BasePrice": 2108600
+      "BasePrice": 2108600,
+      "Rank": 247,
+      "FuelEfficiency": 11.54892180947418,
+      "FuelCostPerKilo": 13.854107131346556,
+      "MonthlyMainteCost": 21086.0,
+      "MonthlyInsuranceCost": 21086.0,
+      "MonthlyParkingCost": 21086.0,
+      "MonthlyPriceDropRate": 0.026902156381051638
     },
     {
       "GradeID": 145,
       "EngineID": 2,
-      "BasePrice": 2334800
+      "BasePrice": 2334800,
+      "Rank": 4,
+      "FuelEfficiency": 11.829573934837093,
+      "FuelCostPerKilo": 13.525423728813559,
+      "MonthlyMainteCost": 23348.0,
+      "MonthlyInsuranceCost": 23348.0,
+      "MonthlyParkingCost": 23348.0,
+      "MonthlyPriceDropRate": 0.026340852130325818
     },
     {
       "GradeID": 146,
       "EngineID": 1,
-      "BasePrice": 2882800
+      "BasePrice": 2882800,
+      "Rank": 240,
+      "FuelEfficiency": 12.509491550658824,
+      "FuelCostPerKilo": 12.79028802666032,
+      "MonthlyMainteCost": 28828.0,
+      "MonthlyInsuranceCost": 28828.0,
+      "MonthlyParkingCost": 28828.0,
+      "MonthlyPriceDropRate": 0.024981016898682352
     },
     {
       "GradeID": 147,
       "EngineID": 1,
-      "BasePrice": 2918300
+      "BasePrice": 2918300,
+      "Rank": 221,
+      "FuelEfficiency": 12.553537308618079,
+      "FuelCostPerKilo": 12.745411597268209,
+      "MonthlyMainteCost": 29183.0,
+      "MonthlyInsuranceCost": 29183.0,
+      "MonthlyParkingCost": 29183.0,
+      "MonthlyPriceDropRate": 0.024892925382763845
     },
     {
       "GradeID": 148,
       "EngineID": 1,
-      "BasePrice": 2696600
+      "BasePrice": 2696600,
+      "Rank": 190,
+      "FuelEfficiency": 12.278468448348594,
+      "FuelCostPerKilo": 13.030941169337726,
+      "MonthlyMainteCost": 26966.0,
+      "MonthlyInsuranceCost": 26966.0,
+      "MonthlyParkingCost": 26966.0,
+      "MonthlyPriceDropRate": 0.025443063103302813
     },
     {
       "GradeID": 149,
       "EngineID": 1,
-      "BasePrice": 3459000
+      "BasePrice": 3459000,
+      "Rank": 126,
+      "FuelEfficiency": 13.224397627732698,
+      "FuelCostPerKilo": 12.098849755127315,
+      "MonthlyMainteCost": 34590.0,
+      "MonthlyInsuranceCost": 34590.0,
+      "MonthlyParkingCost": 34590.0,
+      "MonthlyPriceDropRate": 0.023551204744534607
     },
     {
       "GradeID": 150,
       "EngineID": 1,
-      "BasePrice": 2980000
+      "BasePrice": 2980000,
+      "Rank": 72,
+      "FuelEfficiency": 12.63009007667684,
+      "FuelCostPerKilo": 12.668159849109985,
+      "MonthlyMainteCost": 29800.0,
+      "MonthlyInsuranceCost": 29800.0,
+      "MonthlyParkingCost": 29800.0,
+      "MonthlyPriceDropRate": 0.02473981984664632
     },
     {
       "GradeID": 151,
       "EngineID": 2,
-      "BasePrice": 2900000
+      "BasePrice": 2900000,
+      "Rank": 177,
+      "FuelEfficiency": 12.530832030571478,
+      "FuelCostPerKilo": 12.768505683393402,
+      "MonthlyMainteCost": 29000.0,
+      "MonthlyInsuranceCost": 29000.0,
+      "MonthlyParkingCost": 29000.0,
+      "MonthlyPriceDropRate": 0.024938335938857047
     },
     {
       "GradeID": 152,
       "EngineID": 1,
-      "BasePrice": 2760000
+      "BasePrice": 2760000,
+      "Rank": 80,
+      "FuelEfficiency": 12.357130449887094,
+      "FuelCostPerKilo": 12.94798987911161,
+      "MonthlyMainteCost": 27600.0,
+      "MonthlyInsuranceCost": 27600.0,
+      "MonthlyParkingCost": 27600.0,
+      "MonthlyPriceDropRate": 0.025285739100225815
     },
     {
       "GradeID": 153,
       "EngineID": 2,
-      "BasePrice": 2184000
+      "BasePrice": 2184000,
+      "Rank": 157,
+      "FuelEfficiency": 11.642472517928484,
+      "FuelCostPerKilo": 13.74278528496526,
+      "MonthlyMainteCost": 21840.0,
+      "MonthlyInsuranceCost": 21840.0,
+      "MonthlyParkingCost": 21840.0,
+      "MonthlyPriceDropRate": 0.02671505496414303
     },
     {
       "GradeID": 154,
       "EngineID": 2,
-      "BasePrice": 2410000
+      "BasePrice": 2410000,
+      "Rank": 14,
+      "FuelEfficiency": 11.922876498176134,
+      "FuelCostPerKilo": 13.41958041958042,
+      "MonthlyMainteCost": 24100.0,
+      "MonthlyInsuranceCost": 24100.0,
+      "MonthlyParkingCost": 24100.0,
+      "MonthlyPriceDropRate": 0.026154247003647733
     },
     {
       "GradeID": 155,
       "EngineID": 1,
-      "BasePrice": 3189000
+      "BasePrice": 3189000,
+      "Rank": 22,
+      "FuelEfficiency": 12.8894017221271,
+      "FuelCostPerKilo": 12.413299193346552,
+      "MonthlyMainteCost": 31890.0,
+      "MonthlyInsuranceCost": 31890.0,
+      "MonthlyParkingCost": 31890.0,
+      "MonthlyPriceDropRate": 0.024221196555745797
     },
     {
       "GradeID": 156,
       "EngineID": 1,
-      "BasePrice": 2969000
+      "BasePrice": 2969000,
+      "Rank": 23,
+      "FuelEfficiency": 12.616442095337352,
+      "FuelCostPerKilo": 12.681863776724429,
+      "MonthlyMainteCost": 29690.0,
+      "MonthlyInsuranceCost": 29690.0,
+      "MonthlyParkingCost": 29690.0,
+      "MonthlyPriceDropRate": 0.024767115809325294
     },
     {
       "GradeID": 157,
       "EngineID": 1,
-      "BasePrice": 3250000
+      "BasePrice": 3250000,
+      "Rank": 266,
+      "FuelEfficiency": 12.965085982282439,
+      "FuelCostPerKilo": 12.340836012861736,
+      "MonthlyMainteCost": 32500.0,
+      "MonthlyInsuranceCost": 32500.0,
+      "MonthlyParkingCost": 32500.0,
+      "MonthlyPriceDropRate": 0.02406982803543512
     },
     {
       "GradeID": 158,
       "EngineID": 1,
-      "BasePrice": 4400000
+      "BasePrice": 4400000,
+      "Rank": 127,
+      "FuelEfficiency": 14.391920395047023,
+      "FuelCostPerKilo": 11.117348874099108,
+      "MonthlyMainteCost": 44000.0,
+      "MonthlyInsuranceCost": 44000.0,
+      "MonthlyParkingCost": 44000.0,
+      "MonthlyPriceDropRate": 0.021216159209905952
     },
     {
       "GradeID": 159,
       "EngineID": 1,
-      "BasePrice": 6700000
+      "BasePrice": 6700000,
+      "Rank": 115,
+      "FuelEfficiency": 17.245589220576193,
+      "FuelCostPerKilo": 9.277734611067945,
+      "MonthlyMainteCost": 67000.0,
+      "MonthlyInsuranceCost": 67000.0,
+      "MonthlyParkingCost": 67000.0,
+      "MonthlyPriceDropRate": 0.015508821558847615
     },
     {
       "GradeID": 160,
       "EngineID": 1,
-      "BasePrice": 5150000
+      "BasePrice": 5150000,
+      "Rank": 139,
+      "FuelEfficiency": 15.322464577284796,
+      "FuelCostPerKilo": 10.44218436224655,
+      "MonthlyMainteCost": 51500.0,
+      "MonthlyInsuranceCost": 51500.0,
+      "MonthlyParkingCost": 51500.0,
+      "MonthlyPriceDropRate": 0.019355070845430408
     },
     {
       "GradeID": 161,
       "EngineID": 1,
-      "BasePrice": 6850000
+      "BasePrice": 6850000,
+      "Rank": 263,
+      "FuelEfficiency": 17.43169805702375,
+      "FuelCostPerKilo": 9.178681243594124,
+      "MonthlyMainteCost": 68500.0,
+      "MonthlyInsuranceCost": 68500.0,
+      "MonthlyParkingCost": 68500.0,
+      "MonthlyPriceDropRate": 0.015136603885952504
     },
     {
       "GradeID": 162,
       "EngineID": 1,
-      "BasePrice": 5950000
+      "BasePrice": 5950000,
+      "Rank": 169,
+      "FuelEfficiency": 16.315045038338422,
+      "FuelCostPerKilo": 9.806899069173205,
+      "MonthlyMainteCost": 59500.0,
+      "MonthlyInsuranceCost": 59500.0,
+      "MonthlyParkingCost": 59500.0,
+      "MonthlyPriceDropRate": 0.01736990992332316
     },
     {
       "GradeID": 163,
       "EngineID": 1,
-      "BasePrice": 5900000
+      "BasePrice": 5900000,
+      "Rank": 253,
+      "FuelEfficiency": 16.25300875952257,
+      "FuelCostPerKilo": 9.844331124614492,
+      "MonthlyMainteCost": 59000.0,
+      "MonthlyInsuranceCost": 59000.0,
+      "MonthlyParkingCost": 59000.0,
+      "MonthlyPriceDropRate": 0.01749398248095486
     },
     {
       "GradeID": 164,
       "EngineID": 4,
-      "BasePrice": 7650000
+      "BasePrice": 7650000,
+      "Rank": 218,
+      "FuelEfficiency": 18.424278518077372,
+      "FuelCostPerKilo": 8.684193513629996,
+      "MonthlyMainteCost": 76500.0,
+      "MonthlyInsuranceCost": 76500.0,
+      "MonthlyParkingCost": 76500.0,
+      "MonthlyPriceDropRate": 0.013151442963845256
     },
     {
       "GradeID": 165,
       "EngineID": 5,
-      "BasePrice": 4312000
+      "BasePrice": 4312000,
+      "Rank": 254,
+      "FuelEfficiency": 14.282736544331126,
+      "FuelCostPerKilo": 11.202335035963722,
+      "MonthlyMainteCost": 43120.0,
+      "MonthlyInsuranceCost": 43120.0,
+      "MonthlyParkingCost": 43120.0,
+      "MonthlyPriceDropRate": 0.02143452691133775
     },
     {
       "GradeID": 166,
       "EngineID": 5,
-      "BasePrice": 4772000
+      "BasePrice": 4772000,
+      "Rank": 92,
+      "FuelEfficiency": 14.853470309436958,
+      "FuelCostPerKilo": 10.771893481238934,
+      "MonthlyMainteCost": 47720.0,
+      "MonthlyInsuranceCost": 47720.0,
+      "MonthlyParkingCost": 47720.0,
+      "MonthlyPriceDropRate": 0.020293059381126084
     },
     {
       "GradeID": 167,
       "EngineID": 5,
-      "BasePrice": 4072000
+      "BasePrice": 4072000,
+      "Rank": 226,
+      "FuelEfficiency": 13.984962406015038,
+      "FuelCostPerKilo": 11.440860215053764,
+      "MonthlyMainteCost": 40720.0,
+      "MonthlyInsuranceCost": 40720.0,
+      "MonthlyParkingCost": 40720.0,
+      "MonthlyPriceDropRate": 0.022030075187969924
     },
     {
       "GradeID": 168,
       "EngineID": 1,
-      "BasePrice": 4119000
+      "BasePrice": 4119000,
+      "Rank": 16,
+      "FuelEfficiency": 14.043276508101938,
+      "FuelCostPerKilo": 11.393352534765784,
+      "MonthlyMainteCost": 41190.0,
+      "MonthlyInsuranceCost": 41190.0,
+      "MonthlyParkingCost": 41190.0,
+      "MonthlyPriceDropRate": 0.021913446983796124
     },
     {
       "GradeID": 169,
       "EngineID": 2,
-      "BasePrice": 3529000
+      "BasePrice": 3529000,
+      "Rank": 145,
+      "FuelEfficiency": 13.31124841807489,
+      "FuelCostPerKilo": 12.019909401040211,
+      "MonthlyMainteCost": 35290.0,
+      "MonthlyInsuranceCost": 35290.0,
+      "MonthlyParkingCost": 35290.0,
+      "MonthlyPriceDropRate": 0.02337750316385022
     },
     {
       "GradeID": 170,
       "EngineID": 1,
-      "BasePrice": 5148000
+      "BasePrice": 5148000,
+      "Rank": 226,
+      "FuelEfficiency": 15.319983126132161,
+      "FuelCostPerKilo": 10.443875732935956,
+      "MonthlyMainteCost": 51480.0,
+      "MonthlyInsuranceCost": 51480.0,
+      "MonthlyParkingCost": 51480.0,
+      "MonthlyPriceDropRate": 0.019360033747735678
     },
     {
       "GradeID": 171,
       "EngineID": 1,
-      "BasePrice": 4628000
+      "BasePrice": 4628000,
+      "Rank": 44,
+      "FuelEfficiency": 14.674805826447306,
+      "FuelCostPerKilo": 10.903040346308634,
+      "MonthlyMainteCost": 46280.0,
+      "MonthlyInsuranceCost": 46280.0,
+      "MonthlyParkingCost": 46280.0,
+      "MonthlyPriceDropRate": 0.020650388347105388
     },
     {
       "GradeID": 172,
       "EngineID": 2,
-      "BasePrice": 4038000
+      "BasePrice": 4038000,
+      "Rank": 96,
+      "FuelEfficiency": 13.942777736420258,
+      "FuelCostPerKilo": 11.475475190432121,
+      "MonthlyMainteCost": 40380.0,
+      "MonthlyInsuranceCost": 40380.0,
+      "MonthlyParkingCost": 40380.0,
+      "MonthlyPriceDropRate": 0.022114444527159483
     },
     {
       "GradeID": 173,
       "EngineID": 4,
-      "BasePrice": 6200000
+      "BasePrice": 6200000,
+      "Rank": 205,
+      "FuelEfficiency": 16.62522643241768,
+      "FuelCostPerKilo": 9.623929072509625,
+      "MonthlyMainteCost": 62000.0,
+      "MonthlyInsuranceCost": 62000.0,
+      "MonthlyParkingCost": 62000.0,
+      "MonthlyPriceDropRate": 0.016749547135164643
     },
     {
       "GradeID": 174,
       "EngineID": 2,
-      "BasePrice": 3128000
+      "BasePrice": 3128000,
+      "Rank": 130,
+      "FuelEfficiency": 12.81371746197176,
+      "FuelCostPerKilo": 12.486618381811844,
+      "MonthlyMainteCost": 31280.0,
+      "MonthlyInsuranceCost": 31280.0,
+      "MonthlyParkingCost": 31280.0,
+      "MonthlyPriceDropRate": 0.02437256507605648
     },
     {
       "GradeID": 175,
       "EngineID": 2,
-      "BasePrice": 4338000
+      "BasePrice": 4338000,
+      "Rank": 17,
+      "FuelEfficiency": 14.314995409315367,
+      "FuelCostPerKilo": 11.177090556094855,
+      "MonthlyMainteCost": 43380.0,
+      "MonthlyInsuranceCost": 43380.0,
+      "MonthlyParkingCost": 43380.0,
+      "MonthlyPriceDropRate": 0.021370009181369266
     },
     {
       "GradeID": 176,
       "EngineID": 1,
-      "BasePrice": 4339000
+      "BasePrice": 4339000,
+      "Rank": 10,
+      "FuelEfficiency": 14.316236134891685,
+      "FuelCostPerKilo": 11.176121886537361,
+      "MonthlyMainteCost": 43390.0,
+      "MonthlyInsuranceCost": 43390.0,
+      "MonthlyParkingCost": 43390.0,
+      "MonthlyPriceDropRate": 0.02136752773021663
     },
     {
       "GradeID": 177,
       "EngineID": 2,
-      "BasePrice": 3729000
+      "BasePrice": 3729000,
+      "Rank": 104,
+      "FuelEfficiency": 13.559393533338294,
+      "FuelCostPerKilo": 11.799937777940452,
+      "MonthlyMainteCost": 37290.0,
+      "MonthlyInsuranceCost": 37290.0,
+      "MonthlyParkingCost": 37290.0,
+      "MonthlyPriceDropRate": 0.02288121293332341
     },
     {
       "GradeID": 178,
       "EngineID": 1,
-      "BasePrice": 4848000
+      "BasePrice": 4848000,
+      "Rank": 49,
+      "FuelEfficiency": 14.947765453237052,
+      "FuelCostPerKilo": 10.703941033898868,
+      "MonthlyMainteCost": 48480.0,
+      "MonthlyInsuranceCost": 48480.0,
+      "MonthlyParkingCost": 48480.0,
+      "MonthlyPriceDropRate": 0.020104469093525895
     },
     {
       "GradeID": 179,
       "EngineID": 2,
-      "BasePrice": 4538000
+      "BasePrice": 4538000,
+      "Rank": 235,
+      "FuelEfficiency": 14.563140524578774,
+      "FuelCostPerKilo": 10.986641221374045,
+      "MonthlyMainteCost": 45380.0,
+      "MonthlyInsuranceCost": 45380.0,
+      "MonthlyParkingCost": 45380.0,
+      "MonthlyPriceDropRate": 0.020873718950842453
     },
     {
       "GradeID": 180,
       "EngineID": 2,
-      "BasePrice": 4238000
+      "BasePrice": 4238000,
+      "Rank": 244,
+      "FuelEfficiency": 14.190922851683665,
+      "FuelCostPerKilo": 11.27481289781073,
+      "MonthlyMainteCost": 42380.0,
+      "MonthlyInsuranceCost": 42380.0,
+      "MonthlyParkingCost": 42380.0,
+      "MonthlyPriceDropRate": 0.02161815429663267
     },
     {
       "GradeID": 181,
       "EngineID": 1,
-      "BasePrice": 4928000
+      "BasePrice": 4928000,
+      "Rank": 72,
+      "FuelEfficiency": 15.047023499342416,
+      "FuelCostPerKilo": 10.633332233912729,
+      "MonthlyMainteCost": 49280.0,
+      "MonthlyInsuranceCost": 49280.0,
+      "MonthlyParkingCost": 49280.0,
+      "MonthlyPriceDropRate": 0.019905953001315167
     },
     {
       "GradeID": 182,
       "EngineID": 6,
-      "BasePrice": 6000000
+      "BasePrice": 6000000,
+      "Rank": 135,
+      "FuelEfficiency": 16.37708131715427,
+      "FuelCostPerKilo": 9.769750598502986,
+      "MonthlyMainteCost": 60000.0,
+      "MonthlyInsuranceCost": 60000.0,
+      "MonthlyParkingCost": 60000.0,
+      "MonthlyPriceDropRate": 0.017245837365691456
     },
     {
       "GradeID": 183,
       "EngineID": 6,
-      "BasePrice": 6500000
+      "BasePrice": 6500000,
+      "Rank": 125,
+      "FuelEfficiency": 16.997444105312788,
+      "FuelCostPerKilo": 9.413179946859762,
+      "MonthlyMainteCost": 65000.0,
+      "MonthlyInsuranceCost": 65000.0,
+      "MonthlyParkingCost": 65000.0,
+      "MonthlyPriceDropRate": 0.016005111789374426
     },
     {
       "GradeID": 184,
       "EngineID": 6,
-      "BasePrice": 5500000
+      "BasePrice": 5500000,
+      "Rank": 206,
+      "FuelEfficiency": 15.756718528995757,
+      "FuelCostPerKilo": 10.15439856373429,
+      "MonthlyMainteCost": 55000.0,
+      "MonthlyInsuranceCost": 55000.0,
+      "MonthlyParkingCost": 55000.0,
+      "MonthlyPriceDropRate": 0.018486562942008487
     },
     {
       "GradeID": 185,
       "EngineID": 6,
-      "BasePrice": 6000000
+      "BasePrice": 6000000,
+      "Rank": 199,
+      "FuelEfficiency": 16.37708131715427,
+      "FuelCostPerKilo": 9.769750598502986,
+      "MonthlyMainteCost": 60000.0,
+      "MonthlyInsuranceCost": 60000.0,
+      "MonthlyParkingCost": 60000.0,
+      "MonthlyPriceDropRate": 0.017245837365691456
     },
     {
       "GradeID": 186,
       "EngineID": 1,
-      "BasePrice": 2338000
+      "BasePrice": 2338000,
+      "Rank": 172,
+      "FuelEfficiency": 11.833544256681307,
+      "FuelCostPerKilo": 13.520885757423251,
+      "MonthlyMainteCost": 23380.0,
+      "MonthlyInsuranceCost": 23380.0,
+      "MonthlyParkingCost": 23380.0,
+      "MonthlyPriceDropRate": 0.026332911486637384
     },
     {
       "GradeID": 187,
       "EngineID": 1,
-      "BasePrice": 2173000
+      "BasePrice": 2173000,
+      "Rank": 13,
+      "FuelEfficiency": 11.628824536588997,
+      "FuelCostPerKilo": 13.758914282056207,
+      "MonthlyMainteCost": 21730.0,
+      "MonthlyInsuranceCost": 21730.0,
+      "MonthlyParkingCost": 21730.0,
+      "MonthlyPriceDropRate": 0.026742350926822006
     },
     {
       "GradeID": 188,
       "EngineID": 2,
-      "BasePrice": 2309200
+      "BasePrice": 2309200,
+      "Rank": 241,
+      "FuelEfficiency": 11.797811360083376,
+      "FuelCostPerKilo": 13.56183745583039,
+      "MonthlyMainteCost": 23092.0,
+      "MonthlyInsuranceCost": 23092.0,
+      "MonthlyParkingCost": 23092.0,
+      "MonthlyPriceDropRate": 0.026404377279833247
     },
     {
       "GradeID": 189,
       "EngineID": 2,
-      "BasePrice": 1867000
+      "BasePrice": 1867000,
+      "Rank": 111,
+      "FuelEfficiency": 11.249162510235987,
+      "FuelCostPerKilo": 14.223281053537157,
+      "MonthlyMainteCost": 18670.0,
+      "MonthlyInsuranceCost": 18670.0,
+      "MonthlyParkingCost": 18670.0,
+      "MonthlyPriceDropRate": 0.027501674979528032
     },
     {
       "GradeID": 190,
       "EngineID": 2,
-      "BasePrice": 1717000
+      "BasePrice": 1717000,
+      "Rank": 95,
+      "FuelEfficiency": 11.063053673788431,
+      "FuelCostPerKilo": 14.462552991050401,
+      "MonthlyMainteCost": 17170.0,
+      "MonthlyInsuranceCost": 17170.0,
+      "MonthlyParkingCost": 17170.0,
+      "MonthlyPriceDropRate": 0.02787389265242314
     },
     {
       "GradeID": 191,
       "EngineID": 2,
-      "BasePrice": 2143700
+      "BasePrice": 2143700,
+      "Rank": 163,
+      "FuelEfficiency": 11.59247127720291,
+      "FuelCostPerKilo": 13.8020613701797,
+      "MonthlyMainteCost": 21437.0,
+      "MonthlyInsuranceCost": 21437.0,
+      "MonthlyParkingCost": 21437.0,
+      "MonthlyPriceDropRate": 0.026815057445594183
     },
     {
       "GradeID": 192,
       "EngineID": 2,
-      "BasePrice": 1994800
+      "BasePrice": 1994800,
+      "Rank": 168,
+      "FuelEfficiency": 11.407727238889303,
+      "FuelCostPerKilo": 14.025580788305925,
+      "MonthlyMainteCost": 19948.0,
+      "MonthlyInsuranceCost": 19948.0,
+      "MonthlyParkingCost": 19948.0,
+      "MonthlyPriceDropRate": 0.027184545522221396
     },
     {
       "GradeID": 193,
       "EngineID": 2,
-      "BasePrice": 2049000
+      "BasePrice": 2049000,
+      "Rank": 27,
+      "FuelEfficiency": 11.474974565125686,
+      "FuelCostPerKilo": 13.943386025993123,
+      "MonthlyMainteCost": 20490.0,
+      "MonthlyInsuranceCost": 20490.0,
+      "MonthlyParkingCost": 20490.0,
+      "MonthlyPriceDropRate": 0.027050050869748633
     },
     {
       "GradeID": 194,
       "EngineID": 1,
-      "BasePrice": 4304000
+      "BasePrice": 4304000,
+      "Rank": 96,
+      "FuelEfficiency": 14.27281073972059,
+      "FuelCostPerKilo": 11.210125525922319,
+      "MonthlyMainteCost": 43040.0,
+      "MonthlyInsuranceCost": 43040.0,
+      "MonthlyParkingCost": 43040.0,
+      "MonthlyPriceDropRate": 0.02145437852055882
     },
     {
       "GradeID": 195,
       "EngineID": 2,
-      "BasePrice": 3684000
+      "BasePrice": 3684000,
+      "Rank": 252,
+      "FuelEfficiency": 13.503560882404031,
+      "FuelCostPerKilo": 11.848726524311807,
+      "MonthlyMainteCost": 36840.0,
+      "MonthlyInsuranceCost": 36840.0,
+      "MonthlyParkingCost": 36840.0,
+      "MonthlyPriceDropRate": 0.02299287823519194
     },
     {
       "GradeID": 196,
       "EngineID": 1,
-      "BasePrice": 4503000
+      "BasePrice": 4503000,
+      "Rank": 46,
+      "FuelEfficiency": 14.519715129407677,
+      "FuelCostPerKilo": 11.019499940184232,
+      "MonthlyMainteCost": 45030.0,
+      "MonthlyInsuranceCost": 45030.0,
+      "MonthlyParkingCost": 45030.0,
+      "MonthlyPriceDropRate": 0.020960569741184647
     },
     {
       "GradeID": 197,
       "EngineID": 2,
-      "BasePrice": 3884000
+      "BasePrice": 3884000,
+      "Rank": 75,
+      "FuelEfficiency": 13.751705997667436,
+      "FuelCostPerKilo": 11.634920062073695,
+      "MonthlyMainteCost": 38840.0,
+      "MonthlyInsuranceCost": 38840.0,
+      "MonthlyParkingCost": 38840.0,
+      "MonthlyPriceDropRate": 0.022496588004665127
     },
     {
       "GradeID": 198,
       "EngineID": 1,
-      "BasePrice": 3538000
+      "BasePrice": 3538000,
+      "Rank": 41,
+      "FuelEfficiency": 13.322414948261743,
+      "FuelCostPerKilo": 12.009834599910596,
+      "MonthlyMainteCost": 35380.0,
+      "MonthlyInsuranceCost": 35380.0,
+      "MonthlyParkingCost": 35380.0,
+      "MonthlyPriceDropRate": 0.023355170103476514
     },
     {
       "GradeID": 199,
       "EngineID": 4,
-      "BasePrice": 5633000
+      "BasePrice": 5633000,
+      "Rank": 219,
+      "FuelEfficiency": 15.92173503064592,
+      "FuelCostPerKilo": 10.049156055670714,
+      "MonthlyMainteCost": 56330.0,
+      "MonthlyInsuranceCost": 56330.0,
+      "MonthlyParkingCost": 56330.0,
+      "MonthlyPriceDropRate": 0.018156529938708157
     },
     {
       "GradeID": 200,
       "EngineID": 2,
-      "BasePrice": 2938000
+      "BasePrice": 2938000,
+      "Rank": 165,
+      "FuelEfficiency": 12.577979602471526,
+      "FuelCostPerKilo": 12.72064393939394,
+      "MonthlyMainteCost": 29380.0,
+      "MonthlyInsuranceCost": 29380.0,
+      "MonthlyParkingCost": 29380.0,
+      "MonthlyPriceDropRate": 0.02484404079505695
     },
     {
       "GradeID": 201,
       "EngineID": 2,
-      "BasePrice": 3836000
+      "BasePrice": 3836000,
+      "Rank": 21,
+      "FuelEfficiency": 13.69215117000422,
+      "FuelCostPerKilo": 11.685526840407407,
+      "MonthlyMainteCost": 38360.0,
+      "MonthlyInsuranceCost": 38360.0,
+      "MonthlyParkingCost": 38360.0,
+      "MonthlyPriceDropRate": 0.022615697659991565
     },
     {
       "GradeID": 202,
       "EngineID": 2,
-      "BasePrice": 3666000
+      "BasePrice": 3666000,
+      "Rank": 51,
+      "FuelEfficiency": 13.481227822030323,
+      "FuelCostPerKilo": 11.868355175968192,
+      "MonthlyMainteCost": 36660.0,
+      "MonthlyInsuranceCost": 36660.0,
+      "MonthlyParkingCost": 36660.0,
+      "MonthlyPriceDropRate": 0.023037544355939354
     },
     {
       "GradeID": 203,
       "EngineID": 1,
-      "BasePrice": 4303000
+      "BasePrice": 4303000,
+      "Rank": 163,
+      "FuelEfficiency": 14.27157001414427,
+      "FuelCostPerKilo": 11.211100099108029,
+      "MonthlyMainteCost": 43030.0,
+      "MonthlyInsuranceCost": 43030.0,
+      "MonthlyParkingCost": 43030.0,
+      "MonthlyPriceDropRate": 0.021456859971711456
     },
     {
       "GradeID": 204,
       "EngineID": 1,
-      "BasePrice": 3791000
+      "BasePrice": 3791000,
+      "Rank": 231,
+      "FuelEfficiency": 13.636318519069953,
+      "FuelCostPerKilo": 11.733372154386476,
+      "MonthlyMainteCost": 37910.0,
+      "MonthlyInsuranceCost": 37910.0,
+      "MonthlyParkingCost": 37910.0,
+      "MonthlyPriceDropRate": 0.022727362961860096
     },
     {
       "GradeID": 205,
       "EngineID": 2,
-      "BasePrice": 3169000
+      "BasePrice": 3169000,
+      "Rank": 205,
+      "FuelEfficiency": 12.86458721060076,
+      "FuelCostPerKilo": 12.43724321509172,
+      "MonthlyMainteCost": 31690.0,
+      "MonthlyInsuranceCost": 31690.0,
+      "MonthlyParkingCost": 31690.0,
+      "MonthlyPriceDropRate": 0.02427082557879848
     },
     {
       "GradeID": 206,
       "EngineID": 1,
-      "BasePrice": 5450000
+      "BasePrice": 5450000,
+      "Rank": 107,
+      "FuelEfficiency": 15.694682250179905,
+      "FuelCostPerKilo": 10.194535795598279,
+      "MonthlyMainteCost": 54500.0,
+      "MonthlyInsuranceCost": 54500.0,
+      "MonthlyParkingCost": 54500.0,
+      "MonthlyPriceDropRate": 0.01861063549964019
     },
     {
       "GradeID": 207,
       "EngineID": 2,
-      "BasePrice": 5450000
+      "BasePrice": 5450000,
+      "Rank": 233,
+      "FuelEfficiency": 15.694682250179905,
+      "FuelCostPerKilo": 10.194535795598279,
+      "MonthlyMainteCost": 54500.0,
+      "MonthlyInsuranceCost": 54500.0,
+      "MonthlyParkingCost": 54500.0,
+      "MonthlyPriceDropRate": 0.01861063549964019
     },
     {
       "GradeID": 208,
       "EngineID": 5,
-      "BasePrice": 6300000
+      "BasePrice": 6300000,
+      "Rank": 11,
+      "FuelEfficiency": 16.749298990049382,
+      "FuelCostPerKilo": 9.552638596699161,
+      "MonthlyMainteCost": 63000.0,
+      "MonthlyInsuranceCost": 63000.0,
+      "MonthlyParkingCost": 63000.0,
+      "MonthlyPriceDropRate": 0.01650140201990124
     },
     {
       "GradeID": 209,
       "EngineID": 5,
-      "BasePrice": 5200000
+      "BasePrice": 5200000,
+      "Rank": 25,
+      "FuelEfficiency": 15.384500856100649,
+      "FuelCostPerKilo": 10.400077421852316,
+      "MonthlyMainteCost": 52000.0,
+      "MonthlyInsuranceCost": 52000.0,
+      "MonthlyParkingCost": 52000.0,
+      "MonthlyPriceDropRate": 0.019230998287798704
     },
     {
       "GradeID": 210,
       "EngineID": 5,
-      "BasePrice": 7350000
+      "BasePrice": 7350000,
+      "Rank": 14,
+      "FuelEfficiency": 18.05206084518226,
+      "FuelCostPerKilo": 8.863253972617805,
+      "MonthlyMainteCost": 73500.0,
+      "MonthlyInsuranceCost": 73500.0,
+      "MonthlyParkingCost": 73500.0,
+      "MonthlyPriceDropRate": 0.013895878309635474
     },
     {
       "GradeID": 211,
       "EngineID": 2,
-      "BasePrice": 2382200
+      "BasePrice": 2382200,
+      "Rank": 128,
+      "FuelEfficiency": 11.888384327154519,
+      "FuelCostPerKilo": 13.458515101546684,
+      "MonthlyMainteCost": 23822.0,
+      "MonthlyInsuranceCost": 23822.0,
+      "MonthlyParkingCost": 23822.0,
+      "MonthlyPriceDropRate": 0.02622323134569096
     },
     {
       "GradeID": 212,
       "EngineID": 2,
-      "BasePrice": 2437200
+      "BasePrice": 2437200,
+      "Rank": 53,
+      "FuelEfficiency": 11.956624233851956,
+      "FuelCostPerKilo": 13.381703470031546,
+      "MonthlyMainteCost": 24372.0,
+      "MonthlyInsuranceCost": 24372.0,
+      "MonthlyParkingCost": 24372.0,
+      "MonthlyPriceDropRate": 0.026086751532296087
     },
     {
       "GradeID": 213,
       "EngineID": 2,
-      "BasePrice": 2936000
+      "BasePrice": 2936000,
+      "Rank": 83,
+      "FuelEfficiency": 12.575498151318891,
+      "FuelCostPerKilo": 12.723154031335095,
+      "MonthlyMainteCost": 29360.0,
+      "MonthlyInsuranceCost": 29360.0,
+      "MonthlyParkingCost": 29360.0,
+      "MonthlyPriceDropRate": 0.024849003697362218
     },
     {
       "GradeID": 214,
       "EngineID": 2,
-      "BasePrice": 3195000
+      "BasePrice": 3195000,
+      "Rank": 70,
+      "FuelEfficiency": 12.896846075585003,
+      "FuelCostPerKilo": 12.40613395416851,
+      "MonthlyMainteCost": 31950.0,
+      "MonthlyInsuranceCost": 31950.0,
+      "MonthlyParkingCost": 31950.0,
+      "MonthlyPriceDropRate": 0.024206307848829996
     },
     {
       "GradeID": 215,
       "EngineID": 2,
-      "BasePrice": 3616000
+      "BasePrice": 3616000,
+      "Rank": 243,
+      "FuelEfficiency": 13.419191543214472,
+      "FuelCostPerKilo": 11.923222012648397,
+      "MonthlyMainteCost": 36160.0,
+      "MonthlyInsuranceCost": 36160.0,
+      "MonthlyParkingCost": 36160.0,
+      "MonthlyPriceDropRate": 0.023161616913571055
     },
     {
       "GradeID": 216,
       "EngineID": 2,
-      "BasePrice": 3518000
+      "BasePrice": 3518000,
+      "Rank": 150,
+      "FuelEfficiency": 13.2976004367354,
+      "FuelCostPerKilo": 12.032246025229531,
+      "MonthlyMainteCost": 35180.0,
+      "MonthlyInsuranceCost": 35180.0,
+      "MonthlyParkingCost": 35180.0,
+      "MonthlyPriceDropRate": 0.023404799126529194
     },
     {
       "GradeID": 217,
       "EngineID": 2,
-      "BasePrice": 3293000
+      "BasePrice": 3293000,
+      "Rank": 241,
+      "FuelEfficiency": 13.018437182064071,
+      "FuelCostPerKilo": 12.29026170825153,
+      "MonthlyMainteCost": 32930.0,
+      "MonthlyInsuranceCost": 32930.0,
+      "MonthlyParkingCost": 32930.0,
+      "MonthlyPriceDropRate": 0.023963125635871857
     },
     {
       "GradeID": 218,
       "EngineID": 2,
-      "BasePrice": 3490000
+      "BasePrice": 3490000,
+      "Rank": 189,
+      "FuelEfficiency": 13.262860120598525,
+      "FuelCostPerKilo": 12.063762909744051,
+      "MonthlyMainteCost": 34900.0,
+      "MonthlyInsuranceCost": 34900.0,
+      "MonthlyParkingCost": 34900.0,
+      "MonthlyPriceDropRate": 0.02347427975880295
     },
     {
       "GradeID": 219,
       "EngineID": 2,
-      "BasePrice": 4980000
+      "BasePrice": 4980000,
+      "Rank": 211,
+      "FuelEfficiency": 15.111541229310902,
+      "FuelCostPerKilo": 10.587933922296298,
+      "MonthlyMainteCost": 49800.0,
+      "MonthlyInsuranceCost": 49800.0,
+      "MonthlyParkingCost": 49800.0,
+      "MonthlyPriceDropRate": 0.019776917541378197
     },
     {
       "GradeID": 220,
       "EngineID": 2,
-      "BasePrice": 4480000
+      "BasePrice": 4480000,
+      "Rank": 106,
+      "FuelEfficiency": 14.491178441152385,
+      "FuelCostPerKilo": 11.041200041097298,
+      "MonthlyMainteCost": 44800.0,
+      "MonthlyInsuranceCost": 44800.0,
+      "MonthlyParkingCost": 44800.0,
+      "MonthlyPriceDropRate": 0.02101764311769523
     },
     {
       "GradeID": 221,
       "EngineID": 2,
-      "BasePrice": 4830000
+      "BasePrice": 4830000,
+      "Rank": 162,
+      "FuelEfficiency": 14.925432392863346,
+      "FuelCostPerKilo": 10.719957438318813,
+      "MonthlyMainteCost": 48300.0,
+      "MonthlyInsuranceCost": 48300.0,
+      "MonthlyParkingCost": 48300.0,
+      "MonthlyPriceDropRate": 0.020149135214273306
     },
     {
       "GradeID": 222,
       "EngineID": 2,
-      "BasePrice": 3840000
+      "BasePrice": 3840000,
+      "Rank": 53,
+      "FuelEfficiency": 13.697114072309486,
+      "FuelCostPerKilo": 11.681292800463785,
+      "MonthlyMainteCost": 38400.0,
+      "MonthlyInsuranceCost": 38400.0,
+      "MonthlyParkingCost": 38400.0,
+      "MonthlyPriceDropRate": 0.022605771855381027
     },
     {
       "GradeID": 223,
       "EngineID": 2,
-      "BasePrice": 5330000
+      "BasePrice": 5330000,
+      "Rank": 40,
+      "FuelEfficiency": 15.545795181021862,
+      "FuelCostPerKilo": 10.29217213638105,
+      "MonthlyMainteCost": 53300.0,
+      "MonthlyInsuranceCost": 53300.0,
+      "MonthlyParkingCost": 53300.0,
+      "MonthlyPriceDropRate": 0.018908409637956276
     },
     {
       "GradeID": 224,
       "EngineID": 2,
-      "BasePrice": 7313000
+      "BasePrice": 7313000,
+      "Rank": 131,
+      "FuelEfficiency": 18.006153998858533,
+      "FuelCostPerKilo": 8.885850915755963,
+      "MonthlyMainteCost": 73130.0,
+      "MonthlyInsuranceCost": 73130.0,
+      "MonthlyParkingCost": 73130.0,
+      "MonthlyPriceDropRate": 0.013987692002282934
     },
     {
       "GradeID": 225,
       "EngineID": 2,
-      "BasePrice": 4995000
+      "BasePrice": 4995000,
+      "Rank": 27,
+      "FuelEfficiency": 15.130152112955656,
+      "FuelCostPerKilo": 10.574910206156824,
+      "MonthlyMainteCost": 49950.0,
+      "MonthlyInsuranceCost": 49950.0,
+      "MonthlyParkingCost": 49950.0,
+      "MonthlyPriceDropRate": 0.01973969577408869
     },
     {
       "GradeID": 226,
       "EngineID": 2,
-      "BasePrice": 6013000
+      "BasePrice": 6013000,
+      "Rank": 81,
+      "FuelEfficiency": 16.393210749646393,
+      "FuelCostPerKilo": 9.76013805004314,
+      "MonthlyMainteCost": 60130.0,
+      "MonthlyInsuranceCost": 60130.0,
+      "MonthlyParkingCost": 60130.0,
+      "MonthlyPriceDropRate": 0.017213578500707215
     },
     {
       "GradeID": 227,
       "EngineID": 2,
-      "BasePrice": 7313000
+      "BasePrice": 7313000,
+      "Rank": 86,
+      "FuelEfficiency": 18.006153998858533,
+      "FuelCostPerKilo": 8.885850915755963,
+      "MonthlyMainteCost": 73130.0,
+      "MonthlyInsuranceCost": 73130.0,
+      "MonthlyParkingCost": 73130.0,
+      "MonthlyPriceDropRate": 0.013987692002282934
     },
     {
       "GradeID": 228,
       "EngineID": 1,
-      "BasePrice": 5450000
+      "BasePrice": 5450000,
+      "Rank": 227,
+      "FuelEfficiency": 15.694682250179905,
+      "FuelCostPerKilo": 10.194535795598279,
+      "MonthlyMainteCost": 54500.0,
+      "MonthlyInsuranceCost": 54500.0,
+      "MonthlyParkingCost": 54500.0,
+      "MonthlyPriceDropRate": 0.01861063549964019
     },
     {
       "GradeID": 229,
       "EngineID": 1,
-      "BasePrice": 2294000
+      "BasePrice": 2294000,
+      "Rank": 146,
+      "FuelEfficiency": 11.778952331323358,
+      "FuelCostPerKilo": 13.583551023847644,
+      "MonthlyMainteCost": 22940.0,
+      "MonthlyInsuranceCost": 22940.0,
+      "MonthlyParkingCost": 22940.0,
+      "MonthlyPriceDropRate": 0.026442095337353283
     },
     {
       "GradeID": 230,
       "EngineID": 1,
-      "BasePrice": 2667000
+      "BasePrice": 2667000,
+      "Rank": 55,
+      "FuelEfficiency": 12.24174297128961,
+      "FuelCostPerKilo": 13.070034256988222,
+      "MonthlyMainteCost": 26670.0,
+      "MonthlyInsuranceCost": 26670.0,
+      "MonthlyParkingCost": 26670.0,
+      "MonthlyPriceDropRate": 0.02551651405742078
     },
     {
       "GradeID": 231,
       "EngineID": 1,
-      "BasePrice": 2146000
+      "BasePrice": 2146000,
+      "Rank": 244,
+      "FuelEfficiency": 11.595324946028438,
+      "FuelCostPerKilo": 13.798664612223934,
+      "MonthlyMainteCost": 21460.0,
+      "MonthlyInsuranceCost": 21460.0,
+      "MonthlyParkingCost": 21460.0,
+      "MonthlyPriceDropRate": 0.026809350107943122
     },
     {
       "GradeID": 232,
       "EngineID": 1,
-      "BasePrice": 2763000
+      "BasePrice": 2763000,
+      "Rank": 199,
+      "FuelEfficiency": 12.360852626616046,
+      "FuelCostPerKilo": 12.944090899965872,
+      "MonthlyMainteCost": 27630.0,
+      "MonthlyInsuranceCost": 27630.0,
+      "MonthlyParkingCost": 27630.0,
+      "MonthlyPriceDropRate": 0.02527829474676791
     },
     {
       "GradeID": 233,
       "EngineID": 1,
-      "BasePrice": 2837000
+      "BasePrice": 2837000,
+      "Rank": 16,
+      "FuelEfficiency": 12.452666319263505,
+      "FuelCostPerKilo": 12.84865392662854,
+      "MonthlyMainteCost": 28370.0,
+      "MonthlyInsuranceCost": 28370.0,
+      "MonthlyParkingCost": 28370.0,
+      "MonthlyPriceDropRate": 0.02509466736147299
     },
     {
       "GradeID": 234,
       "EngineID": 1,
-      "BasePrice": 2565000
+      "BasePrice": 2565000,
+      "Rank": 135,
+      "FuelEfficiency": 12.115188962505272,
+      "FuelCostPerKilo": 13.206562480797986,
+      "MonthlyMainteCost": 25650.0,
+      "MonthlyInsuranceCost": 25650.0,
+      "MonthlyParkingCost": 25650.0,
+      "MonthlyPriceDropRate": 0.02576962207498945
     },
     {
       "GradeID": 235,
       "EngineID": 1,
-      "BasePrice": 2344000
+      "BasePrice": 2344000,
+      "Rank": 32,
+      "FuelEfficiency": 11.84098861013921,
+      "FuelCostPerKilo": 13.512385263422608,
+      "MonthlyMainteCost": 23440.0,
+      "MonthlyInsuranceCost": 23440.0,
+      "MonthlyParkingCost": 23440.0,
+      "MonthlyPriceDropRate": 0.026318022779721582
     },
     {
       "GradeID": 236,
       "EngineID": 1,
-      "BasePrice": 2492000
+      "BasePrice": 2492000,
+      "Rank": 179,
+      "FuelEfficiency": 12.024615995434129,
+      "FuelCostPerKilo": 13.306038218663586,
+      "MonthlyMainteCost": 24920.0,
+      "MonthlyInsuranceCost": 24920.0,
+      "MonthlyParkingCost": 24920.0,
+      "MonthlyPriceDropRate": 0.025950768009131743
     },
     {
       "GradeID": 237,
       "EngineID": 2,
-      "BasePrice": 2382200
+      "BasePrice": 2382200,
+      "Rank": 223,
+      "FuelEfficiency": 11.888384327154519,
+      "FuelCostPerKilo": 13.458515101546684,
+      "MonthlyMainteCost": 23822.0,
+      "MonthlyInsuranceCost": 23822.0,
+      "MonthlyParkingCost": 23822.0,
+      "MonthlyPriceDropRate": 0.02622323134569096
     },
     {
       "GradeID": 238,
       "EngineID": 2,
-      "BasePrice": 2437200
+      "BasePrice": 2437200,
+      "Rank": 18,
+      "FuelEfficiency": 11.956624233851956,
+      "FuelCostPerKilo": 13.381703470031546,
+      "MonthlyMainteCost": 24372.0,
+      "MonthlyInsuranceCost": 24372.0,
+      "MonthlyParkingCost": 24372.0,
+      "MonthlyPriceDropRate": 0.026086751532296087
     },
     {
       "GradeID": 239,
       "EngineID": 2,
-      "BasePrice": 2936000
+      "BasePrice": 2936000,
+      "Rank": 143,
+      "FuelEfficiency": 12.575498151318891,
+      "FuelCostPerKilo": 12.723154031335095,
+      "MonthlyMainteCost": 29360.0,
+      "MonthlyInsuranceCost": 29360.0,
+      "MonthlyParkingCost": 29360.0,
+      "MonthlyPriceDropRate": 0.024849003697362218
     },
     {
       "GradeID": 240,
       "EngineID": 2,
-      "BasePrice": 3195000
+      "BasePrice": 3195000,
+      "Rank": 22,
+      "FuelEfficiency": 12.896846075585003,
+      "FuelCostPerKilo": 12.40613395416851,
+      "MonthlyMainteCost": 31950.0,
+      "MonthlyInsuranceCost": 31950.0,
+      "MonthlyParkingCost": 31950.0,
+      "MonthlyPriceDropRate": 0.024206307848829996
     },
     {
       "GradeID": 241,
       "EngineID": 2,
-      "BasePrice": 3616000
+      "BasePrice": 3616000,
+      "Rank": 10,
+      "FuelEfficiency": 13.419191543214472,
+      "FuelCostPerKilo": 11.923222012648397,
+      "MonthlyMainteCost": 36160.0,
+      "MonthlyInsuranceCost": 36160.0,
+      "MonthlyParkingCost": 36160.0,
+      "MonthlyPriceDropRate": 0.023161616913571055
     },
     {
       "GradeID": 242,
       "EngineID": 2,
-      "BasePrice": 3518000
+      "BasePrice": 3518000,
+      "Rank": 69,
+      "FuelEfficiency": 13.2976004367354,
+      "FuelCostPerKilo": 12.032246025229531,
+      "MonthlyMainteCost": 35180.0,
+      "MonthlyInsuranceCost": 35180.0,
+      "MonthlyParkingCost": 35180.0,
+      "MonthlyPriceDropRate": 0.023404799126529194
     },
     {
       "GradeID": 243,
       "EngineID": 2,
-      "BasePrice": 3293000
+      "BasePrice": 3293000,
+      "Rank": 212,
+      "FuelEfficiency": 13.018437182064071,
+      "FuelCostPerKilo": 12.29026170825153,
+      "MonthlyMainteCost": 32930.0,
+      "MonthlyInsuranceCost": 32930.0,
+      "MonthlyParkingCost": 32930.0,
+      "MonthlyPriceDropRate": 0.023963125635871857
     },
     {
       "GradeID": 244,
       "EngineID": 2,
-      "BasePrice": 3490000
+      "BasePrice": 3490000,
+      "Rank": 211,
+      "FuelEfficiency": 13.262860120598525,
+      "FuelCostPerKilo": 12.063762909744051,
+      "MonthlyMainteCost": 34900.0,
+      "MonthlyInsuranceCost": 34900.0,
+      "MonthlyParkingCost": 34900.0,
+      "MonthlyPriceDropRate": 0.02347427975880295
     },
     {
       "GradeID": 245,
       "EngineID": 2,
-      "BasePrice": 4980000
+      "BasePrice": 4980000,
+      "Rank": 96,
+      "FuelEfficiency": 15.111541229310902,
+      "FuelCostPerKilo": 10.587933922296298,
+      "MonthlyMainteCost": 49800.0,
+      "MonthlyInsuranceCost": 49800.0,
+      "MonthlyParkingCost": 49800.0,
+      "MonthlyPriceDropRate": 0.019776917541378197
     },
     {
       "GradeID": 246,
       "EngineID": 2,
-      "BasePrice": 4480000
+      "BasePrice": 4480000,
+      "Rank": 151,
+      "FuelEfficiency": 14.491178441152385,
+      "FuelCostPerKilo": 11.041200041097298,
+      "MonthlyMainteCost": 44800.0,
+      "MonthlyInsuranceCost": 44800.0,
+      "MonthlyParkingCost": 44800.0,
+      "MonthlyPriceDropRate": 0.02101764311769523
     },
     {
       "GradeID": 247,
       "EngineID": 2,
-      "BasePrice": 4830000
+      "BasePrice": 4830000,
+      "Rank": 112,
+      "FuelEfficiency": 14.925432392863346,
+      "FuelCostPerKilo": 10.719957438318813,
+      "MonthlyMainteCost": 48300.0,
+      "MonthlyInsuranceCost": 48300.0,
+      "MonthlyParkingCost": 48300.0,
+      "MonthlyPriceDropRate": 0.020149135214273306
     },
     {
       "GradeID": 248,
       "EngineID": 2,
-      "BasePrice": 3840000
+      "BasePrice": 3840000,
+      "Rank": 30,
+      "FuelEfficiency": 13.697114072309486,
+      "FuelCostPerKilo": 11.681292800463785,
+      "MonthlyMainteCost": 38400.0,
+      "MonthlyInsuranceCost": 38400.0,
+      "MonthlyParkingCost": 38400.0,
+      "MonthlyPriceDropRate": 0.022605771855381027
     },
     {
       "GradeID": 249,
       "EngineID": 2,
-      "BasePrice": 5330000
+      "BasePrice": 5330000,
+      "Rank": 144,
+      "FuelEfficiency": 15.545795181021862,
+      "FuelCostPerKilo": 10.29217213638105,
+      "MonthlyMainteCost": 53300.0,
+      "MonthlyInsuranceCost": 53300.0,
+      "MonthlyParkingCost": 53300.0,
+      "MonthlyPriceDropRate": 0.018908409637956276
     },
     {
       "GradeID": 250,
       "EngineID": 2,
-      "BasePrice": 7313000
+      "BasePrice": 7313000,
+      "Rank": 106,
+      "FuelEfficiency": 18.006153998858533,
+      "FuelCostPerKilo": 8.885850915755963,
+      "MonthlyMainteCost": 73130.0,
+      "MonthlyInsuranceCost": 73130.0,
+      "MonthlyParkingCost": 73130.0,
+      "MonthlyPriceDropRate": 0.013987692002282934
     },
     {
       "GradeID": 251,
       "EngineID": 2,
-      "BasePrice": 4995000
+      "BasePrice": 4995000,
+      "Rank": 149,
+      "FuelEfficiency": 15.130152112955656,
+      "FuelCostPerKilo": 10.574910206156824,
+      "MonthlyMainteCost": 49950.0,
+      "MonthlyInsuranceCost": 49950.0,
+      "MonthlyParkingCost": 49950.0,
+      "MonthlyPriceDropRate": 0.01973969577408869
     },
     {
       "GradeID": 252,
       "EngineID": 2,
-      "BasePrice": 6013000
+      "BasePrice": 6013000,
+      "Rank": 127,
+      "FuelEfficiency": 16.393210749646393,
+      "FuelCostPerKilo": 9.76013805004314,
+      "MonthlyMainteCost": 60130.0,
+      "MonthlyInsuranceCost": 60130.0,
+      "MonthlyParkingCost": 60130.0,
+      "MonthlyPriceDropRate": 0.017213578500707215
     },
     {
       "GradeID": 253,
       "EngineID": 2,
-      "BasePrice": 7313000
+      "BasePrice": 7313000,
+      "Rank": 206,
+      "FuelEfficiency": 18.006153998858533,
+      "FuelCostPerKilo": 8.885850915755963,
+      "MonthlyMainteCost": 73130.0,
+      "MonthlyInsuranceCost": 73130.0,
+      "MonthlyParkingCost": 73130.0,
+      "MonthlyPriceDropRate": 0.013987692002282934
     },
     {
       "GradeID": 254,
       "EngineID": 1,
-      "BasePrice": 5450000
+      "BasePrice": 5450000,
+      "Rank": 135,
+      "FuelEfficiency": 15.694682250179905,
+      "FuelCostPerKilo": 10.194535795598279,
+      "MonthlyMainteCost": 54500.0,
+      "MonthlyInsuranceCost": 54500.0,
+      "MonthlyParkingCost": 54500.0,
+      "MonthlyPriceDropRate": 0.01861063549964019
     },
     {
       "GradeID": 255,
       "EngineID": 5,
-      "BasePrice": 4772000
+      "BasePrice": 4772000,
+      "Rank": 27,
+      "FuelEfficiency": 14.853470309436958,
+      "FuelCostPerKilo": 10.771893481238934,
+      "MonthlyMainteCost": 47720.0,
+      "MonthlyInsuranceCost": 47720.0,
+      "MonthlyParkingCost": 47720.0,
+      "MonthlyPriceDropRate": 0.020293059381126084
     },
     {
       "GradeID": 256,
       "EngineID": 5,
-      "BasePrice": 4072000
+      "BasePrice": 4072000,
+      "Rank": 43,
+      "FuelEfficiency": 13.984962406015038,
+      "FuelCostPerKilo": 11.440860215053764,
+      "MonthlyMainteCost": 40720.0,
+      "MonthlyInsuranceCost": 40720.0,
+      "MonthlyParkingCost": 40720.0,
+      "MonthlyPriceDropRate": 0.022030075187969924
     },
     {
       "GradeID": 257,
       "EngineID": 2,
-      "BasePrice": 860200
+      "BasePrice": 860200,
+      "Rank": 123,
+      "FuelEfficiency": 10.0,
+      "FuelCostPerKilo": 16.0,
+      "MonthlyMainteCost": 8602.0,
+      "MonthlyInsuranceCost": 8602.0,
+      "MonthlyParkingCost": 8602.0,
+      "MonthlyPriceDropRate": 0.03
     },
     {
       "GradeID": 258,
       "EngineID": 2,
-      "BasePrice": 1364000
+      "BasePrice": 1364000,
+      "Rank": 95,
+      "FuelEfficiency": 10.625077545348521,
+      "FuelCostPerKilo": 15.058713625110933,
+      "MonthlyMainteCost": 13640.0,
+      "MonthlyInsuranceCost": 13640.0,
+      "MonthlyParkingCost": 13640.0,
+      "MonthlyPriceDropRate": 0.028749844909302963
     },
     {
       "GradeID": 259,
       "EngineID": 2,
-      "BasePrice": 926200
+      "BasePrice": 926200,
+      "Rank": 211,
+      "FuelEfficiency": 10.081887888036924,
+      "FuelCostPerKilo": 15.870043564941298,
+      "MonthlyMainteCost": 9262.0,
+      "MonthlyInsuranceCost": 9262.0,
+      "MonthlyParkingCost": 9262.0,
+      "MonthlyPriceDropRate": 0.02983622422392615
     },
     {
       "GradeID": 260,
       "EngineID": 2,
-      "BasePrice": 1102200
+      "BasePrice": 1102200,
+      "Rank": 174,
+      "FuelEfficiency": 10.30025558946872,
+      "FuelCostPerKilo": 15.533595123949024,
+      "MonthlyMainteCost": 11022.0,
+      "MonthlyInsuranceCost": 11022.0,
+      "MonthlyParkingCost": 11022.0,
+      "MonthlyPriceDropRate": 0.02939948882106256
     },
     {
       "GradeID": 261,
       "EngineID": 2,
-      "BasePrice": 893200
+      "BasePrice": 893200,
+      "Rank": 251,
+      "FuelEfficiency": 10.040943944018462,
+      "FuelCostPerKilo": 15.934756820877817,
+      "MonthlyMainteCost": 8932.0,
+      "MonthlyInsuranceCost": 8932.0,
+      "MonthlyParkingCost": 8932.0,
+      "MonthlyPriceDropRate": 0.029918112111963074
     },
     {
       "GradeID": 262,
       "EngineID": 2,
-      "BasePrice": 992200
+      "BasePrice": 992200,
+      "Rank": 227,
+      "FuelEfficiency": 10.163775776073848,
+      "FuelCostPerKilo": 15.74218120559584,
+      "MonthlyMainteCost": 9922.0,
+      "MonthlyInsuranceCost": 9922.0,
+      "MonthlyParkingCost": 9922.0,
+      "MonthlyPriceDropRate": 0.029672448447852308
     },
     {
       "GradeID": 263,
       "EngineID": 2,
-      "BasePrice": 1234200
+      "BasePrice": 1234200,
+      "Rank": 189,
+      "FuelEfficiency": 10.46403136554257,
+      "FuelCostPerKilo": 15.29047404491451,
+      "MonthlyMainteCost": 12342.0,
+      "MonthlyInsuranceCost": 12342.0,
+      "MonthlyParkingCost": 12342.0,
+      "MonthlyPriceDropRate": 0.02907193726891486
     },
     {
       "GradeID": 264,
       "EngineID": 2,
-      "BasePrice": 959200
+      "BasePrice": 959200,
+      "Rank": 204,
+      "FuelEfficiency": 10.122831832055386,
+      "FuelCostPerKilo": 15.805853802029711,
+      "MonthlyMainteCost": 9592.0,
+      "MonthlyInsuranceCost": 9592.0,
+      "MonthlyParkingCost": 9592.0,
+      "MonthlyPriceDropRate": 0.029754336335889232
     },
     {
       "GradeID": 265,
       "EngineID": 2,
-      "BasePrice": 1091200
+      "BasePrice": 1091200,
+      "Rank": 33,
+      "FuelEfficiency": 10.286607608129234,
+      "FuelCostPerKilo": 15.554204660587638,
+      "MonthlyMainteCost": 10912.0,
+      "MonthlyInsuranceCost": 10912.0,
+      "MonthlyParkingCost": 10912.0,
+      "MonthlyPriceDropRate": 0.029426784783741534
     },
     {
       "GradeID": 266,
       "EngineID": 2,
-      "BasePrice": 1232000
+      "BasePrice": 1232000,
+      "Rank": 15,
+      "FuelEfficiency": 10.461301769274671,
+      "FuelCostPerKilo": 15.294463684235495,
+      "MonthlyMainteCost": 12320.0,
+      "MonthlyInsuranceCost": 12320.0,
+      "MonthlyParkingCost": 12320.0,
+      "MonthlyPriceDropRate": 0.02907739646145066
     },
     {
       "GradeID": 267,
       "EngineID": 2,
-      "BasePrice": 1058200
+      "BasePrice": 1058200,
+      "Rank": 246,
+      "FuelEfficiency": 10.245663664110772,
+      "FuelCostPerKilo": 15.616362711618107,
+      "MonthlyMainteCost": 10582.0,
+      "MonthlyInsuranceCost": 10582.0,
+      "MonthlyParkingCost": 10582.0,
+      "MonthlyPriceDropRate": 0.02950867267177846
     },
     {
       "GradeID": 268,
       "EngineID": 2,
-      "BasePrice": 1025200
+      "BasePrice": 1025200,
+      "Rank": 202,
+      "FuelEfficiency": 10.20471972009231,
+      "FuelCostPerKilo": 15.679019550627372,
+      "MonthlyMainteCost": 10252.0,
+      "MonthlyInsuranceCost": 10252.0,
+      "MonthlyParkingCost": 10252.0,
+      "MonthlyPriceDropRate": 0.029590560559815383
     }
   ],
   "Colors": [

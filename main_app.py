@@ -48,20 +48,20 @@ class CustomizationPage():
         self.target_grade_id = None
         self.target_parts_ids = []
     
-    def _temp_scaler(self, x):
-        return (x-x.min())/(x.max()-x.min())
+    # def _temp_scaler(self, x):
+    #     return (x-x.min())/(x.max()-x.min())
 
     def _temp_set_dummy_price_info(self):
         """
         ダミーの価格関連情報をインプットするためのテンポラリ関数。リリースまでにDB側に情報を埋め込むのが望ましいです。
         """
-        # コスト計算のためのパラメータ
-        self.df_grades["FuelEfficiency"] = (1+self._temp_scaler(self.df_grades["price"].astype(int)))*10 #10~20km/Lくらいに収める
-        self.df_grades["FuelCostPerKilo"] = 160 / self.df_grades["FuelEfficiency"]#リッター160円で計算
-        self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.01 #月額のメンテコスト
-        self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.01 #月額の保険コスト
-        self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.01 #月額の駐車場コスト
-        self.df_grades["MonthlyPriceDropRate"] = (1-self._temp_scaler(self.df_grades["price"]))*0.02+0.01 #月額の価格下落率
+        # # コスト計算のためのパラメータ
+        # self.df_grades["FuelEfficiency"] = (1+self._temp_scaler(self.df_grades["price"].astype(int)))*10 #10~20km/Lくらいに収める
+        # self.df_grades["FuelCostPerKilo"] = 160 / self.df_grades["FuelEfficiency"]#リッター160円で計算
+        # self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.01 #月額のメンテコスト
+        # self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.01 #月額の保険コスト
+        # self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.01 #月額の駐車場コスト
+        # self.df_grades["MonthlyPriceDropRate"] = (1-self._temp_scaler(self.df_grades["price"]))*0.02+0.01 #月額の価格下落率
 
         # コストと売却価格
         self.df_grades["FuelCost"] = (self.df_grades["FuelCostPerKilo"] * self.hour_per_day * 40 * self.hold_month * 30).astype(int)
@@ -106,7 +106,8 @@ class CustomizationPage():
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
         df_grades = sql_manager.get_df("""
                                         SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
-                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank 
+                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank, 
+                                        FuelEfficiency, FuelCostPerKilo, MonthlyMainteCost, MonthlyInsuranceCost, MonthlyParkingCost, MonthlyPriceDropRate
                                         from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
                                         JOIN CarModels ON CarModels.ModelID == CarGrades.ModelID
                                         """)
