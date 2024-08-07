@@ -48,20 +48,20 @@ class CustomizationPage():
         self.target_grade_id = None
         self.target_parts_ids = []
     
-    def _temp_scaler(self, x):
-        return (x-x.min())/(x.max()-x.min())
+    # def _temp_scaler(self, x):
+    #     return (x-x.min())/(x.max()-x.min())
 
     def _temp_set_dummy_price_info(self):
         """
         ダミーの価格関連情報をインプットするためのテンポラリ関数。リリースまでにDB側に情報を埋め込むのが望ましいです。
         """
-        # コスト計算のためのパラメータ
-        self.df_grades["FuelEfficiency"] = (1+self._temp_scaler(self.df_grades["price"].astype(int)))*10 #10~20km/Lくらいに収める
-        self.df_grades["FuelCostPerKilo"] = 160 / self.df_grades["FuelEfficiency"]#リッター160円で計算
-        self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.01 #月額のメンテコスト
-        self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.01 #月額の保険コスト
-        self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.01 #月額の駐車場コスト
-        self.df_grades["MonthlyPriceDropRate"] = (1-self._temp_scaler(self.df_grades["price"]))*0.02+0.01 #月額の価格下落率
+        # # コスト計算のためのパラメータ
+        # self.df_grades["FuelEfficiency"] = (1+self._temp_scaler(self.df_grades["price"].astype(int)))*10 #10~20km/Lくらいに収める
+        # self.df_grades["FuelCostPerKilo"] = 160 / self.df_grades["FuelEfficiency"]#リッター160円で計算
+        # self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.01 #月額のメンテコスト
+        # self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.01 #月額の保険コスト
+        # self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.01 #月額の駐車場コスト
+        # self.df_grades["MonthlyPriceDropRate"] = (1-self._temp_scaler(self.df_grades["price"]))*0.02+0.01 #月額の価格下落率
 
         # コストと売却価格
         self.df_grades["FuelCost"] = (self.df_grades["FuelCostPerKilo"] * self.hour_per_day * 40 * self.hold_month * 30).astype(int)
@@ -70,6 +70,8 @@ class CustomizationPage():
         self.df_grades["ResaleValue"] = (self.df_grades["price"] * (1-self.df_grades["MonthlyPriceDropRate"]) ** (self.hold_month)).astype(int)
         self.df_grades["MonthlyTotalCost"] = self.df_grades["FuelCost"]/30 + self.df_grades["MonthlyMainteCost"] + self.df_grades["MonthlyInsuranceCost"]
         self.df_grades["MonthlyRealCost"] = (self.df_grades["price"] - self.df_grades["ResaleValue"] + self.df_grades["MonthlyTotalCost"] + self.df_grades["MonthlyTotalCost"] * self.hold_month)/self.hold_month
+        self.df_grades["MonthlyTotalCost"] = self.df_grades["MonthlyTotalCost"].astype(int)
+        self.df_grades["MonthlyRealCost"] = self.df_grades["MonthlyRealCost"].astype(int)
 
     def load_data(self):
         """
@@ -104,12 +106,16 @@ class CustomizationPage():
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
         df_grades = sql_manager.get_df("""
                                         SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
-                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc 
+                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank, 
+                                        FuelEfficiency, FuelCostPerKilo, MonthlyMainteCost, MonthlyInsuranceCost, MonthlyParkingCost, MonthlyPriceDropRate
                                         from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
                                         JOIN CarModels ON CarModels.ModelID == CarGrades.ModelID
                                         """)
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
+        
+        # # 人気ランキング（本当はユーザーの予約結果から付与するのが望ましい・・・・）
+        # df_grades["rank"] = np.random.choice(range(len(df_grades)),size=len(df_grades))
         
         self.df_models = df_models
         self.df_parts = df_parts
@@ -192,8 +198,8 @@ class CustomizationPage():
         """
         st.title("ユーザー要望")
         self.category = st.selectbox("カテゴリー",self.df_models["category_name"].drop_duplicates(),index=None,placeholder="車両カテゴリーを入力ください")
-        self.year_cost = st.text_input("予算（円/年）","年間希望予算を入力ください。例:700000")
-        if self.category != None and self.year_cost != "年間希望予算を入力ください。例:700000":
+        self.year_cost = st.text_input("予算（円/年）", placeholder = "年間希望予算を入力ください。例:700000")
+        if self.category != None and self.year_cost != "":
             return True
         else:
             return False
@@ -220,12 +226,27 @@ class CustomizationPage():
         ユーザーの要望に合う結果を表示する関数
         """
         st.title("検索結果")
+        sort_by = "rank" if st.radio(label="並び順", options=("価格順", "人気順"), horizontal=True) == "人気順" else "MonthlyRealCost"
         if self._search_car_meet_customer_needs():
             edited_df = st.data_editor(
-            st.session_state.search_retult,
+            st.session_state.search_result.sort_values(by=sort_by).drop(columns=['rank', 'MonthlyRealCost']),
             column_config={
                 "image_url": st.column_config.ImageColumn(
                     "image", 
+                ),
+                "model_name": st.column_config.TextColumn(
+                    label="モデル",
+                    max_chars=10
+                ),
+                "MonthlyTotalCost": st.column_config.NumberColumn(
+                    label="出費/月",
+                ),
+                "ResaleValue": st.column_config.NumberColumn(
+                    label="売価",
+                ),
+                "name_desc": st.column_config.TextColumn(
+                    label="グレード",
+                    width="medium",
                 )
             },
             hide_index=True,
@@ -239,14 +260,14 @@ class CustomizationPage():
         """
         ユーザーの要望に合う車両を検索する関数
         入力が正しく、かつデータが存在していればTrueを返す
-        検索結果はst.session_state.search_retultへ代入
+        検索結果はst.session_state.search_resultへ代入
         """
         target_model_id = self.df_models[self.df_models['category_name']==self.category]["model_id"]
         try:
             search_result_df = self.df_grades[self.df_grades["model_id"].isin(target_model_id)&(self.df_grades["MonthlyRealCost"]<int(self.year_cost)/12)]
-            search_result_df = search_result_df.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyTotalCost', 'ResaleValue'])
+            search_result_df = search_result_df.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
             search_result_df["check"] = False
-            st.session_state.search_retult = search_result_df
+            st.session_state.search_result = search_result_df
             return not search_result_df.empty
         except ValueError:
             print("inputは整数値を入力してください")
