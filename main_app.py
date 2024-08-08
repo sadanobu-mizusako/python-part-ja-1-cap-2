@@ -96,6 +96,17 @@ class CustomizationPage():
                                         JOIN CarGrades ON GradeExteriors.GradeID == CarGrades.GradeID
                                         """)
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
+        df_parts_interior = sql_manager.get_df("""
+                                        SELECT Interiors.InteriorID as interior_id, GradeInteriors.GradeID as grade_id, 
+                                        ModelID as model_id, Item as name, AdditionalCost as price, ImageURL as img_url 
+                                        from Interiors JOIN GradeInteriors ON Interiors.InteriorID == GradeInteriors.InteriorID
+                                        JOIN CarGrades ON GradeInteriors.GradeID == CarGrades.GradeID
+                                        """)
+        df_parts_interior["option_grade_id"] = range(len(df_parts_interior))#ユニークid付与
+        df_colors = sql_manager.get_df("""
+                                        SELECT ColorID as color_id, ColorName as name, AdditionalCost as price, ImageURL as img_url from Colors
+                                        """)
+        df_colors["option_grade_id"] = range(len(df_colors))#ユニークid付与
         df_grades = sql_manager.get_df("""
                                         SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
                                         CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank, 
@@ -112,6 +123,8 @@ class CustomizationPage():
         self.df_models = df_models
         self.df_parts = df_parts
         self.df_grades = df_grades
+        self.df_parts_interior = df_parts_interior
+        self.df_colors = df_colors
 
     def _show_selection(self, df, target_columns, label, key):
         """
@@ -419,6 +432,27 @@ class CustomizationPage():
         else:
             return False
         
+    def parts_exterior_selection(self):
+        self.df_parts_target = self.df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
+                            key_prefix=f"parts_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=4)
+        
+    def parts_interior_selection(self):
+        self.df_parts_interior_target = self.df_parts_interior.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_interior_ids = self._show_data_as_table_and_select(df=self.df_parts_interior_target, 
+                            key_prefix=f"parts_interior_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=2)
+
+    def color_selection(self):
+        self.df_colors_target = self.df_colors#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_colors_target, 
+                            key_prefix=f"color_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=2)
+
     def grades_parts_selection(self, chosen_grades):
         """
         グレードとパーツの選択
@@ -435,16 +469,16 @@ class CustomizationPage():
                 st.image(img_url)
 
         st.write("オプション追加を追加する場合は、タブから選択してください。") 
-        tab0, tab1, tab2, tab3 = st.tabs(["ディーラー予約", "エクステリア", "色", "インテリア"])
+        tab0, tab1, tab2, tab3 = st.tabs(["ディーラー予約", "カラー", "インテリア", "エクステリア"])
         with tab0:
             self.user_registration()
         with tab1:
-            self.df_parts_target = self.df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
-            self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
-                                key_prefix=f"parts_gradeid_{self.target_grade_id}", 
-                                caption_column="name", image_column="img_url", 
-                                id_column="option_grade_id", colum_count=4)
-
+            self.color_selection()
+        with tab2:
+            self.parts_interior_selection()
+        with tab3:
+            self.parts_exterior_selection()
+            
 
     def parts_selection(self):
         """
@@ -466,11 +500,6 @@ if __name__ == "__main__":
 
     # データの取得
     page.load_data_from_DB()
-    # page.load_data()
-
-    # with tab1:
-        # if len(st.session_state.customize)>0:
-        #     st.write(f"{len(st.session_state.customize)}件のカスタマイズが保存されています。新しいカスタマイズを作成するか、右のタブで保存したカスタマイズの比較や、ディーラー予約をしましょう。")
 
     #ユーザーの要望入力
     st.session_state.user_request = page.user_request()
@@ -486,37 +515,5 @@ if __name__ == "__main__":
     if user_select_items:
         # 検索結果の比較
         page.show_grade_comparison()
-        # パーツ選択
+        # パーツ選択 & 予約
         page.grades_parts_selection(chosen_grades=user_select_items)
-
-    #     # モデル選択の誘導
-    #     st.session_state.model_decided = page.model_seletion()
-
-    #     # グレードの選択の誘導
-    #     if st.session_state.model_decided:
-    #         st.session_state.grade_decided = page.grade_seletion()
-            
-    #     if st.session_state.grade_decided:
-    #         # 現在価格の表示
-    #         page.show_total_price()
-
-    #     # セッションにカスタマイズを保存
-    #     if st.session_state.grade_decided:
-    #         st.session_state.customize_saved = page.save_customize()
-
-    #     # パーツの選択の誘導
-    #     if st.session_state.grade_decided:
-    #         st.session_state.parts_decided = page.parts_selection()
-        
-    #     # 価格の更新
-    #     if st.session_state.parts_decided:
-    #         page.updade_price()
-
-    # with tab2:
-    #     # 保存済みカスタマイズの表示
-    #     page.saved_customize()
-    #     st.write("ここはきれいに可視化する！！！！")
-    #     # # カスタマイズ表示の更新
-    #     # page.update_saved_customize()
-    #     # ディーラー予約誘導
-    #     st.session_state.user_registered = page.user_registration()
