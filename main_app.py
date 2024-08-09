@@ -5,6 +5,7 @@ import numpy as np
 import streamlit as st
 import requests
 import os
+import plotly.express as px
 
 from db_manager import SQliteManager
 
@@ -51,19 +52,10 @@ class CustomizationPage():
     # def _temp_scaler(self, x):
     #     return (x-x.min())/(x.max()-x.min())
 
-    def _temp_set_dummy_price_info(self):
+    def _calc_cost_resalevalue(self):
         """
-        ダミーの価格関連情報をインプットするためのテンポラリ関数。リリースまでにDB側に情報を埋め込むのが望ましいです。
+        ユーザーの使い方に基づきコストと売価を計算する関数
         """
-        # # コスト計算のためのパラメータ
-        # self.df_grades["FuelEfficiency"] = (1+self._temp_scaler(self.df_grades["price"].astype(int)))*10 #10~20km/Lくらいに収める
-        # self.df_grades["FuelCostPerKilo"] = 160 / self.df_grades["FuelEfficiency"]#リッター160円で計算
-        # self.df_grades["MonthlyMainteCost"] = self.df_grades["price"]*0.01 #月額のメンテコスト
-        # self.df_grades["MonthlyInsuranceCost"] = self.df_grades["price"]*0.01 #月額の保険コスト
-        # self.df_grades["MonthlyParkingCost"] = self.df_grades["price"]*0.01 #月額の駐車場コスト
-        # self.df_grades["MonthlyPriceDropRate"] = (1-self._temp_scaler(self.df_grades["price"]))*0.02+0.01 #月額の価格下落率
-
-        # コストと売却価格
         self.df_grades["FuelCost"] = (self.df_grades["FuelCostPerKilo"] * self.hour_per_day * 40 * self.hold_month * 30).astype(int)
         self.df_grades["MainteCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
         self.df_grades["InsuranceCost"] = (self.df_grades["MonthlyMainteCost"] * self.hold_month).astype(int)
@@ -104,6 +96,17 @@ class CustomizationPage():
                                         JOIN CarGrades ON GradeExteriors.GradeID == CarGrades.GradeID
                                         """)
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
+        df_parts_interior = sql_manager.get_df("""
+                                        SELECT Interiors.InteriorID as interior_id, GradeInteriors.GradeID as grade_id, 
+                                        ModelID as model_id, Item as name, AdditionalCost as price, ImageURL as img_url 
+                                        from Interiors JOIN GradeInteriors ON Interiors.InteriorID == GradeInteriors.InteriorID
+                                        JOIN CarGrades ON GradeInteriors.GradeID == CarGrades.GradeID
+                                        """)
+        df_parts_interior["option_grade_id"] = range(len(df_parts_interior))#ユニークid付与
+        df_colors = sql_manager.get_df("""
+                                        SELECT ColorID as color_id, ColorName as name, AdditionalCost as price, ImageURL as img_url from Colors
+                                        """)
+        df_colors["option_grade_id"] = range(len(df_colors))#ユニークid付与
         df_grades = sql_manager.get_df("""
                                         SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
                                         CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank, 
@@ -120,6 +123,8 @@ class CustomizationPage():
         self.df_models = df_models
         self.df_parts = df_parts
         self.df_grades = df_grades
+        self.df_parts_interior = df_parts_interior
+        self.df_colors = df_colors
 
     def _show_selection(self, df, target_columns, label, key):
         """
@@ -192,6 +197,7 @@ class CustomizationPage():
                      "target_parts_ids": self.target_parts_ids}
         st.session_state.customize.append(customize)
 
+
     def user_request(self):
         """
         ユーザーの要望（カテゴリ、予算）の入力フォーム - 入力が正しくない時のためのエラー処理が必要
@@ -216,7 +222,7 @@ class CustomizationPage():
             self.hold_month *= 12
         self.hour_per_day = st.selectbox("1日の乗車時間",(i for i in range(1,24)),index=None,placeholder="1日の乗車時間[H]を入力ください") 
         if self.hold_month != None and self.hour_per_day != None:
-            self._temp_set_dummy_price_info() # 価格情報の更新
+            self._calc_cost_resalevalue() # 価格情報の更新
             return True
         else:
             return False
@@ -226,7 +232,8 @@ class CustomizationPage():
         ユーザーの要望に合う結果を表示する関数
         """
         st.title("検索結果")
-        sort_by = "rank" if st.radio(label="並び順", options=("価格順", "人気順"), horizontal=True) == "人気順" else "MonthlyRealCost"
+        choice = st.radio(label="並び順", options=("価格順", "人気順"), horizontal=True, key="how_to_sort")
+        sort_by = "rank" if choice=="人気順" else "MonthlyRealCost"
         if self._search_car_meet_customer_needs():
             edited_df = st.data_editor(
             st.session_state.search_result.sort_values(by=sort_by).drop(columns=['rank', 'MonthlyRealCost']),
@@ -251,10 +258,8 @@ class CustomizationPage():
             },
             hide_index=True,
             )
-            return edited_df[edited_df["check"]]
-        
-        else:
-            st.write('該当車両がありません')
+
+            return edited_df[edited_df["check"]]["name_desc"].tolist()
 
     def _search_car_meet_customer_needs(self):
         """
@@ -323,7 +328,53 @@ class CustomizationPage():
             if self.target_grade!="" else None
         )
         return self.target_grade!=""
-    
+
+    def _create_data_frame_for_grade_comparison(self):
+        """
+        選択したグレードに対して経過年毎の出費額などを計算する関数
+        """
+        #### 以下ダミーデータ。今後、ユーザーの選択に応じて、動的に変化させる必要あり
+        data1 = {
+            '経過年数': [1, 2, 3, 4, 5 , 1, 2, 3, 4, 5],
+            'グレード': ['A', 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'B'],
+            '累計出費': [100, 200, 300, 150, 250, 140, 220, 310, 150, 350]
+        }
+
+        data2 = {
+            '経過年数': [1, 2, 3, 4, 5 , 1, 2, 3, 4, 5],
+            'グレード': ['A', 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'B'],
+            '単年出費': [100, 200, 300, 150, 250, 140, 220, 310, 150, 350]
+        }
+
+        data3 = {
+            'グレード': ['A', 'B', 'A', 'B', 'A', 'B'],
+            '費用項目': ['初期費用', '初期費用', 'メンテコスト', 'メンテコスト', '売却益', '売却益'],
+            '累計出費': [150, 150, 100, 150, -100, -120]
+        }
+
+        df1 = pd.DataFrame(data1)
+        df2 = pd.DataFrame(data2)
+        df3 = pd.DataFrame(data3)
+        return df1, df2, df3
+
+    def show_grade_comparison(self):
+        df1, df2, df3 = self._create_data_frame_for_grade_comparison()
+        st.title('ライフサイクルコストの比較')
+        st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            fig1 = px.line(df1, x='経過年数', y='累計出費', color='グレード', title='累計出費 vs 経過年数')
+            st.plotly_chart(fig1)
+
+            fig3 = px.bar(df3, x='グレード', y='累計出費', color='費用項目', title='累計出費 vs 費用項目')
+            st.plotly_chart(fig3)
+
+        with col2:
+            fig2 = px.bar(df2, x='経過年数', y='単年出費', color='グレード', title='単年出費 vs 経過年数', barmode='group')
+            st.plotly_chart(fig2)
+
     def show_total_price(self):
         """
         合計金額を表示するページのパーツ
@@ -380,13 +431,62 @@ class CustomizationPage():
             return True
         else:
             return False
+        
+    def parts_exterior_selection(self):
+        self.df_parts_target = self.df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
+                            key_prefix=f"parts_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=4)
+        
+    def parts_interior_selection(self):
+        self.df_parts_interior_target = self.df_parts_interior.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_interior_ids = self._show_data_as_table_and_select(df=self.df_parts_interior_target, 
+                            key_prefix=f"parts_interior_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=2)
+
+    def color_selection(self):
+        self.df_colors_target = self.df_colors#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_colors_target, 
+                            key_prefix=f"color_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=2)
+
+    def grades_parts_selection(self, chosen_grades):
+        """
+        グレードとパーツの選択
+        """
+        st.title("ディーラー予約・オプション追加") 
+        col1, col2 = st.columns([2,1])
+        img_url = None
+        with col1:
+            self.target_grade = st.radio(label="ディーラー予約するグレードを選択してください。", options=chosen_grades)
+            self.target_grade_id = self.df_grades.query("name_desc==@self.target_grade").grade_id.iloc[0]
+            img_url = self.df_grades.query("name_desc==@self.target_grade").image_url.iloc[0]
+        with col2:
+            if img_url:
+                st.image(img_url)
+
+        st.write("オプション追加を追加する場合は、タブから選択してください。") 
+        tab0, tab1, tab2, tab3 = st.tabs(["ディーラー予約", "カラー", "インテリア", "エクステリア"])
+        with tab0:
+            self.user_registration()
+        with tab1:
+            self.color_selection()
+        with tab2:
+            self.parts_interior_selection()
+        with tab3:
+            self.parts_exterior_selection()
+            
 
     def parts_selection(self):
         """
         オプション選択
         """
         st.title("オプション追加") 
-        self.df_parts_target = self.df_parts.query("model_id==@self.target_model_id and grade_id==@self.target_grade_id")
+        # self.df_parts_target = self.df_parts.query("model_id==@self.target_model_id and grade_id==@self.target_grade_id")
+        self.df_parts_target = self.df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
         self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
                             key_prefix=f"parts_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 
@@ -395,55 +495,25 @@ class CustomizationPage():
         return len(self.target_parts_ids)>0
 
 if __name__ == "__main__":
-    tab1, tab2 = st.tabs(["モデル選択", "カスタマイズの比較検討・ディーラー予約"])
+    # tab1, tab2 = st.tabs(["モデル選択", "カスタマイズの比較検討・ディーラー予約"])
     page = CustomizationPage()
 
     # データの取得
     page.load_data_from_DB()
-    # page.load_data()
 
-    with tab1:
-        if len(st.session_state.customize)>0:
-            st.write(f"{len(st.session_state.customize)}件のカスタマイズが保存されています。新しいカスタマイズを作成するか、右のタブで保存したカスタマイズの比較や、ディーラー予約をしましょう。")
+    #ユーザーの要望入力
+    st.session_state.user_request = page.user_request()
 
-        #ユーザーの要望入力
-        st.session_state.user_request = page.user_request()
+    # ユーザーの乗り方の入力
+    st.session_state.how_user_drives = page.how_user_drives()
 
-        # ユーザーの乗り方の入力
-        st.session_state.how_user_drives = page.how_user_drives()
+    # 検索結果の表示
+    user_select_items = []
+    if st.session_state.user_request and st.session_state.how_user_drives:
+        user_select_items = page.search_result()
 
-        # 検索結果の表示
-        if st.session_state.user_request and st.session_state.how_user_drives:
-            user_select_items = page.search_result()
-
-        # モデル選択の誘導
-        st.session_state.model_decided = page.model_seletion()
-
-        # グレードの選択の誘導
-        if st.session_state.model_decided:
-            st.session_state.grade_decided = page.grade_seletion()
-            
-        if st.session_state.grade_decided:
-            # 現在価格の表示
-            page.show_total_price()
-
-        # セッションにカスタマイズを保存
-        if st.session_state.grade_decided:
-            st.session_state.customize_saved = page.save_customize()
-
-        # パーツの選択の誘導
-        if st.session_state.grade_decided:
-            st.session_state.parts_decided = page.parts_selection()
-        
-        # 価格の更新
-        if st.session_state.parts_decided:
-            page.updade_price()
-
-    with tab2:
-        # 保存済みカスタマイズの表示
-        page.saved_customize()
-        st.write("ここはきれいに可視化する！！！！")
-        # # カスタマイズ表示の更新
-        # page.update_saved_customize()
-        # ディーラー予約誘導
-        st.session_state.user_registered = page.user_registration()
+    if user_select_items:
+        # 検索結果の比較
+        page.show_grade_comparison()
+        # パーツ選択 & 予約
+        page.grades_parts_selection(chosen_grades=user_select_items)
