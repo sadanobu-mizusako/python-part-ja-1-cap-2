@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.express as px
 
 from user_session import UserSession
-from data_manage import DataManage
+from data_manage import DataManage, User, Customization
 
 
 class BaseDisplay(ABC):
@@ -232,6 +232,8 @@ class BookAddOptions(BaseDisplay):
         # フォームの送信ボタン
         if st.button("この内容でディーラーを予約する"):
             st.write("登録が完了しました。後日ディーラーからアポイントのご連絡をいたします。")
+            user_id = User({"username":name, "email":email, "place":prefecture}).insert_db()
+            customization_id = Customization({"userid":user_id, "baseid":1, "colorid":1, "exteriorid":1, "interiorid":1}).insert_db()
             return True
         else:
             return False

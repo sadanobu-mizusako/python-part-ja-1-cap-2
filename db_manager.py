@@ -48,6 +48,20 @@ class SQliteManager(DBManagerBase):
         values = [tuple(item[key] for key in keys) for item in data]
         self.execute_many(f"INSERT INTO {table} ({columns}) VALUES ({placeholders})", values)
 
+    def insert_record(self, table, record)-> int: 
+        conn = sqlite3.connect(self.path)
+        cursor = conn.cursor()
+        print(record)
+        keys = record.keys()
+        columns = ', '.join(keys)
+        placeholders = ', '.join(['?'] * len(keys))
+        values = tuple(record[key] for key in keys)
+        cursor.execute(f"INSERT INTO {table} ({columns}) VALUES ({placeholders})", values)
+        last_id = cursor.lastrowid
+        conn.commit()
+        conn.close()
+        return last_id
+
     def get_data(self, sql: str) -> tuple:
         conn = sqlite3.connect(self.path)
         cursor = conn.cursor()
@@ -167,7 +181,8 @@ CREATE TABLE Customizations (
 CREATE TABLE Users (
     UserID INTEGER PRIMARY KEY AUTOINCREMENT,
     UserName TEXT,
-    Email TEXT
+    Email TEXT,
+    Place TEXT
 );
 """
     def load_json(file_path):

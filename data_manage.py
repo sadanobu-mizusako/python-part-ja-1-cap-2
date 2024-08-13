@@ -1,9 +1,29 @@
 import numpy as np
 import streamlit as st
+from abc import ABC, abstractmethod
 
 from db_manager import SQliteManager
 from user_session import UserSession
 
+class BasicDataObject(ABC):
+    def __init__(self, data:dict, table_name:str):
+        self.data = data
+        self.table_name = table_name
+        self.db = SQliteManager("car_customize.db")
+
+    def insert_db(self) -> int:
+        """
+        DBにデータをインサートしてIDを取得する
+        """
+        return self.db.insert_record(self.table_name, self.data)
+
+class User(BasicDataObject):
+    def __init__(self, data: dict):
+        super().__init__(data, table_name="Users")
+
+class Customization(BasicDataObject):
+    def __init__(self, data: dict):
+        super().__init__(data, table_name="Customizations")
 
 class ImmutableDataFrame:
     """
@@ -33,14 +53,6 @@ class ImmutableDataFrame:
 
     def to_dataframe(self):
         return self._dataframe.copy()  # 元データは変更されない
-
-class DataObject():
-    def __init__(self, df):
-        self.df = df
-
-    def to_db(self):
-        pass
-
 
 class DataManage():
     def __init__(self, user_session: UserSession):
