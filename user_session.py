@@ -14,6 +14,7 @@ class UserSession():
             "age": None,
             "tmp_select": None,
             "final_select": None,
+            "chosen_grades": None,
         }
         for key, value in defaults.items():
             if key not in self.state:

@@ -4,6 +4,44 @@ import streamlit as st
 from db_manager import SQliteManager
 from user_session import UserSession
 
+
+class ImmutableDataFrame:
+    """
+    イミュータブルなデータオブジェクト。最初にインプットした列は変更不可。後から追加した列は変更可
+    """
+    def __init__(self, df):
+        self._original_columns =  df.columns
+        self._dataframe = df.copy()  # ディープコピーして元データを保護
+
+    def __getitem__(self, key):
+        return self._dataframe[key]
+
+    def __setitem__(self, key, value):
+        if key in self._original_columns:
+            raise ValueError("This DataFrame is immutable. Changes to existing columns are not allowed.")
+        else:
+            self._dataframe[key] = value  # 新しい列の追加を許容
+
+    def __getattr__(self, attr):
+        return getattr(self._dataframe, attr)
+
+    def __repr__(self):
+        return repr(self._dataframe)
+
+    def __len__(self):
+        return len(self._dataframe)
+
+    def to_dataframe(self):
+        return self._dataframe.copy()  # 元データは変更されない
+
+class DataObject():
+    def __init__(self, df):
+        self.df = df
+
+    def to_db(self):
+        pass
+
+
 class DataManage():
     def __init__(self, user_session: UserSession):
         self.state = st.session_state
@@ -12,12 +50,14 @@ class DataManage():
 
     def _initialize_default_values(self):
         # 必要なセッションステートのデフォルト値を設定
-        df_models, df_parts, df_grades = self._load_data_from_DB()
+        df_models, df_parts, df_parts_interior, df_colors, df_grades = self._load_data_from_DB()
         defaults = {
-            "df_models": DataFrame(df_models),
-            "df_parts": df_parts,
-            "df_grades": df_grades,
-            "seach_result": None
+            "df_models": ImmutableDataFrame(df_models),
+            "df_parts": ImmutableDataFrame(df_parts),
+            "df_parts_interior": ImmutableDataFrame(df_parts_interior),
+            "df_colors": ImmutableDataFrame(df_colors),
+            "df_grades": ImmutableDataFrame(df_grades),
+            "df_search_result": None
         }
         for key, value in defaults.items():
             if key not in self.state:
@@ -39,6 +79,17 @@ class DataManage():
                                         JOIN CarGrades ON GradeExteriors.GradeID == CarGrades.GradeID
                                         """)
         df_parts["option_grade_id"] = range(len(df_parts))#ユニークid付与
+        df_parts_interior = sql_manager.get_df("""
+                                        SELECT Interiors.InteriorID as interior_id, GradeInteriors.GradeID as grade_id, 
+                                        ModelID as model_id, Item as name, AdditionalCost as price, ImageURL as img_url 
+                                        from Interiors JOIN GradeInteriors ON Interiors.InteriorID == GradeInteriors.InteriorID
+                                        JOIN CarGrades ON GradeInteriors.GradeID == CarGrades.GradeID
+                                        """)
+        df_parts_interior["option_grade_id"] = range(len(df_parts_interior))#ユニークid付与
+        df_colors = sql_manager.get_df("""
+                                        SELECT ColorID as color_id, ColorName as name, AdditionalCost as price, ImageURL as img_url from Colors
+                                        """)
+        df_colors["option_grade_id"] = range(len(df_colors))#ユニークid付        
         df_grades = sql_manager.get_df("""
                                         SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
                                         CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank, 
@@ -49,7 +100,7 @@ class DataManage():
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
         
-        return df_models, df_parts, df_grades
+        return df_models, df_parts, df_parts_interior, df_colors, df_grades
     
     def calculate_costs(self):
         """
@@ -74,31 +125,13 @@ class DataManage():
         """
         target_model_id = self.state["df_models"][self.state["df_models"]['category_name']==self.user_session.state["car_category"]]["model_id"]
         try:
-            search_result_df = self.state.df_grades[self.state.df_grades["model_id"].isin(target_model_id)&(self.state.df_grades["MonthlyRealCost"]<int(self.user_session.state['user_budget'])/12)]
-            search_result_df = search_result_df.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
-            search_result_df["check"] = False
-            self.state.search_result = search_result_df
-            return not search_result_df.empty
+            df_search_result = self.state.df_grades[self.state.df_grades["model_id"].isin(target_model_id)&(self.state.df_grades["MonthlyRealCost"]<int(self.user_session.state['user_budget'])/12)]
+            df_search_result = df_search_result.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
+            df_search_result["check"] = False
+            self.state.df_search_result = df_search_result
+            return not df_search_result.empty
         except ValueError:
             return None
         
     def get_seach_result(self):
-        return self.state.search_result
-
-
-class DataFrame():
-    def __init__(self, df):
-        self.df = df
-
-    def get(self):
-        return self.df.copy()
-    
-    def get_single(self, key, value):
-        pass
-
-class DataObject():
-    def __init__(self, df):
-        self.df = df
-
-    def to_db(self):
-        pass
+        return self.state.df_search_result.copy()

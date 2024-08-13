@@ -1,8 +1,11 @@
 from abc import ABC, abstractmethod
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
 from user_session import UserSession
 from data_manage import DataManage
+
 
 class BaseDisplay(ABC):
     def __init__(self, user_session: UserSession, data_manage: DataManage) -> None:
@@ -107,33 +110,113 @@ class SearchResultDisplay(BaseDisplay):
             },
             hide_index=True,
             )
-            return edited_df[edited_df["check"]]
+            self.user_session.set_value("chosen_grades",  edited_df[edited_df["check"]]["name_desc"].tolist())
         
         else:
             st.write('該当車両がありません')
 
-class DetailResultDisplay(BaseDisplay):
+class ResultComparison(BaseDisplay):
     """
-    詳細比較を表示するクラス
+    予約とoption追加をするクラス
     """
-    def __init__(self, user_selection) -> None:
-        super().__init__()
-        self.user_selection = user_selection
+    def __init__(self, user_session: UserSession, data_manage: DataManage) -> None:
+        super().__init__(user_session, data_manage)
+    
+    def _create_data_frame_for_grade_comparison(self):
+        """
+        選択したグレードに対して経過年毎の出費額などを計算する関数
+        """
+        #### 以下ダミーデータ。今後、ユーザーの選択に応じて、動的に変化させる必要あり
+        data1 = {
+            '経過年数': [1, 2, 3, 4, 5 , 1, 2, 3, 4, 5],
+            'グレード': ['A', 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'B'],
+            '累計出費': [100, 200, 300, 150, 250, 140, 220, 310, 150, 350]
+        }
+
+        data2 = {
+            '経過年数': [1, 2, 3, 4, 5 , 1, 2, 3, 4, 5],
+            'グレード': ['A', 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'B', 'B'],
+            '単年出費': [100, 200, 300, 150, 250, 140, 220, 310, 150, 350]
+        }
+
+        data3 = {
+            'グレード': ['A', 'B', 'A', 'B', 'A', 'B'],
+            '費用項目': ['初期費用', '初期費用', 'メンテコスト', 'メンテコスト', '売却益', '売却益'],
+            '累計出費': [150, 150, 100, 150, -100, -120]
+        }
+
+        df1 = pd.DataFrame(data1)
+        df2 = pd.DataFrame(data2)
+        df3 = pd.DataFrame(data3)
+        return df1, df2, df3
 
     def show(self):
-        pass
+        df1, df2, df3 = self._create_data_frame_for_grade_comparison()
+        st.title('ライフサイクルコストの比較')
+        st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
 
-class ReservationDisplay(BaseDisplay):
+        col1, col2 = st.columns(2)
+
+        with col1:
+            fig1 = px.line(df1, x='経過年数', y='累計出費', color='グレード', title='累計出費 vs 経過年数')
+            st.plotly_chart(fig1)
+
+            fig3 = px.bar(df3, x='グレード', y='累計出費', color='費用項目', title='累計出費 vs 費用項目')
+            st.plotly_chart(fig3)
+
+        with col2:
+            fig2 = px.bar(df2, x='経過年数', y='単年出費', color='グレード', title='単年出費 vs 経過年数', barmode='group')
+            st.plotly_chart(fig2)
+
+
+class BookAddOptions(BaseDisplay):
     """
-    ディーラー予約のクラス
+    予約とoption追加をするクラス
     """
-    def user_name(self):
+    def __init__(self, user_session: UserSession, data_manage: DataManage) -> None:
+        super().__init__(user_session, data_manage)
+
+    def _show_data_as_table_and_select(self, df, key_prefix, caption_column, image_column, id_column, colum_count):
+        """
+        複数の画像と「チェックボックス」を並べて表示してユーザーに選択させるためのビジュアル要素
+        - df: オプション選択肢を含んだデータフレーム
+        - key_prefix: keyの前に共通でつけるプレフィックス。各オブジェクトのkeyはkey_prefix_[要素の番号]の形式でsession_stateに保存される
+        - caption_column: 画像のキャプションを指定する列名
+        - image_column: 画像のURLを指定する列名
+        - id_column: 対象を識別するidを指定する列名　#ここでは使用していない。。
+        - colum_count: 横何列に並べるかを指定する
+        """
+        selected_images = []
+        image_urls = df[image_column].tolist()
+        names = df[caption_column].tolist()
+        ids = df[id_column].tolist()
+        for i in range(0, len(df), colum_count):
+            cols = st.columns(colum_count)
+            for j, col in enumerate(cols):
+                if i + j < len(image_urls):
+                    image_url = image_urls[i + j]
+                    name = names[i + j]
+                    name = name if len(name)<10 else name[:10]+"..."
+                    target_id = ids[i + j]
+                    if col.checkbox(name, key=key_prefix+str(i+j)):
+                        selected_images.append(target_id)
+                    col.image(image_url, caption="", use_column_width=True)
+        return selected_images
+
+    def user_registration(self):
+        """
+        ユーザー登録用のフォーム
+        """
+        st.title("ディーラー予約フォーム")        
+        st.write("こちらの内容で予約する場合にはフォームを入力・送信してください。")
+        st.write("オプションを追加したい方は下からご希望のオプションを選択ください。")
+        # ユーザーの氏名の入力
         name = st.text_input("氏名")
 
-    def user_email(self):
-        name = st.text_input("メールアドレス")
+        # ユーザーのメールアドレスの入力
+        email = st.text_input("メールアドレス")
 
-    def user_prefecture(self):
+        # 都道府県の選択
         prefecture = st.selectbox(
             "都道府県",
             (
@@ -144,9 +227,8 @@ class ReservationDisplay(BaseDisplay):
                 "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県",
                 "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
             )
-        )        
+        )
 
-    def send_button(self):
         # フォームの送信ボタン
         if st.button("この内容でディーラーを予約する"):
             st.write("登録が完了しました。後日ディーラーからアポイントのご連絡をいたします。")
@@ -154,11 +236,50 @@ class ReservationDisplay(BaseDisplay):
         else:
             return False
 
+    def parts_exterior_selection(self):
+        df_parts = self.data_manage.state["df_parts"]
+        self.df_parts_target = df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
+                            key_prefix=f"parts_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=4)
+        
+    def parts_interior_selection(self):
+        df_parts_interior = self.data_manage.state["df_parts_interior"]
+        self.df_parts_interior_target = df_parts_interior.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_interior_ids = self._show_data_as_table_and_select(df=self.df_parts_interior_target, 
+                            key_prefix=f"parts_interior_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=2)
+
+    def color_selection(self):
+        self.df_colors_target = self.data_manage.state["df_colors"]#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_colors_target, 
+                            key_prefix=f"color_gradeid_{self.target_grade_id}", 
+                            caption_column="name", image_column="img_url", 
+                            id_column="option_grade_id", colum_count=2)
+
     def show(self):
-        st.title("ディーラー予約フォーム")      
-        st.write("こちらの内容で予約する場合にはフォームを入力・送信してください。")
-        self.user_name()
-        self.user_email()
-        self.user_prefecture()
-        st.write("オプションを追加したい方は下からご希望のオプションを選択ください。")
-        self.send_button()
+        st.title("ディーラー予約・オプション追加") 
+        col1, col2 = st.columns([2,1])
+        img_url = None
+        with col1:
+            self.target_grade = st.radio(label="ディーラー予約するグレードを選択してください。", options=self.user_session.get_value("chosen_grades"))
+
+            df_grades = self.data_manage.state["df_grades"]
+            self.target_grade_id = df_grades.query("name_desc==@self.target_grade").grade_id.iloc[0]
+            img_url = df_grades.query("name_desc==@self.target_grade").image_url.iloc[0]
+        with col2:
+            if img_url:
+                st.image(img_url)
+
+        st.write("オプション追加を追加する場合は、タブから選択してください。") 
+        tab0, tab1, tab2, tab3 = st.tabs(["ディーラー予約", "カラー", "インテリア", "エクステリア"])
+        with tab0:
+            self.user_registration()
+        with tab1:
+            self.color_selection()
+        with tab2:
+            self.parts_interior_selection()
+        with tab3:
+            self.parts_exterior_selection()
