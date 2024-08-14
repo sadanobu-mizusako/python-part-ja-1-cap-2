@@ -1,13 +1,9 @@
 from page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
-from user_session import UserSession
-from data_manage import DataManage
+from user_session import user_session
 
-user_session = UserSession()
-data_manage = DataManage(user_session)
-
-UserInputDisplay(user_session, data_manage).show()
+UserInputDisplay()
 
 if user_session.user_request_ready():
-    SearchResultDisplay(user_session, data_manage).show()
-    ResultComparison(user_session, data_manage).show()
-    BookAddOptions(user_session, data_manage).show()
+    SearchResultDisplay()
+    ResultComparison()
+    BookAddOptions()

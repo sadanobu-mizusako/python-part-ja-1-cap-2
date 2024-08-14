@@ -1,21 +1,13 @@
 import numpy as np
 import streamlit as st
 from abc import ABC, abstractmethod
+import os
+import json
 
-from db_manager import SQliteManager
-from user_session import UserSession
+from base_db_manager import SQliteManager, BasicDataObject
+from user_session import user_session
 
-class BasicDataObject(ABC):
-    def __init__(self, data:dict, table_name:str):
-        self.data = data
-        self.table_name = table_name
-        self.db = SQliteManager("car_customize.db")
-
-    def insert_db(self) -> int:
-        """
-        DBにデータをインサートしてIDを取得する
-        """
-        return self.db.insert_record(self.table_name, self.data)
+from env import DB_NAME, CREATE_TABLES_SQL_PATH, DB_JSON_DATA_PATH
 
 class User(BasicDataObject):
     def __init__(self, data: dict):
@@ -55,9 +47,8 @@ class ImmutableDataFrame:
         return self._dataframe.copy()  # 元データは変更されない
 
 class DataManage():
-    def __init__(self, user_session: UserSession):
-        self.state = st.session_state
-        self.user_session = user_session
+    def __init__(self, dbname:str, create_tables_sql_path:str, db_json_data_path:str):
+        self._init_DB(dbname, create_tables_sql_path, db_json_data_path)
         self._initialize_default_values()
 
     def _initialize_default_values(self):
@@ -69,11 +60,35 @@ class DataManage():
             "df_parts_interior": ImmutableDataFrame(df_parts_interior),
             "df_colors": ImmutableDataFrame(df_colors),
             "df_grades": ImmutableDataFrame(df_grades),
-            "df_search_result": None
         }
-        for key, value in defaults.items():
-            if key not in self.state:
-                self.state[key] = value
+        user_session.set_values(defaults)
+
+    def _init_DB(self, dbname, create_tables_sql_path, db_json_data_path):
+        """
+        DBが存在しない場合、jsonファイルからDBを構築する
+        """
+        if not os.path.isfile(dbname):
+            with open(create_tables_sql_path, 'r', encoding='utf-8') as f:
+                create_tables_sql = f.read()
+
+            with open(db_json_data_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+            #DBを作成
+            sql_manager = SQliteManager(dbname)
+            sql_manager.execute_script(create_tables_sql)
+
+            #jsonファイルからデータをDBへ挿入
+            sql_manager.insert_data('CarCategories', data['CarCategories'])
+            sql_manager.insert_data('CarModels', data['CarModels'])
+            sql_manager.insert_data('CarGrades', data['CarGrades'])
+            sql_manager.insert_data('Engines', data['Engines'])
+            sql_manager.insert_data('Bases', data['Bases'])
+            sql_manager.insert_data('Colors', data['Colors'])
+            sql_manager.insert_data('Exteriors', data['Exteriors'])
+            sql_manager.insert_data('GradeExteriors', data['GradeExteriors'])
+            sql_manager.insert_data('Interiors', data['Interiors'])
+            sql_manager.insert_data('GradeInteriors', data['GradeInteriors'])
 
     def _load_data_from_DB(self):
         """
@@ -119,15 +134,15 @@ class DataManage():
         各種コストを計算するメソッド
         """
         # コストと売却価格
-        hold_month = self.user_session.state.age * 12
-        self.state.df_grades["FuelCost"] = (self.state.df_grades["FuelCostPerKilo"] * self.user_session.state.hour * 40 * hold_month * 30).astype(int)
-        self.state.df_grades["MainteCost"] = (self.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
-        self.state.df_grades["InsuranceCost"] = (self.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
-        self.state.df_grades["ResaleValue"] = (self.state.df_grades["price"] * (1-self.state.df_grades["MonthlyPriceDropRate"]) ** (hold_month)).astype(int)
-        self.state.df_grades["MonthlyTotalCost"] = self.state.df_grades["FuelCost"]/30 + self.state.df_grades["MonthlyMainteCost"] + self.state.df_grades["MonthlyInsuranceCost"]
-        self.state.df_grades["MonthlyRealCost"] = (self.state.df_grades["price"] - self.state.df_grades["ResaleValue"] + self.state.df_grades["MonthlyTotalCost"] + self.state.df_grades["MonthlyTotalCost"] * hold_month)/hold_month
-        self.state.df_grades["MonthlyTotalCost"] = self.state.df_grades["MonthlyTotalCost"].astype(int)
-        self.state.df_grades["MonthlyRealCost"] = self.state.df_grades["MonthlyRealCost"].astype(int)
+        hold_month = user_session.state.age * 12
+        user_session.state.df_grades["FuelCost"] = (user_session.state.df_grades["FuelCostPerKilo"] * user_session.state.hour * 40 * hold_month * 30).astype(int)
+        user_session.state.df_grades["MainteCost"] = (user_session.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
+        user_session.state.df_grades["InsuranceCost"] = (user_session.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
+        user_session.state.df_grades["ResaleValue"] = (user_session.state.df_grades["price"] * (1-user_session.state.df_grades["MonthlyPriceDropRate"]) ** (hold_month)).astype(int)
+        user_session.state.df_grades["MonthlyTotalCost"] = user_session.state.df_grades["FuelCost"]/30 + user_session.state.df_grades["MonthlyMainteCost"] + user_session.state.df_grades["MonthlyInsuranceCost"]
+        user_session.state.df_grades["MonthlyRealCost"] = (user_session.state.df_grades["price"] - user_session.state.df_grades["ResaleValue"] + user_session.state.df_grades["MonthlyTotalCost"] + user_session.state.df_grades["MonthlyTotalCost"] * hold_month)/hold_month
+        user_session.state.df_grades["MonthlyTotalCost"] = user_session.state.df_grades["MonthlyTotalCost"].astype(int)
+        user_session.state.df_grades["MonthlyRealCost"] = user_session.state.df_grades["MonthlyRealCost"].astype(int)
     
     def search_car_meet_customer_needs(self):
         """
@@ -135,15 +150,19 @@ class DataManage():
         入力が正しく、かつデータが存在していればTrueを返す
         検索結果はst.session_state.search_resultへ代入
         """
-        target_model_id = self.state["df_models"][self.state["df_models"]['category_name']==self.user_session.state["car_category"]]["model_id"]
+        target_model_id = user_session.state["df_models"][user_session.state["df_models"]['category_name']==user_session.state["car_category"]]["model_id"]
         try:
-            df_search_result = self.state.df_grades[self.state.df_grades["model_id"].isin(target_model_id)&(self.state.df_grades["MonthlyRealCost"]<int(self.user_session.state['user_budget'])/12)]
+            df_search_result = user_session.state.df_grades[user_session.state.df_grades["model_id"].isin(target_model_id)&(user_session.state.df_grades["MonthlyRealCost"]<int(user_session.state['user_budget'])/12)]
             df_search_result = df_search_result.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
             df_search_result["check"] = False
-            self.state.df_search_result = df_search_result
+            user_session.state.df_search_result = df_search_result
             return not df_search_result.empty
         except ValueError:
             return None
         
     def get_seach_result(self):
-        return self.state.df_search_result.copy()
+        return user_session.state.df_search_result.copy()
+
+data_manage = DataManage(DB_NAME, 
+                         CREATE_TABLES_SQL_PATH, 
+                         DB_JSON_DATA_PATH)

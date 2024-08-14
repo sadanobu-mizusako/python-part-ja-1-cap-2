@@ -1,56 +1,20 @@
-from abc import ABC, abstractmethod
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-from user_session import UserSession
-from data_manage import DataManage, User, Customization
-
-
-class BaseDisplay(ABC):
-    def __init__(self, user_session: UserSession, data_manage: DataManage) -> None:
-        self.user_session = user_session
-        self.data_manage = data_manage
-
-    @abstractmethod
-    def show():
-        pass
+from data_manage import User, Customization, data_manage
+from base_page import BaseDisplay
+from user_session import user_session
 
 class UserInputDisplay(BaseDisplay):
     """
     ユーザー要望・使い方を入力してもらう部分のクラス
     """
-    def car_category(self):
-        """
-        カテゴリーの入力部分
-        """
-        self.user_session.set_value("car_category", 
-                                    st.selectbox("カテゴリー", self.data_manage.state["df_models"]["category_name"].drop_duplicates(),
-                                                index=None, placeholder="車両カテゴリーを入力ください"))
+    def preprocess(self):
+        pass
 
-    def user_budget(self):
-        """
-        年間予算を入力部分
-        """
-        self.user_session.set_value("user_budget",
-                                    st.text_input("予算（円/年）", placeholder = "年間希望予算を入力ください。例:700000"))
-        if not self._is_number(self.user_session.get_value("user_budget")):
-            st.write("※数値を入力して下さい。")
-
-
-    def hour(self):
-        """
-        使用時間の入力部分
-        """
-        self.user_session.set_value("hour",
-                                    st.selectbox("1日の乗車時間",(i for i in range(1,24)), index=None, placeholder="1日の乗車時間[H]を入力ください"))
-
-    def age(self):
-        """
-        使用年数の入力部分
-        """
-        self.user_session.set_value("age",
-                                    st.selectbox("使用年数",(i for i in range(1,21)),index=None,placeholder="使用年数を入力ください"))
+    def postprocess(self):
+        pass
 
     def show(self):
         """
@@ -62,6 +26,37 @@ class UserInputDisplay(BaseDisplay):
         self.hour()
         self.age()
 
+    def car_category(self):
+        """
+        カテゴリーの入力部分
+        """
+        user_session.set_value("car_category", 
+                                    st.selectbox("カテゴリー", user_session.state["df_models"]["category_name"].drop_duplicates(),
+                                                index=None, placeholder="車両カテゴリーを入力ください"))
+
+    def user_budget(self):
+        """
+        年間予算を入力部分
+        """
+        user_session.set_value("user_budget",
+                                    st.text_input("予算（円/年）", placeholder = "年間希望予算を入力ください。例:700000"))
+        if not self._is_number(user_session.get_value("user_budget")):
+            st.write("※数値を入力して下さい。")
+
+    def hour(self):
+        """
+        使用時間の入力部分
+        """
+        user_session.set_value("hour",
+                                    st.selectbox("1日の乗車時間",(i for i in range(1,24)), index=None, placeholder="1日の乗車時間[H]を入力ください"))
+
+    def age(self):
+        """
+        使用年数の入力部分
+        """
+        user_session.set_value("age",
+                                    st.selectbox("使用年数",(i for i in range(1,21)),index=None,placeholder="使用年数を入力ください"))
+    
     def _is_number(self, value: any):
         """
         値がfloatで変換可能か確認
@@ -76,9 +71,12 @@ class SearchResultDisplay(BaseDisplay):
     """
     検索結果を表示するクラス
     """
-    def __init__(self, user_session: UserSession, data_manage: DataManage) -> None:
-        super().__init__(user_session, data_manage)
-        self.data_manage.calculate_costs()
+    def preprocess(self):
+        data_manage.calculate_costs()
+
+    def postprocess(self):
+        if data_manage.search_car_meet_customer_needs():
+            user_session.set_value("chosen_grades",  self.edited_df[self.edited_df["check"]]["name_desc"].tolist())
 
     def show(self):
         """
@@ -86,9 +84,9 @@ class SearchResultDisplay(BaseDisplay):
         """
         st.title("検索結果")
         sort_by = "rank" if st.radio(label="並び順", options=("価格順", "人気順"), horizontal=True) == "人気順" else "MonthlyRealCost"
-        if self.data_manage.search_car_meet_customer_needs():
-            edited_df = st.data_editor(
-            self.data_manage.get_seach_result().sort_values(by=sort_by).drop(columns=['rank', 'MonthlyRealCost']),
+        if data_manage.search_car_meet_customer_needs():
+            self.edited_df = st.data_editor(
+            data_manage.get_seach_result().sort_values(by=sort_by).drop(columns=['rank', 'MonthlyRealCost']),
             column_config={
                 "image_url": st.column_config.ImageColumn(
                     "image", 
@@ -110,7 +108,6 @@ class SearchResultDisplay(BaseDisplay):
             },
             hide_index=True,
             )
-            self.user_session.set_value("chosen_grades",  edited_df[edited_df["check"]]["name_desc"].tolist())
         
         else:
             st.write('該当車両がありません')
@@ -119,10 +116,7 @@ class ResultComparison(BaseDisplay):
     """
     予約とoption追加をするクラス
     """
-    def __init__(self, user_session: UserSession, data_manage: DataManage) -> None:
-        super().__init__(user_session, data_manage)
-    
-    def _create_data_frame_for_grade_comparison(self):
+    def preprocess(self):
         """
         選択したグレードに対して経過年毎の出費額などを計算する関数
         """
@@ -145,27 +139,28 @@ class ResultComparison(BaseDisplay):
             '累計出費': [150, 150, 100, 150, -100, -120]
         }
 
-        df1 = pd.DataFrame(data1)
-        df2 = pd.DataFrame(data2)
-        df3 = pd.DataFrame(data3)
-        return df1, df2, df3
+        self.df1 = pd.DataFrame(data1)
+        self.df2 = pd.DataFrame(data2)
+        self.df3 = pd.DataFrame(data3)
+    
+    def postprocess(self):
+        pass
 
     def show(self):
-        df1, df2, df3 = self._create_data_frame_for_grade_comparison()
         st.title('ライフサイクルコストの比較')
         st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
 
         col1, col2 = st.columns(2)
 
         with col1:
-            fig1 = px.line(df1, x='経過年数', y='累計出費', color='グレード', title='累計出費 vs 経過年数')
+            fig1 = px.line(self.df1, x='経過年数', y='累計出費', color='グレード', title='累計出費 vs 経過年数')
             st.plotly_chart(fig1)
 
-            fig3 = px.bar(df3, x='グレード', y='累計出費', color='費用項目', title='累計出費 vs 費用項目')
+            fig3 = px.bar(self.df3, x='グレード', y='累計出費', color='費用項目', title='累計出費 vs 費用項目')
             st.plotly_chart(fig3)
 
         with col2:
-            fig2 = px.bar(df2, x='経過年数', y='単年出費', color='グレード', title='単年出費 vs 経過年数', barmode='group')
+            fig2 = px.bar(self.df2, x='経過年数', y='単年出費', color='グレード', title='単年出費 vs 経過年数', barmode='group')
             st.plotly_chart(fig2)
 
 
@@ -173,8 +168,36 @@ class BookAddOptions(BaseDisplay):
     """
     予約とoption追加をするクラス
     """
-    def __init__(self, user_session: UserSession, data_manage: DataManage) -> None:
-        super().__init__(user_session, data_manage)
+    def preprocess(self):
+        pass
+
+    def postprocess(self):
+        pass
+
+    def show(self):
+        st.title("ディーラー予約・オプション追加") 
+        col1, col2 = st.columns([2,1])
+        img_url = None
+        with col1:
+            self.target_grade = st.radio(label="ディーラー予約するグレードを選択してください。", options=user_session.get_value("chosen_grades"))
+
+            df_grades = user_session.state["df_grades"]
+            self.target_grade_id = df_grades.query("name_desc==@self.target_grade").grade_id.iloc[0]
+            img_url = df_grades.query("name_desc==@self.target_grade").image_url.iloc[0]
+        with col2:
+            if img_url:
+                st.image(img_url)
+
+        st.write("オプション追加を追加する場合は、タブから選択してください。") 
+        tab0, tab1, tab2, tab3 = st.tabs(["ディーラー予約", "カラー", "インテリア", "エクステリア"])
+        with tab0:
+            self.user_registration()
+        with tab1:
+            self.color_selection()
+        with tab2:
+            self.parts_interior_selection()
+        with tab3:
+            self.parts_exterior_selection()
 
     def _show_data_as_table_and_select(self, df, key_prefix, caption_column, image_column, id_column, colum_count):
         """
@@ -239,7 +262,7 @@ class BookAddOptions(BaseDisplay):
             return False
 
     def parts_exterior_selection(self):
-        df_parts = self.data_manage.state["df_parts"]
+        df_parts = user_session.state["df_parts"]
         self.df_parts_target = df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
         self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
                             key_prefix=f"parts_gradeid_{self.target_grade_id}", 
@@ -247,7 +270,7 @@ class BookAddOptions(BaseDisplay):
                             id_column="option_grade_id", colum_count=4)
         
     def parts_interior_selection(self):
-        df_parts_interior = self.data_manage.state["df_parts_interior"]
+        df_parts_interior = user_session.state["df_parts_interior"]
         self.df_parts_interior_target = df_parts_interior.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
         self.target_parts_interior_ids = self._show_data_as_table_and_select(df=self.df_parts_interior_target, 
                             key_prefix=f"parts_interior_gradeid_{self.target_grade_id}", 
@@ -255,33 +278,8 @@ class BookAddOptions(BaseDisplay):
                             id_column="option_grade_id", colum_count=2)
 
     def color_selection(self):
-        self.df_colors_target = self.data_manage.state["df_colors"]#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.df_colors_target = user_session.state["df_colors"]#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
         self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_colors_target, 
                             key_prefix=f"color_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 
                             id_column="option_grade_id", colum_count=2)
-
-    def show(self):
-        st.title("ディーラー予約・オプション追加") 
-        col1, col2 = st.columns([2,1])
-        img_url = None
-        with col1:
-            self.target_grade = st.radio(label="ディーラー予約するグレードを選択してください。", options=self.user_session.get_value("chosen_grades"))
-
-            df_grades = self.data_manage.state["df_grades"]
-            self.target_grade_id = df_grades.query("name_desc==@self.target_grade").grade_id.iloc[0]
-            img_url = df_grades.query("name_desc==@self.target_grade").image_url.iloc[0]
-        with col2:
-            if img_url:
-                st.image(img_url)
-
-        st.write("オプション追加を追加する場合は、タブから選択してください。") 
-        tab0, tab1, tab2, tab3 = st.tabs(["ディーラー予約", "カラー", "インテリア", "エクステリア"])
-        with tab0:
-            self.user_registration()
-        with tab1:
-            self.color_selection()
-        with tab2:
-            self.parts_interior_selection()
-        with tab3:
-            self.parts_exterior_selection()
