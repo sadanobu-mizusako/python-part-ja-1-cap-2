@@ -1,3 +1,4 @@
+# セッション管理の対象となる変数を定義。ここで定義されていない変数をセットしようとするとエラーが出る
 DEFAULT_VALUES = {
     "car_category": None,
     "user_budget": None,

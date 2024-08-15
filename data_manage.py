@@ -5,7 +5,7 @@ import os
 import json
 
 from base_db_manager import SQliteManager, BasicDataObject
-from env import DB_NAME, CREATE_TABLES_SQL_PATH, DB_JSON_DATA_PATH
+from domain_context.env import DB_NAME, CREATE_TABLES_SQL_PATH, DB_JSON_DATA_PATH
 
 class ImmutableDataFrame:
     """
