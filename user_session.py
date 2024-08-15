@@ -10,3 +10,9 @@ class UserSession(BaseUserSession):
             return True
         else:
             return False
+        
+    def user_choice_ready(self):
+        if self.state.chosen_grades != None and len(self.state.chosen_grades)>0:
+            return True
+        else:
+            return False

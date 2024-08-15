@@ -3,10 +3,10 @@ import pandas as pd
 import plotly.express as px
 
 from base_page import BaseDisplay, UtilityElement
-from data_manage import DataManage, ImmutableDataFrame
+from data_manager import DataManager, ImmutableDataFrame
 from user_session import UserSession
 
-class UserInputDisplay(BaseDisplay, DataManage, UserSession):
+class UserInputDisplay(BaseDisplay, DataManager, UserSession):
     """
     ユーザー要望・使い方を入力してもらう部分のクラス
     """
@@ -202,7 +202,7 @@ class ResultComparison(BaseDisplay, UserSession):
             st.plotly_chart(fig2)
 
 
-class BookAddOptions(BaseDisplay, UserSession, DataManage, UtilityElement):
+class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
     """
     予約とoption追加をするクラス
     """
