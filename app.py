@@ -10,5 +10,5 @@ if user_session.user_request_ready():
     SearchResultDisplay()
 
 if user_session.user_choice_ready():
-    ResultComparison()    
+    ResultComparison()
     BookAddOptions()
