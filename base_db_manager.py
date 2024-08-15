@@ -3,18 +3,6 @@ import sqlite3
 import json
 import pandas as pd
 
-class BasicDataObject(ABC):
-    def __init__(self, data:dict, table_name:str):
-        self.data = data
-        self.table_name = table_name
-        self.db = SQliteManager("car_customize.db")
-
-    def insert_db(self) -> int:
-        """
-        DBにデータをインサートしてIDを取得する
-        """
-        return self.db.insert_record(self.table_name, self.data)
-
 class BaseDBManager(ABC):
     def __init__(self, path: str) -> None:
         self.path = path
@@ -93,3 +81,15 @@ class SQliteManager(BaseDBManager):
         finally:
             conn.close()
         return df
+
+class BasicDataObject(ABC):
+    def __init__(self, data:dict, table_name:str, db:BaseDBManager):
+        self.data = data
+        self.table_name = table_name
+        self.db = db
+
+    def insert_db(self) -> int:
+        """
+        DBにデータをインサートしてIDを取得する
+        """
+        return self.db.insert_record(self.table_name, self.data)

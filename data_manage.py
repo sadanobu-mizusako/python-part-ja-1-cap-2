@@ -5,17 +5,7 @@ import os
 import json
 
 from base_db_manager import SQliteManager, BasicDataObject
-from user_session import user_session
-
 from env import DB_NAME, CREATE_TABLES_SQL_PATH, DB_JSON_DATA_PATH
-
-class User(BasicDataObject):
-    def __init__(self, data: dict):
-        super().__init__(data, table_name="Users")
-
-class Customization(BasicDataObject):
-    def __init__(self, data: dict):
-        super().__init__(data, table_name="Customizations")
 
 class ImmutableDataFrame:
     """
@@ -47,23 +37,12 @@ class ImmutableDataFrame:
         return self._dataframe.copy()  # 元データは変更されない
 
 class DataManage():
-    def __init__(self, dbname:str, create_tables_sql_path:str, db_json_data_path:str):
-        self._init_DB(dbname, create_tables_sql_path, db_json_data_path)
-        self._initialize_default_values()
+    """
+    ドメインに特化したＤＢとのインタラクションを定義
+    """
+    sql_manager = SQliteManager(DB_NAME)
 
-    def _initialize_default_values(self):
-        # 必要なセッションステートのデフォルト値を設定
-        df_models, df_parts, df_parts_interior, df_colors, df_grades = self._load_data_from_DB()
-        defaults = {
-            "df_models": ImmutableDataFrame(df_models),
-            "df_parts": ImmutableDataFrame(df_parts),
-            "df_parts_interior": ImmutableDataFrame(df_parts_interior),
-            "df_colors": ImmutableDataFrame(df_colors),
-            "df_grades": ImmutableDataFrame(df_grades),
-        }
-        user_session.set_values(defaults)
-
-    def _init_DB(self, dbname, create_tables_sql_path, db_json_data_path):
+    def init_DB(self, dbname=DB_NAME, create_tables_sql_path=CREATE_TABLES_SQL_PATH, db_json_data_path=DB_JSON_DATA_PATH):
         """
         DBが存在しない場合、jsonファイルからDBを構築する
         """
@@ -90,11 +69,11 @@ class DataManage():
             sql_manager.insert_data('Interiors', data['Interiors'])
             sql_manager.insert_data('GradeInteriors', data['GradeInteriors'])
 
-    def _load_data_from_DB(self):
+    def load_data_from_DB(self):
         """
         DBからデータを読み込み
         """
-        sql_manager = SQliteManager("car_customize.db")
+        sql_manager = self.sql_manager
         df_models = sql_manager.get_df("""
                                         SELECT ModelID as model_id, CategoryName as category_name, ModelName as model_name, ImageURL as img_url from CarModels
                                         JOIN CarCategories ON CarCategories.CategoryID == CarModels.CategoryID
@@ -126,43 +105,8 @@ class DataManage():
                                         """)
         # nameだけではユニークにならないので、説明文も追加する
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
-        
         return df_models, df_parts, df_parts_interior, df_colors, df_grades
-    
-    def calculate_costs(self):
-        """
-        各種コストを計算するメソッド
-        """
-        # コストと売却価格
-        hold_month = user_session.state.age * 12
-        user_session.state.df_grades["FuelCost"] = (user_session.state.df_grades["FuelCostPerKilo"] * user_session.state.hour * 40 * hold_month * 30).astype(int)
-        user_session.state.df_grades["MainteCost"] = (user_session.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
-        user_session.state.df_grades["InsuranceCost"] = (user_session.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
-        user_session.state.df_grades["ResaleValue"] = (user_session.state.df_grades["price"] * (1-user_session.state.df_grades["MonthlyPriceDropRate"]) ** (hold_month)).astype(int)
-        user_session.state.df_grades["MonthlyTotalCost"] = user_session.state.df_grades["FuelCost"]/30 + user_session.state.df_grades["MonthlyMainteCost"] + user_session.state.df_grades["MonthlyInsuranceCost"]
-        user_session.state.df_grades["MonthlyRealCost"] = (user_session.state.df_grades["price"] - user_session.state.df_grades["ResaleValue"] + user_session.state.df_grades["MonthlyTotalCost"] + user_session.state.df_grades["MonthlyTotalCost"] * hold_month)/hold_month
-        user_session.state.df_grades["MonthlyTotalCost"] = user_session.state.df_grades["MonthlyTotalCost"].astype(int)
-        user_session.state.df_grades["MonthlyRealCost"] = user_session.state.df_grades["MonthlyRealCost"].astype(int)
-    
-    def search_car_meet_customer_needs(self):
-        """
-        ユーザーの要望に合う車両を検索する関数
-        入力が正しく、かつデータが存在していればTrueを返す
-        検索結果はst.session_state.search_resultへ代入
-        """
-        target_model_id = user_session.state["df_models"][user_session.state["df_models"]['category_name']==user_session.state["car_category"]]["model_id"]
-        try:
-            df_search_result = user_session.state.df_grades[user_session.state.df_grades["model_id"].isin(target_model_id)&(user_session.state.df_grades["MonthlyRealCost"]<int(user_session.state['user_budget'])/12)]
-            df_search_result = df_search_result.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
-            df_search_result["check"] = False
-            user_session.state.df_search_result = df_search_result
-            return not df_search_result.empty
-        except ValueError:
-            return None
-        
-    def get_seach_result(self):
-        return user_session.state.df_search_result.copy()
 
-data_manage = DataManage(DB_NAME, 
-                         CREATE_TABLES_SQL_PATH, 
-                         DB_JSON_DATA_PATH)
+    def insert_user_customization(self, name, email, prefecture):
+        user_id = BasicDataObject(data={"username":name, "email":email, "place":prefecture}, table_name="Users", db=self.sql_manager).insert_db()
+        customization_id = BasicDataObject({"userid":user_id, "baseid":1, "colorid":1, "exteriorid":1, "interiorid":1}, table_name="Customizations", db=self.sql_manager).insert_db()

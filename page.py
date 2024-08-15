@@ -2,19 +2,30 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-from data_manage import User, Customization, data_manage
-from base_page import BaseDisplay
-from user_session import user_session
+from base_page import BaseDisplay, UtilityElement
+from data_manage import DataManage, ImmutableDataFrame
+from user_session import UserSession
 
-class UserInputDisplay(BaseDisplay):
+class UserInputDisplay(BaseDisplay, DataManage, UserSession):
     """
     ユーザー要望・使い方を入力してもらう部分のクラス
     """
     def preprocess(self):
-        pass
+        self.init_DB()
+        df_models, df_parts, df_parts_interior, df_colors, df_grades = self.load_data_from_DB()
+        self.set_values({
+            "df_models": ImmutableDataFrame(df_models),
+            "df_parts": ImmutableDataFrame(df_parts),
+            "df_parts_interior": ImmutableDataFrame(df_parts_interior),
+            "df_colors": ImmutableDataFrame(df_colors),
+            "df_grades": ImmutableDataFrame(df_grades),
+        })
 
     def postprocess(self):
-        pass
+        self.set_value("car_category", self.car_category)
+        self.set_value("user_budget", self.user_budget)
+        self.set_value("hour", self.hour)
+        self.set_value("age", self.age)
 
     def show(self):
         """
@@ -30,32 +41,28 @@ class UserInputDisplay(BaseDisplay):
         """
         カテゴリーの入力部分
         """
-        user_session.set_value("car_category", 
-                                    st.selectbox("カテゴリー", user_session.state["df_models"]["category_name"].drop_duplicates(),
-                                                index=None, placeholder="車両カテゴリーを入力ください"))
+        self.car_category = st.selectbox("カテゴリー", self.state["df_models"]["category_name"].drop_duplicates(),
+                                                index=None, placeholder="車両カテゴリーを入力ください")
 
     def user_budget(self):
         """
         年間予算を入力部分
         """
-        user_session.set_value("user_budget",
-                                    st.text_input("予算（円/年）", placeholder = "年間希望予算を入力ください。例:700000"))
-        if not self._is_number(user_session.get_value("user_budget")):
+        self.user_budget = st.text_input("予算（円/年）", placeholder = "年間希望予算を入力ください。例:700000")
+        if not self._is_number(self.user_budget):
             st.write("※数値を入力して下さい。")
 
     def hour(self):
         """
         使用時間の入力部分
         """
-        user_session.set_value("hour",
-                                    st.selectbox("1日の乗車時間",(i for i in range(1,24)), index=None, placeholder="1日の乗車時間[H]を入力ください"))
+        self.hour = st.selectbox("1日の乗車時間",(i for i in range(1,24)), index=None, placeholder="1日の乗車時間[H]を入力ください")
 
     def age(self):
         """
         使用年数の入力部分
         """
-        user_session.set_value("age",
-                                    st.selectbox("使用年数",(i for i in range(1,21)),index=None,placeholder="使用年数を入力ください"))
+        self.age = st.selectbox("使用年数",(i for i in range(1,21)),index=None,placeholder="使用年数を入力ください")
     
     def _is_number(self, value: any):
         """
@@ -67,16 +74,17 @@ class UserInputDisplay(BaseDisplay):
         except ValueError:
             return False
 
-class SearchResultDisplay(BaseDisplay):
+class SearchResultDisplay(BaseDisplay, UserSession):
     """
     検索結果を表示するクラス
     """
     def preprocess(self):
-        data_manage.calculate_costs()
+        self.calculate_costs(self.state.age, self.state.hour)
+        self.search_car_meet_customer_needs()
 
     def postprocess(self):
-        if data_manage.search_car_meet_customer_needs():
-            user_session.set_value("chosen_grades",  self.edited_df[self.edited_df["check"]]["name_desc"].tolist())
+        if self.meets_needs:
+            self.set_value("chosen_grades",  self.edited_df[self.edited_df["check"]]["name_desc"].tolist())
 
     def show(self):
         """
@@ -84,9 +92,9 @@ class SearchResultDisplay(BaseDisplay):
         """
         st.title("検索結果")
         sort_by = "rank" if st.radio(label="並び順", options=("価格順", "人気順"), horizontal=True) == "人気順" else "MonthlyRealCost"
-        if data_manage.search_car_meet_customer_needs():
+        if self.meets_needs:
             self.edited_df = st.data_editor(
-            data_manage.get_seach_result().sort_values(by=sort_by).drop(columns=['rank', 'MonthlyRealCost']),
+            self.df_search_result.sort_values(by=sort_by).drop(columns=['rank', 'MonthlyRealCost']),
             column_config={
                 "image_url": st.column_config.ImageColumn(
                     "image", 
@@ -112,7 +120,37 @@ class SearchResultDisplay(BaseDisplay):
         else:
             st.write('該当車両がありません')
 
-class ResultComparison(BaseDisplay):
+    def calculate_costs(self, age, hour):
+        """
+        各種コストを計算するメソッド
+        """
+        # コストと売却価格
+        hold_month = age * 12
+        self.state.df_grades["FuelCost"] = (self.state.df_grades["FuelCostPerKilo"] * hour * 40 * hold_month * 30).astype(int)
+        self.state.df_grades["MainteCost"] = (self.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
+        self.state.df_grades["InsuranceCost"] = (self.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
+        self.state.df_grades["ResaleValue"] = (self.state.df_grades["price"] * (1-self.state.df_grades["MonthlyPriceDropRate"]) ** (hold_month)).astype(int)
+        self.state.df_grades["MonthlyTotalCost"] = self.state.df_grades["FuelCost"]/30 + self.state.df_grades["MonthlyMainteCost"] + self.state.df_grades["MonthlyInsuranceCost"]
+        self.state.df_grades["MonthlyRealCost"] = (self.state.df_grades["price"] - self.state.df_grades["ResaleValue"] + self.state.df_grades["MonthlyTotalCost"] + self.state.df_grades["MonthlyTotalCost"] * hold_month)/hold_month
+        self.state.df_grades["MonthlyTotalCost"] = self.state.df_grades["MonthlyTotalCost"].astype(int)
+        self.state.df_grades["MonthlyRealCost"] = self.state.df_grades["MonthlyRealCost"].astype(int)
+    
+    def search_car_meet_customer_needs(self):
+        """
+        ユーザーの要望に合う車両を検索する関数
+        入力が正しく、かつデータが存在していればTrueを返す
+        """
+        target_model_id = self.state.df_models[self.state.df_models['category_name']==self.state.car_category]["model_id"]
+        try:
+            df_search_result = self.state.df_grades[self.state.df_grades["model_id"].isin(target_model_id)&(self.state.df_grades["MonthlyRealCost"]<int(self.state['user_budget'])/12)]
+            df_search_result = df_search_result.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
+            df_search_result["check"] = False
+            self.df_search_result = df_search_result
+            self.meets_needs = not(df_search_result.empty)
+        except ValueError:
+            self.meets_needs = False
+
+class ResultComparison(BaseDisplay, UserSession):
     """
     予約とoption追加をするクラス
     """
@@ -164,7 +202,7 @@ class ResultComparison(BaseDisplay):
             st.plotly_chart(fig2)
 
 
-class BookAddOptions(BaseDisplay):
+class BookAddOptions(BaseDisplay, UserSession, DataManage, UtilityElement):
     """
     予約とoption追加をするクラス
     """
@@ -172,16 +210,17 @@ class BookAddOptions(BaseDisplay):
         pass
 
     def postprocess(self):
-        pass
+        if self.pushed:
+            self.insert_user_customization(self.name, self.email, self.prefecture)
 
     def show(self):
         st.title("ディーラー予約・オプション追加") 
         col1, col2 = st.columns([2,1])
         img_url = None
         with col1:
-            self.target_grade = st.radio(label="ディーラー予約するグレードを選択してください。", options=user_session.get_value("chosen_grades"))
+            self.target_grade = st.radio(label="ディーラー予約するグレードを選択してください。", options=self.get_value("chosen_grades"))
 
-            df_grades = user_session.state["df_grades"]
+            df_grades = self.state["df_grades"]
             self.target_grade_id = df_grades.query("name_desc==@self.target_grade").grade_id.iloc[0]
             img_url = df_grades.query("name_desc==@self.target_grade").image_url.iloc[0]
         with col2:
@@ -199,32 +238,6 @@ class BookAddOptions(BaseDisplay):
         with tab3:
             self.parts_exterior_selection()
 
-    def _show_data_as_table_and_select(self, df, key_prefix, caption_column, image_column, id_column, colum_count):
-        """
-        複数の画像と「チェックボックス」を並べて表示してユーザーに選択させるためのビジュアル要素
-        - df: オプション選択肢を含んだデータフレーム
-        - key_prefix: keyの前に共通でつけるプレフィックス。各オブジェクトのkeyはkey_prefix_[要素の番号]の形式でsession_stateに保存される
-        - caption_column: 画像のキャプションを指定する列名
-        - image_column: 画像のURLを指定する列名
-        - id_column: 対象を識別するidを指定する列名　#ここでは使用していない。。
-        - colum_count: 横何列に並べるかを指定する
-        """
-        selected_images = []
-        image_urls = df[image_column].tolist()
-        names = df[caption_column].tolist()
-        ids = df[id_column].tolist()
-        for i in range(0, len(df), colum_count):
-            cols = st.columns(colum_count)
-            for j, col in enumerate(cols):
-                if i + j < len(image_urls):
-                    image_url = image_urls[i + j]
-                    name = names[i + j]
-                    name = name if len(name)<10 else name[:10]+"..."
-                    target_id = ids[i + j]
-                    if col.checkbox(name, key=key_prefix+str(i+j)):
-                        selected_images.append(target_id)
-                    col.image(image_url, caption="", use_column_width=True)
-        return selected_images
 
     def user_registration(self):
         """
@@ -234,13 +247,13 @@ class BookAddOptions(BaseDisplay):
         st.write("こちらの内容で予約する場合にはフォームを入力・送信してください。")
         st.write("オプションを追加したい方は下からご希望のオプションを選択ください。")
         # ユーザーの氏名の入力
-        name = st.text_input("氏名")
+        self.name = st.text_input("氏名")
 
         # ユーザーのメールアドレスの入力
-        email = st.text_input("メールアドレス")
+        self.email = st.text_input("メールアドレス")
 
         # 都道府県の選択
-        prefecture = st.selectbox(
+        self.prefecture = st.selectbox(
             "都道府県",
             (
                 "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
@@ -253,16 +266,12 @@ class BookAddOptions(BaseDisplay):
         )
 
         # フォームの送信ボタン
-        if st.button("この内容でディーラーを予約する"):
+        self.pushed = st.button("この内容でディーラーを予約する")
+        if self.pushed:
             st.write("登録が完了しました。後日ディーラーからアポイントのご連絡をいたします。")
-            user_id = User({"username":name, "email":email, "place":prefecture}).insert_db()
-            customization_id = Customization({"userid":user_id, "baseid":1, "colorid":1, "exteriorid":1, "interiorid":1}).insert_db()
-            return True
-        else:
-            return False
 
     def parts_exterior_selection(self):
-        df_parts = user_session.state["df_parts"]
+        df_parts = self.state["df_parts"]
         self.df_parts_target = df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
         self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
                             key_prefix=f"parts_gradeid_{self.target_grade_id}", 
@@ -270,7 +279,7 @@ class BookAddOptions(BaseDisplay):
                             id_column="option_grade_id", colum_count=4)
         
     def parts_interior_selection(self):
-        df_parts_interior = user_session.state["df_parts_interior"]
+        df_parts_interior = self.state["df_parts_interior"]
         self.df_parts_interior_target = df_parts_interior.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
         self.target_parts_interior_ids = self._show_data_as_table_and_select(df=self.df_parts_interior_target, 
                             key_prefix=f"parts_interior_gradeid_{self.target_grade_id}", 
@@ -278,7 +287,7 @@ class BookAddOptions(BaseDisplay):
                             id_column="option_grade_id", colum_count=2)
 
     def color_selection(self):
-        self.df_colors_target = user_session.state["df_colors"]#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        self.df_colors_target = self.state["df_colors"]#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
         self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_colors_target, 
                             key_prefix=f"color_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 

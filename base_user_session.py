@@ -4,8 +4,10 @@ class BaseUserSession():
     """
     ユーザーセッションを管理するベースクラス
     """
-    def __init__(self, defaults:dict):
-        self.state = st.session_state
+    defaults = None
+    state = st.session_state
+
+    def set_default(self, defaults):
         self.defaults = defaults
         self._initialize_default_values()
 
