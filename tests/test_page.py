@@ -1,79 +1,106 @@
-# import pytest
-# import pandas as pd
-# from page import UserInputDisplay, SearchResultDisplay
+import pytest
+import streamlit as st
+from page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
+from user_session import UserSession
+from data_manager import ImmutableDataFrame
+import pandas as pd
 
-# @pytest.fixture
-# def user_input_display():
-#     return UserInputDisplay()
+@pytest.fixture(scope="function")
+def user_session():
+    # Streamlitのセッションステートをクリアして初期状態にする
+    st.session_state.clear()
+    # BaseUserSessionのデフォルト値を設定
+    defaults = {
+        "car_category": None,
+        "user_budget": "",
+        "hour": None,
+        "age": None,
+        "chosen_grades": None,
+        "df_models": ImmutableDataFrame(pd.DataFrame({'category_name': ['SUV', 'Sedan'], "model_id": [1,2]})),
+        "df_parts": ImmutableDataFrame(pd.DataFrame()),
+        "df_parts_interior": ImmutableDataFrame(pd.DataFrame()),
+        "df_colors": ImmutableDataFrame(pd.DataFrame()),
+        "df_grades": ImmutableDataFrame(pd.DataFrame({"model_id":[1,2,3], "FuelCostPerKilo":[1,2,3], 
+                                                      "MonthlyMainteCost":[1,2,3], "MonthlyInsuranceCost":[1,2,3], 
+                                                      "price":[1,2,3], "MonthlyPriceDropRate":[0.1,0.1,0.1]})),
+        "df_grades_with_cost": None,
+    }
+    # UserSessionのインスタンスを作成し、デフォルト値を設定
+    session = UserSession()
+    session.set_default_values(defaults)
+    return session
 
-# @pytest.fixture
-# def search_result_display():
-#     return SearchResultDisplay()
+def test_user_input_display_preprocess(user_session):
+    display = UserInputDisplay()
+    display.preprocess()
+    assert "df_models" in st.session_state
+    assert "df_parts" in st.session_state
+    assert "df_parts_interior" in st.session_state
+    assert "df_colors" in st.session_state
+    assert "df_grades" in st.session_state
 
-# def test_is_number(user_input_display):
-#     assert user_input_display._is_number("123") == True
-#     assert user_input_display._is_number("abc") == False
-#     assert user_input_display._is_number("123.45") == True
+def test_user_input_display_postprocess(user_session):
+    display = UserInputDisplay()
+    display.car_category = "SUV"
+    display.user_budget = "30000"
+    display.hour = 10
+    display.age = 25
+    display.postprocess()
+    assert st.session_state["car_category"] == "SUV"
+    assert st.session_state["user_budget"] == "30000"
+    assert st.session_state["hour"] == 10
+    assert st.session_state["age"] == 25
 
-# def test_preprocess(user_input_display):
-#     # データベースからのデータをモックとして提供
-#     df_models = pd.DataFrame({'category_name': ['SUV', 'Sedan']})
-#     df_parts = pd.DataFrame({'part_id': [1, 2]})
-#     df_parts_interior = pd.DataFrame({'part_interior_id': [1, 2]})
-#     df_colors = pd.DataFrame({'color_id': [1, 2]})
-#     df_grades = pd.DataFrame({'grade_id': [1, 2]})
-    
-#     user_input_display.load_data_from_DB = lambda: (df_models, df_parts, df_parts_interior, df_colors, df_grades)
-#     user_input_display.preprocess()
-    
-#     assert user_input_display.state["df_models"].equals(df_models)
-#     assert user_input_display.state["df_parts"].equals(df_parts)
-#     assert user_input_display.state["df_parts_interior"].equals(df_parts_interior)
-#     assert user_input_display.state["df_colors"].equals(df_colors)
-#     assert user_input_display.state["df_grades"].equals(df_grades)
+def test_user_input_display_show(user_session):
+    display = UserInputDisplay()
+    display.preprocess()
+    print(st.session_state.df_models)
+    display.show()
 
-# def test_calculate_costs(search_result_display):
-#     # テスト用のデータを設定
-#     df_grades = pd.DataFrame({
-#         'model_id': [1, 2],
-#         'FuelCostPerKilo': [0.1, 0.2],
-#         'MonthlyMainteCost': [100, 200],
-#         'MonthlyInsuranceCost': [50, 100],
-#         'price': [10000, 20000],
-#         'MonthlyPriceDropRate': [0.01, 0.02]
-#     })
-    
-#     search_result_display.state = {
-#         'df_grades': df_grades,
-#         'age': 5,
-#         'hour': 2
-#     }
-    
-#     search_result_display.calculate_costs(search_result_display.state['age'], search_result_display.state['hour'])
-    
-#     assert search_result_display.state['df_grades']["FuelCost"].equals(pd.Series([3600, 7200], name="FuelCost"))
-#     assert search_result_display.state['df_grades']["MainteCost"].equals(pd.Series([6000, 12000], name="MainteCost"))
-#     assert search_result_display.state['df_grades']["ResaleValue"].equals(pd.Series([9044, 18039], name="ResaleValue"))
+    # テストはStreamlitのUIコンポーネントの表示を確認するのが難しいため、ここではエラーが出ないかを確認
+    assert True
 
-# def test_search_car_meet_customer_needs(search_result_display):
-#     # テスト用のデータを設定
-#     df_models = pd.DataFrame({'category_name': ['SUV', 'Sedan'], 'model_id': [1, 2]})
-#     df_grades = pd.DataFrame({
-#         'model_id': [1, 2],
-#         'MonthlyRealCost': [500, 1500],
-#         'name_desc': ['Grade A', 'Grade B'],
-#         'image_url': ['url1', 'url2'],
-#         'rank': [1, 2]
-#     })
-    
-#     search_result_display.state = {
-#         'df_models': df_models,
-#         'df_grades': df_grades,
-#         'car_category': 'SUV',
-#         'user_budget': '10000'
-#     }
-    
-#     search_result_display.search_car_meet_customer_needs()
-    
-#     assert search_result_display.meets_needs == True
-#     assert search_result_display.df_search_result.equals(df_grades[df_grades['model_id'] == 1])
+def test_search_result_display_preprocess(user_session):
+    display = SearchResultDisplay()
+    user_session.set_value("age", 25)
+    user_session.set_value("hour", 10)
+    display.preprocess()
+    assert "df_grades_with_cost" in st.session_state
+
+def test_search_result_display_postprocess(user_session):
+    display = SearchResultDisplay()
+    display.meets_needs = True
+    display.edited_df = pd.DataFrame({"check": [True, False], "name_desc": ["Grade1", "Grade2"]})
+    display.postprocess()
+    assert st.session_state["chosen_grades"] == ["Grade1"]
+
+def test_search_result_display_show(user_session):
+    display = SearchResultDisplay()
+    display.meets_needs = True
+    display.df_search_result = pd.DataFrame({
+        "image_url": ["img1", "img2"],
+        "model_name": ["Model1", "Model2"],
+        "name_desc": ["Grade1", "Grade2"],
+        "MonthlyRealCost": [1000, 2000],
+        "MonthlyTotalCost": [1500, 2500],
+        "ResaleValue": [500, 1500],
+        "rank": [1, 2],
+        "check": [False, False]
+    })
+    display.show()
+    # テストはStreamlitのUIコンポーネントの表示を確認するのが難しいため、ここではエラーが出ないかを確認
+    assert True
+
+def test_result_comparison_preprocess(user_session):
+    display = ResultComparison()
+    display.preprocess()
+    assert not display.df1.empty
+    assert not display.df2.empty
+    assert not display.df3.empty
+
+def test_result_comparison_show(user_session):
+    display = ResultComparison()
+    display.preprocess()
+    display.show()
+    # テストはStreamlitのUIコンポーネントの表示を確認するのが難しいため、ここではエラーが出ないかを確認
+    assert True

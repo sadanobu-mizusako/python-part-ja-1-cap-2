@@ -134,7 +134,7 @@ class SearchResultDisplay(BaseDisplay, UserSession):
 
         df_grades_with_cost["FuelCost"] = (df_grades_with_cost["FuelCostPerKilo"] * hour * 40 * hold_month * 30).astype(int)
         df_grades_with_cost["MainteCost"] = (df_grades_with_cost["MonthlyMainteCost"] * hold_month).astype(int)
-        df_grades_with_cost["InsuranceCost"] = (df_grades_with_cost["MonthlyMainteCost"] * hold_month).astype(int)
+        df_grades_with_cost["InsuranceCost"] = (df_grades_with_cost["MonthlyInsuranceCost"] * hold_month).astype(int)
         df_grades_with_cost["ResaleValue"] = (df_grades_with_cost["price"] * (1-df_grades_with_cost["MonthlyPriceDropRate"]) ** (hold_month)).astype(int)
         df_grades_with_cost["MonthlyTotalCost"] = df_grades_with_cost["FuelCost"]/30 + df_grades_with_cost["MonthlyMainteCost"] + df_grades_with_cost["MonthlyInsuranceCost"]
         df_grades_with_cost["MonthlyRealCost"] = (df_grades_with_cost["price"] - df_grades_with_cost["ResaleValue"] + df_grades_with_cost["MonthlyTotalCost"] + df_grades_with_cost["MonthlyTotalCost"] * hold_month)/hold_month

@@ -7,6 +7,8 @@ class BaseDisplay(ABC):
     """
     def __init__(self) -> None:
         super().__init__()
+    
+    def run(self):
         self.preprocess()
         self.show()
         self.postprocess()

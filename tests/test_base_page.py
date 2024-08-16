@@ -34,6 +34,7 @@ def test_base_display(mock_display):
     MockDisplay インスタンスが正しく初期化され、
     各メソッドが呼び出されたことを確認するテスト
     """
+    mock_display.run()
     assert mock_display.preprocessed  # preprocess が呼び出されたことを確認
     assert mock_display.shown         # show が呼び出されたことを確認
     assert mock_display.postprocessed # postprocess が呼び出されたことを確認

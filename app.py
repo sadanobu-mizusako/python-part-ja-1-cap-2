@@ -5,10 +5,10 @@ from domain_context.default_values import DEFAULT_VALUES
 user_session = UserSession()
 user_session.set_default_values(DEFAULT_VALUES)
 
-UserInputDisplay()
+UserInputDisplay().run()
 if user_session.user_request_ready():
-    SearchResultDisplay()
+    SearchResultDisplay().run()
 
 if user_session.user_choice_ready():
-    ResultComparison()
-    BookAddOptions()
+    ResultComparison().run()
+    BookAddOptions().run()
