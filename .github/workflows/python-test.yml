@@ -25,3 +25,17 @@ jobs:
     - name: Run tests
       run: |
         pytest tests/
+
+    - name: self.stateが使われていたらエラーを出すようにする
+      run: |
+        # Find all .py files excluding base_* and tests/ directory
+        # The `grep -v` command is used to exclude matching lines
+        files=$(find . -name "*.py" ! -name "base_*.py" ! -path "./tests/*")
+        
+        # Check if any of the files contain "self.state"
+        if grep -r "self.state" $files; then
+          echo "Error: 'self.state' usage found in the code."
+          exit 1
+        else
+          echo "'self.state' usage not found. All good!"
+        fi

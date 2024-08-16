@@ -6,7 +6,7 @@ class UserSession(BaseUserSession):
     """
     def user_request_ready(self):
         if self.get_value("car_category") != None and self.get_value("user_budget") != "" \
-            and self.get_value("hout") != None and self.get_value("age") != None:
+            and self.get_value("hour") != None and self.get_value("age") != None:
             return True
         else:
             return False

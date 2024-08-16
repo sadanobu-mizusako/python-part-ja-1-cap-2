@@ -18,16 +18,25 @@ class BaseUserSession():
                 self.state[key] = value
 
     def set_value(self, key, value):
+        """
+        単一のセッションステートを同時に設定
+        """
         if key in self.state:
             self.state[key] = value
         else:
             raise KeyError(f"{key} is not a valid key in the session state")
 
     def set_values(self, values:dict):
+        """
+        複数のセッションステートを同時に設定
+        """
         for key in values.keys():
             self.set_value(key, values[key])
 
     def get_value(self, key):
+        """
+        セッションステートにアクセスして取得
+        """
         if key in self.state:
             return self.state[key]
         else:

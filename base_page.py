@@ -5,9 +5,6 @@ class BaseDisplay(ABC):
     """
     ページの挙動を定める要素。前処理、可視化、後処理の3つで構成する
     """
-    def __init__(self) -> None:
-        super().__init__()
-    
     def run(self):
         self.preprocess()
         self.show()
