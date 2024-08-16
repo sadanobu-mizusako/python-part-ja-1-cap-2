@@ -26,7 +26,7 @@ jobs:
       run: |
         pytest tests/
 
-    - name: self.stateが使われていたらエラーを出すようにする
+    - name: Detect self.state
       run: |
         # Find all .py files excluding base_* and tests/ directory
         # The `grep -v` command is used to exclude matching lines
