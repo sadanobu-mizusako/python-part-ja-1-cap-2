@@ -10,8 +10,8 @@ def user_session():
     # BaseUserSessionのデフォルト値を設定
     defaults = {
         "car_category": None,
-        "user_budget": "",
-        "hout": None,
+        "user_budget": None,
+        "hour": None,
         "age": None,
         "chosen_grades": None
     }
@@ -24,7 +24,7 @@ def test_user_request_ready(user_session):
     # 必要なセッションステートを設定してテスト
     user_session.set_value("car_category", "SUV")
     user_session.set_value("user_budget", "30000")
-    user_session.set_value("hout", 10)
+    user_session.set_value("hour", 10)
     user_session.set_value("age", 25)
 
     # すべての値が設定されている場合、Trueを返すべき
