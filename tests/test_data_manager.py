@@ -37,7 +37,7 @@ def setup_db(db_manager):
         os.remove(TEST_DB_PATH)
 
 def test_insert_user_customization(db_manager, setup_db):
-    db_manager.insert_user_customization("John Doe", "john@example.com", "Tokyo")
+    db_manager.insert_user_customization("John Doe", "john@example.com", "Tokyo", 1, 1, 1, [1,2,3])
     user_data = db_manager.get_data("SELECT * FROM Users")
     customization_data = db_manager.get_data("SELECT * FROM Customizations")
 
@@ -55,9 +55,9 @@ def test_immutable_dataframe():
     assert immutable_df['col1'].equals(df['col1'])
     assert immutable_df['col2'].equals(df['col2'])
 
-    # 新しい列の追加が可能であることを確認
-    immutable_df['col3'] = [7, 8, 9]
-    assert 'col3' in immutable_df._dataframe.columns
+    # 新しい列の追加が不可能であることを確認
+    with pytest.raises(ValueError):
+        immutable_df['col3'] = [7, 8, 9]
 
     # 元の列の変更が不可能であることを確認
     with pytest.raises(ValueError):
