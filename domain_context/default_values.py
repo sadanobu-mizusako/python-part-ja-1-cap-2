@@ -13,5 +13,7 @@ DEFAULT_VALUES = {
     "df_parts_interior": None,
     "df_colors": None,
     "df_grades": None,
-    "df_search_result": None
+
+    "df_search_result": None,
+    "df_grades_with_cost": None
  }

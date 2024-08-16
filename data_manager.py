@@ -19,10 +19,7 @@ class ImmutableDataFrame:
         return self._dataframe[key]
 
     def __setitem__(self, key, value):
-        if key in self._original_columns:
-            raise ValueError("This DataFrame is immutable. Changes to existing columns are not allowed.")
-        else:
-            self._dataframe[key] = value  # 新しい列の追加を許容
+        raise ValueError("This DataFrame is immutable. Changes to columns are not allowed.")
 
     def __getattr__(self, attr):
         return getattr(self._dataframe, attr)
@@ -54,11 +51,10 @@ class DataManager(SQliteManager):
             with open(self.create_tables_sql_path, 'r', encoding='utf-8') as f:
                 create_tables_sql = f.read()
 
+            self.execute_script(create_tables_sql)
+                
             with open(self.db_json_data_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-
-            #DBを作成
-            self.execute_script(create_tables_sql)
 
             #jsonファイルからデータをDBへ挿入
             self.insert_data('CarCategories', data['CarCategories'])
@@ -100,7 +96,7 @@ class DataManager(SQliteManager):
         df_colors["option_grade_id"] = range(len(df_colors))#ユニークid付        
         df_grades = self.get_df("""
                                         SELECT BasePrice as price, ImageURL as image_url, ModelName as model_name, CarModels.ModelID as model_id, 
-                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank, 
+                                        CarGrades.GradeID as grade_id, GradeName as grade_name, Description as grade_desc, Rank as rank, Bases.BaseId as base_id,
                                         FuelEfficiency, FuelCostPerKilo, MonthlyMainteCost, MonthlyInsuranceCost, MonthlyParkingCost, MonthlyPriceDropRate
                                         from CarGrades JOIN Bases ON CarGrades.GradeID == Bases.GradeID
                                         JOIN CarModels ON CarModels.ModelID == CarGrades.ModelID
@@ -109,6 +105,14 @@ class DataManager(SQliteManager):
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
         return df_models, df_parts, df_parts_interior, df_colors, df_grades
 
-    def insert_user_customization(self, name, email, prefecture):
+    def insert_user_customization(self, name, email, prefecture, baseid, colorid, interiorid, exteriorids):
         user_id = self.insert_record("Users", {"username":name, "email":email, "place":prefecture})
-        customization_id = self.insert_record("Customizations", {"userid":user_id, "baseid":1, "colorid":1, "exteriorid":1, "interiorid":1})
+        customization_id = self.insert_record("Customizations", {"userid":self._to_int(user_id), "baseid":self._to_int(baseid), 
+                                                                 "colorid":self._to_int(colorid), "interiorid":self._to_int(interiorid)})
+        for exteriorid in exteriorids:
+            self.insert_record("ExteriorCustomizations", {"customizationid":customization_id, "exteriorid":exteriorid})
+    
+    def _to_int(self, var):
+        if var is not None:
+            var = int(var)
+        return var

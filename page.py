@@ -41,8 +41,9 @@ class UserInputDisplay(BaseDisplay, DataManager, UserSession):
         """
         カテゴリーの入力部分
         """
-        self.car_category = st.selectbox("カテゴリー", self.state["df_models"]["category_name"].drop_duplicates(),
-                                                index=None, placeholder="車両カテゴリーを入力ください")
+        df_models = self.get_value("df_models")
+        category_names = df_models["category_name"].drop_duplicates()
+        self.car_category = st.selectbox("カテゴリー", category_names, index=None, placeholder="車両カテゴリーを入力ください")
 
     def user_budget(self):
         """
@@ -79,12 +80,15 @@ class SearchResultDisplay(BaseDisplay, UserSession):
     検索結果を表示するクラス
     """
     def preprocess(self):
-        self.calculate_costs(self.state.age, self.state.hour)
+        age = self.get_value("age")
+        hour = self.get_value("hour")
+        self.calculate_costs(age, hour)
         self.search_car_meet_customer_needs()
 
     def postprocess(self):
         if self.meets_needs:
-            self.set_value("chosen_grades",  self.edited_df[self.edited_df["check"]]["name_desc"].tolist())
+            chosen_grades = self.edited_df[self.edited_df["check"]]["name_desc"].tolist()
+            self.set_value("chosen_grades",  chosen_grades)
 
     def show(self):
         """
@@ -126,23 +130,30 @@ class SearchResultDisplay(BaseDisplay, UserSession):
         """
         # コストと売却価格
         hold_month = age * 12
-        self.state.df_grades["FuelCost"] = (self.state.df_grades["FuelCostPerKilo"] * hour * 40 * hold_month * 30).astype(int)
-        self.state.df_grades["MainteCost"] = (self.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
-        self.state.df_grades["InsuranceCost"] = (self.state.df_grades["MonthlyMainteCost"] * hold_month).astype(int)
-        self.state.df_grades["ResaleValue"] = (self.state.df_grades["price"] * (1-self.state.df_grades["MonthlyPriceDropRate"]) ** (hold_month)).astype(int)
-        self.state.df_grades["MonthlyTotalCost"] = self.state.df_grades["FuelCost"]/30 + self.state.df_grades["MonthlyMainteCost"] + self.state.df_grades["MonthlyInsuranceCost"]
-        self.state.df_grades["MonthlyRealCost"] = (self.state.df_grades["price"] - self.state.df_grades["ResaleValue"] + self.state.df_grades["MonthlyTotalCost"] + self.state.df_grades["MonthlyTotalCost"] * hold_month)/hold_month
-        self.state.df_grades["MonthlyTotalCost"] = self.state.df_grades["MonthlyTotalCost"].astype(int)
-        self.state.df_grades["MonthlyRealCost"] = self.state.df_grades["MonthlyRealCost"].astype(int)
+        df_grades_with_cost = self.get_value("df_grades").to_dataframe()
+
+        df_grades_with_cost["FuelCost"] = (df_grades_with_cost["FuelCostPerKilo"] * hour * 40 * hold_month * 30).astype(int)
+        df_grades_with_cost["MainteCost"] = (df_grades_with_cost["MonthlyMainteCost"] * hold_month).astype(int)
+        df_grades_with_cost["InsuranceCost"] = (df_grades_with_cost["MonthlyMainteCost"] * hold_month).astype(int)
+        df_grades_with_cost["ResaleValue"] = (df_grades_with_cost["price"] * (1-df_grades_with_cost["MonthlyPriceDropRate"]) ** (hold_month)).astype(int)
+        df_grades_with_cost["MonthlyTotalCost"] = df_grades_with_cost["FuelCost"]/30 + df_grades_with_cost["MonthlyMainteCost"] + df_grades_with_cost["MonthlyInsuranceCost"]
+        df_grades_with_cost["MonthlyRealCost"] = (df_grades_with_cost["price"] - df_grades_with_cost["ResaleValue"] + df_grades_with_cost["MonthlyTotalCost"] + df_grades_with_cost["MonthlyTotalCost"] * hold_month)/hold_month
+        df_grades_with_cost["MonthlyTotalCost"] = df_grades_with_cost["MonthlyTotalCost"].astype(int)
+        df_grades_with_cost["MonthlyRealCost"] = df_grades_with_cost["MonthlyRealCost"].astype(int)
+
+        self.set_value("df_grades_with_cost", ImmutableDataFrame(df_grades_with_cost))
     
     def search_car_meet_customer_needs(self):
         """
         ユーザーの要望に合う車両を検索する関数
         入力が正しく、かつデータが存在していればTrueを返す
         """
+
         target_model_id = self.state.df_models[self.state.df_models['category_name']==self.state.car_category]["model_id"]
         try:
-            df_search_result = self.state.df_grades[self.state.df_grades["model_id"].isin(target_model_id)&(self.state.df_grades["MonthlyRealCost"]<int(self.state['user_budget'])/12)]
+            df_grades_with_cost = self.get_value("df_grades_with_cost").to_dataframe()
+            user_budget = self.get_value("user_budget")
+            df_search_result = df_grades_with_cost[df_grades_with_cost["model_id"].isin(target_model_id)&(df_grades_with_cost["MonthlyRealCost"]<int(user_budget)/12)]
             df_search_result = df_search_result.reindex(columns=['image_url', 'model_name', 'name_desc', 'MonthlyRealCost', 'MonthlyTotalCost', 'ResaleValue', 'rank'])
             df_search_result["check"] = False
             self.df_search_result = df_search_result
@@ -211,7 +222,9 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
 
     def postprocess(self):
         if self.pushed:
-            self.insert_user_customization(self.name, self.email, self.prefecture)
+            self.insert_user_customization(name=self.name, email=self.email, prefecture=self.prefecture, baseid=self.target_base_id,
+                                           exteriorids=self.target_parts_ids, interiorid=self.target_parts_interior_id,
+                                           colorid=self.target_color_id)
 
     def show(self):
         st.title("ディーラー予約・オプション追加") 
@@ -219,9 +232,9 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
         img_url = None
         with col1:
             self.target_grade = st.radio(label="ディーラー予約するグレードを選択してください。", options=self.get_value("chosen_grades"))
-
-            df_grades = self.state["df_grades"]
+            df_grades = self.get_value("df_grades")
             self.target_grade_id = df_grades.query("name_desc==@self.target_grade").grade_id.iloc[0]
+            self.target_base_id = df_grades.query("name_desc==@self.target_grade").base_id.iloc[0]
             img_url = df_grades.query("name_desc==@self.target_grade").image_url.iloc[0]
         with col2:
             if img_url:
@@ -271,24 +284,27 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
             st.write("登録が完了しました。後日ディーラーからアポイントのご連絡をいたします。")
 
     def parts_exterior_selection(self):
-        df_parts = self.state["df_parts"]
+        df_parts = self.get_value("df_parts")
         self.df_parts_target = df_parts.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
-        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
+        target_parts_ids = self._show_data_as_table_and_select(df=self.df_parts_target, 
                             key_prefix=f"parts_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 
                             id_column="option_grade_id", colum_count=4)
-        
+        self.target_parts_ids = target_parts_ids if target_parts_ids else [None]
+
     def parts_interior_selection(self):
-        df_parts_interior = self.state["df_parts_interior"]
+        df_parts_interior = self.get_value("df_parts_interior")
         self.df_parts_interior_target = df_parts_interior.query("grade_id==@self.target_grade_id")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
-        self.target_parts_interior_ids = self._show_data_as_table_and_select(df=self.df_parts_interior_target, 
+        target_parts_interior_ids = self._show_data_as_table_and_select(df=self.df_parts_interior_target, 
                             key_prefix=f"parts_interior_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 
                             id_column="option_grade_id", colum_count=2)
+        self.target_parts_interior_id = target_parts_interior_ids[0] if target_parts_interior_ids else None        
 
     def color_selection(self):
-        self.df_colors_target = self.state["df_colors"]#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
-        self.target_parts_ids = self._show_data_as_table_and_select(df=self.df_colors_target, 
+        self.df_colors_target = self.get_value("df_colors")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
+        target_color_ids = self._show_data_as_table_and_select(df=self.df_colors_target, 
                             key_prefix=f"color_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 
                             id_column="option_grade_id", colum_count=2)
+        self.target_color_id = target_color_ids[0] if target_color_ids else None
