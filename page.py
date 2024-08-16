@@ -148,8 +148,9 @@ class SearchResultDisplay(BaseDisplay, UserSession):
         ユーザーの要望に合う車両を検索する関数
         入力が正しく、かつデータが存在していればTrueを返す
         """
-
-        target_model_id = self.state.df_models[self.state.df_models['category_name']==self.state.car_category]["model_id"]
+        df_models = self.get_value("df_models")
+        car_category = self.get_value("car_category")
+        target_model_id = df_models[df_models['category_name']==car_category]["model_id"]
         try:
             df_grades_with_cost = self.get_value("df_grades_with_cost").to_dataframe()
             user_budget = self.get_value("user_budget")
