@@ -4,23 +4,20 @@ import os
 import pandas as pd
 import json
 from data_manager import DataManager, ImmutableDataFrame
+from base_db_manager import SQliteManager
 from domain_context.db_config import CREATE_TABLES_SQL_PATH
 
 # SQLスクリプトのパス
 TEST_DB_PATH = 'test_db.sqlite'
+DB_MANAGER = SQliteManager(TEST_DB_PATH)
+
 
 @pytest.fixture(scope="function")
-def db_manager():
+def data_manager():
     # テストDBを作成
     manager = DataManager()
-    manager.path = TEST_DB_PATH
-    yield manager
-    # テストが終わった後にDBファイルを削除
-    if os.path.exists(TEST_DB_PATH):
-        os.remove(TEST_DB_PATH)
+    manager.dbname = TEST_DB_PATH
 
-@pytest.fixture(scope="function")
-def setup_db(db_manager):
     # テストDBファイルが存在する場合は削除
     if os.path.exists(TEST_DB_PATH):
         os.remove(TEST_DB_PATH)
@@ -28,23 +25,37 @@ def setup_db(db_manager):
     # 外部ファイルからSQLスクリプトを読み込む
     with open(CREATE_TABLES_SQL_PATH, 'r', encoding='utf-8') as f:
         create_tables_sql = f.read()
-
     # テスト用のテーブルを作成
-    db_manager.execute_script(create_tables_sql)
-    yield
+    DB_MANAGER.execute_script(create_tables_sql)
+    
+    yield manager
     # テストが終わった後にDBファイルを削除
     if os.path.exists(TEST_DB_PATH):
         os.remove(TEST_DB_PATH)
 
-def test_insert_user_customization(db_manager, setup_db):
-    db_manager.insert_user_customization("John Doe", "john@example.com", "Tokyo", 1, 1, 1, [1,2,3])
-    user_data = db_manager.get_data("SELECT * FROM Users")
-    customization_data = db_manager.get_data("SELECT * FROM Customizations")
+def test_insert_user_customization(data_manager):
+    # ユーザーとカスタマイゼーションを挿入
+    data_manager.insert_user_customization("John Doe", "john@example.com", "Tokyo", 1, [1], [1], [1,2,3])
+    
+    # データを取得
+    user_data = DB_MANAGER.get_data("SELECT * FROM Users")
+    customization_data = DB_MANAGER.get_data("SELECT * FROM Customizations")
+    color_customization_data = DB_MANAGER.get_data("SELECT * FROM ColorCustomizations")
+    exterior_customization_data = DB_MANAGER.get_data("SELECT * FROM ExteriorCustomizations")
+    interior_customization_data = DB_MANAGER.get_data("SELECT * FROM InteriorCustomizations")
 
+    # テスト
     assert len(user_data) == 1
     assert len(customization_data) == 1
+    assert len(color_customization_data) == 1
+    assert len(exterior_customization_data) == 3
+    assert len(interior_customization_data) == 1
+
     assert user_data[0][1] == "John Doe"
     assert customization_data[0][1] == user_data[0][0]  # user_idが一致することを確認
+    assert color_customization_data[0][1] == customization_data[0][0]  # customization_idが一致することを確認
+    assert exterior_customization_data[0][1] == customization_data[0][0]  # customization_idが一致することを確認
+    assert interior_customization_data[0][1] == customization_data[0][0]  # customization_idが一致することを確認
 
 def test_immutable_dataframe():
     data = {'col1': [1, 2, 3], 'col2': [4, 5, 6]}
@@ -63,9 +74,10 @@ def test_immutable_dataframe():
     with pytest.raises(ValueError):
         immutable_df['col1'] = [10, 11, 12]
 
-def test_load_data_from_db(db_manager, setup_db):
+def test_load_data_from_db(data_manager):
     # テスト用のデータを挿入
-    db_manager.execute_script("""
+    DB_MANAGER = SQliteManager(TEST_DB_PATH)
+    DB_MANAGER.execute_script("""
     INSERT INTO CarCategories (CategoryName) VALUES ('SUV');
     INSERT INTO CarModels (ModelName, CategoryID, ImageURL) VALUES ('Model X', 1, 'url1');
     INSERT INTO CarGrades (GradeName, Description, ModelID) VALUES ('Grade A', 'Description A', 1);
@@ -79,8 +91,12 @@ def test_load_data_from_db(db_manager, setup_db):
     INSERT INTO GradeInteriors (GradeID, InteriorID) VALUES (1, 1);
     """)
 
-    df_models, df_parts, df_parts_interior, df_colors, df_grades = db_manager.load_data_from_DB()
+    # データをロード
+    df_models, df_parts, df_parts_interior, df_colors, df_grades = data_manager.load_data_from_DB()
+    print(df_models, df_parts, df_parts_interior, df_colors, df_grades)
 
+    # テスト
+    print(df_models)
     assert len(df_models) == 1
     assert df_models.iloc[0]['model_name'] == 'Model X'
     assert len(df_grades) == 1
@@ -91,3 +107,4 @@ def test_load_data_from_db(db_manager, setup_db):
     assert df_parts_interior.iloc[0]['name'] == 'Leather'
     assert len(df_colors) == 1
     assert df_colors.iloc[0]['name'] == 'Red'
+

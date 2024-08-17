@@ -224,8 +224,8 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
     def postprocess(self):
         if self.pushed:
             self.insert_user_customization(name=self.name, email=self.email, prefecture=self.prefecture, baseid=self.target_base_id,
-                                           exteriorids=self.target_parts_ids, interiorid=self.target_parts_interior_id,
-                                           colorid=self.target_color_id)
+                                           exteriorids=self.target_parts_ids, interiorids=self.target_parts_interior_ids,
+                                           colorids=self.target_color_ids)
 
     def show(self):
         st.title("ディーラー予約・オプション追加") 
@@ -300,7 +300,7 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
                             key_prefix=f"parts_interior_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 
                             id_column="option_grade_id", colum_count=2)
-        self.target_parts_interior_id = target_parts_interior_ids[0] if target_parts_interior_ids else None        
+        self.target_parts_interior_ids = target_parts_interior_ids if target_parts_interior_ids else [None]        
 
     def color_selection(self):
         self.df_colors_target = self.get_value("df_colors")#実質、target_grade_idがuniqueなのでmodelidでのフィルタは解除
@@ -308,4 +308,4 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
                             key_prefix=f"color_gradeid_{self.target_grade_id}", 
                             caption_column="name", image_column="img_url", 
                             id_column="option_grade_id", colum_count=2)
-        self.target_color_id = target_color_ids[0] if target_color_ids else None
+        self.target_color_ids = target_color_ids if target_color_ids else [None]

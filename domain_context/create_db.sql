@@ -81,12 +81,8 @@ CREATE TABLE Customizations (
     CustomizationID INTEGER PRIMARY KEY AUTOINCREMENT,
     UserID INTEGER,
     BaseID INTEGER,
-    ColorID INTEGER,
-    InteriorID INTEGER,
     FOREIGN KEY (UserID) REFERENCES Users (UserID),
-    FOREIGN KEY (BaseID) REFERENCES Bases (BaseID),
-    FOREIGN KEY (ColorID) REFERENCES Colors (ColorID),
-    FOREIGN KEY (InteriorID) REFERENCES Interiors (InteriorID)
+    FOREIGN KEY (BaseID) REFERENCES Bases (BaseID)
 );
 
 CREATE TABLE ExteriorCustomizations (
@@ -95,6 +91,22 @@ CREATE TABLE ExteriorCustomizations (
     ExteriorID INTEGER,
     FOREIGN KEY (CustomizationID) REFERENCES Customizations (CustomizationID),
     FOREIGN KEY (ExteriorID) REFERENCES Exteriors (ExteriorID)
+);
+
+CREATE TABLE ColorCustomizations (
+    ColorCustomizationID INTEGER PRIMARY KEY AUTOINCREMENT,
+    CustomizationID INTEGER,
+    ColorID INTEGER,
+    FOREIGN KEY (CustomizationID) REFERENCES Customizations (CustomizationID),
+    FOREIGN KEY (ColorID) REFERENCES Colors (ColorID)
+);
+
+CREATE TABLE InteriorCustomizations (
+    InteriorCustomizationID INTEGER PRIMARY KEY AUTOINCREMENT,
+    CustomizationID INTEGER,
+    InteriorID INTEGER,
+    FOREIGN KEY (CustomizationID) REFERENCES Customizations (CustomizationID),
+    FOREIGN KEY (InteriorID) REFERENCES Interiors (InteriorID)
 );
 
 CREATE TABLE Users (

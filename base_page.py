@@ -5,21 +5,22 @@ class BaseDisplay(ABC):
     """
     ページの挙動を定める要素。前処理、可視化、後処理の3つで構成する
     """
+    
     def run(self):
         self.preprocess()
         self.show()
         self.postprocess()
 
     @abstractmethod
-    def preprocess():
+    def preprocess(self):
         pass
 
     @abstractmethod
-    def show():
+    def show(self):
         pass
 
     @abstractmethod
-    def postprocess():
+    def postprocess(self):
         pass
 
 class UtilityElement:
