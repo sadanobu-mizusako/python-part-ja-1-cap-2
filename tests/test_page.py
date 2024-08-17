@@ -1,8 +1,8 @@
 import pytest
 import streamlit as st
-from page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
-from user_session import UserSession
-from data_manager import ImmutableDataFrame
+from page_manager.page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
+from session_manager.user_session import UserSession
+from data_manager.data_manager import ImmutableDataFrame
 import pandas as pd
 
 @pytest.fixture(scope="function")

@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 import sqlite3
-import json
 import pandas as pd
 
 class BaseDBManager(ABC):

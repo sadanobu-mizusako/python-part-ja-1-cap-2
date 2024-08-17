@@ -2,9 +2,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-from base_page import BaseDisplay, UtilityElement
-from data_manager import DataManager, ImmutableDataFrame
-from user_session import UserSession
+from page_manager.base_page import BaseDisplay, UtilityElement
+from data_manager.data_manager import DataManager, ImmutableDataFrame
+from session_manager.user_session import UserSession
 
 class UserInputDisplay(BaseDisplay, DataManager, UserSession):
     """

@@ -1,4 +1,4 @@
-from base_user_session import BaseUserSession
+from session_manager.base_user_session import BaseUserSession
 
 class UserSession(BaseUserSession):
     """

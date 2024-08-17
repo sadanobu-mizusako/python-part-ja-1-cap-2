@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from base_page import BaseDisplay, UtilityElement
+from page_manager.base_page import BaseDisplay, UtilityElement
 
 # テスト用の BaseDisplay のモック実装
 class MockDisplay(BaseDisplay):

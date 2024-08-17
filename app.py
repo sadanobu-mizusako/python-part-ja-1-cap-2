@@ -1,5 +1,5 @@
-from page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
-from user_session import UserSession
+from page_manager.page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
+from session_manager.user_session import UserSession
 from domain_context.default_values import DEFAULT_VALUES
 
 user_session = UserSession()

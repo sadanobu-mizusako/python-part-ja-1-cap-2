@@ -1,7 +1,7 @@
 import pytest
 import sqlite3
 import os
-from base_db_manager import SQliteManager, BasicDataObject
+from data_manager.base_db_manager import SQliteManager, BasicDataObject
 
 # テスト用のSQLiteデータベースファイルのパス
 TEST_DB_PATH = 'test_db.sqlite'

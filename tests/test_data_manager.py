@@ -3,8 +3,8 @@ import sqlite3
 import os
 import pandas as pd
 import json
-from data_manager import DataManager, ImmutableDataFrame
-from base_db_manager import SQliteManager
+from data_manager.data_manager import DataManager, ImmutableDataFrame
+from data_manager.base_db_manager import SQliteManager
 from domain_context.db_config import CREATE_TABLES_SQL_PATH
 
 # SQLスクリプトのパス

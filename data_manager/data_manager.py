@@ -1,10 +1,8 @@
 import numpy as np
-import streamlit as st
-from abc import ABC, abstractmethod
 import os
 import json
 
-from base_db_manager import SQliteManager
+from data_manager.base_db_manager import SQliteManager
 from domain_context.db_config import DB_NAME, CREATE_TABLES_SQL_PATH, DB_JSON_DATA_PATH
 
 class ImmutableDataFrame:

@@ -1,6 +1,6 @@
 import pytest
 import streamlit as st
-from user_session import UserSession
+from session_manager.user_session import UserSession
 
 # pytestのフィクスチャを使って、新しいユーザーセッションのインスタンスを作成
 @pytest.fixture
