@@ -1,0 +1,41 @@
+name: Python Tests
+
+on:
+  push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        pip install -r ./requirements.txt
+
+    - name: Run tests
+      run: |
+        pytest tests/
+
+    - name: Detect self.state
+      run: |
+        # Find all .py files excluding base_* and tests/ directory
+        # The `grep -v` command is used to exclude matching lines
+        files=$(find . -name "*.py" ! -name "base_*.py" ! -path "./tests/*")
+        
+        # Check if any of the files contain "self.state"
+        if grep -r "self.state" $files; then
+          echo "Error: 'self.state' usage found in the code."
+          exit 1
+        else
+          echo "'self.state' usage not found. All good!"
+        fi

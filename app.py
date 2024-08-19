@@ -1,13 +1,14 @@
-from page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
-from user_session import UserSession
-from data_manage import DataManage
+from page_manager.page import UserInputDisplay, SearchResultDisplay, ResultComparison, BookAddOptions
+from session_manager.user_session import UserSession
+from domain_context.default_values import DEFAULT_VALUES
 
 user_session = UserSession()
-data_manage = DataManage(user_session)
+user_session.set_default_values(DEFAULT_VALUES)
 
-UserInputDisplay(user_session, data_manage).show()
-
+UserInputDisplay().run()
 if user_session.user_request_ready():
-    SearchResultDisplay(user_session, data_manage).show()
-    ResultComparison(user_session, data_manage).show()
-    BookAddOptions(user_session, data_manage).show()
+    SearchResultDisplay().run()
+
+if user_session.user_choice_ready():
+    ResultComparison().run()
+    BookAddOptions().run()
