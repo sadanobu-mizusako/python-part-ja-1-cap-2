@@ -110,8 +110,12 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
         df_models = self.get_value("df_models")
         car_category = self.get_value("car_category")
         user_budget = self.get_value("user_budget")
-        df_grades_with_cost = self.calculate_costs(age, hour, self.get_value("df_grades").to_dataframe())
-        df_search_result = self.search_car_meet_customer_needs(df_models, car_category, df_grades_with_cost, user_budget)
+        df_grades_with_cost = self.calculate_costs(
+            age, hour, self.get_value("df_grades").to_dataframe()
+        )
+        df_search_result = self.search_car_meet_customer_needs(
+            df_models, car_category, df_grades_with_cost, user_budget
+        )
         if df_search_result is None:
             self.meets_needs = False
         else:
@@ -145,9 +149,6 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
                     "image_url": st.column_config.ImageColumn(
                         "image",
                     ),
-                    "model_name": st.column_config.TextColumn(
-                        label="モデル", max_chars=10
-                    ),
                     "MonthlyTotalCost": st.column_config.NumberColumn(
                         label="出費/月",
                     ),
@@ -156,10 +157,11 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
                     ),
                     "name_desc": st.column_config.TextColumn(
                         label="グレード",
-                        width="medium",
+                        width="large",
                     ),
                 },
                 hide_index=True,
+                use_container_width=True,
             )
 
         else:
