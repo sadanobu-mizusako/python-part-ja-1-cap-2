@@ -15,5 +15,4 @@ DEFAULT_VALUES = {
     "df_grades": None,
 
     "df_search_result": None,
-    "df_grades_with_cost": None
  }
