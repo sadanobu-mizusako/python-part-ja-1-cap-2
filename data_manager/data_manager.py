@@ -106,6 +106,61 @@ class DataManager:
         df_grades["name_desc"] = np.vectorize(lambda name, desc: f"{name} ({desc})")(df_grades["grade_name"], df_grades["grade_desc"])
         return df_models, df_parts, df_parts_interior, df_colors, df_grades
 
+    def calculate_costs(self, age, hour, df):
+        """
+        各種コストを計算するメソッド
+        """
+        # コストと売却価格
+        hold_month = age * 12
+
+        df["FuelCost"] = (df["FuelCostPerKilo"] * hour * 40 * hold_month * 30).astype(int)
+        df["MainteCost"] = (df["MonthlyMainteCost"] * hold_month).astype(int)
+        df["InsuranceCost"] = (df["MonthlyInsuranceCost"] * hold_month).astype(int)
+        df["ResaleValue"] = (
+            df["price"]
+            * (1 - df["MonthlyPriceDropRate"]) ** (hold_month)
+        ).astype(int)
+        df["MonthlyTotalCost"] = (df["FuelCost"] / 30 + df["MonthlyMainteCost"] + df["MonthlyInsuranceCost"])
+        df["MonthlyRealCost"] = (
+            df["price"]
+            - df["ResaleValue"]
+            + df["MonthlyTotalCost"]
+            + df["MonthlyTotalCost"] * hold_month
+        ) / hold_month
+        df["MonthlyTotalCost"] = df["MonthlyTotalCost"].astype(int)
+        df["MonthlyRealCost"] = df["MonthlyRealCost"].astype(int)
+
+        return df
+
+    def search_car_meet_customer_needs(self, df_models, car_category, df_grades_with_cost, user_budget):
+        """
+        ユーザーの要望に合う車両を検索する関数
+        入力が正しく、かつデータが存在していればTrueを返す
+        """
+        target_model_id = df_models[df_models["category_name"] == car_category][
+            "model_id"
+        ]
+        try:
+            df_search_result = df_grades_with_cost[
+                df_grades_with_cost["model_id"].isin(target_model_id)
+                & (df_grades_with_cost["MonthlyRealCost"] < int(user_budget) / 12)
+            ]
+            df_search_result = df_search_result.reindex(
+                columns=[
+                    "image_url",
+                    "model_name",
+                    "name_desc",
+                    "MonthlyRealCost",
+                    "MonthlyTotalCost",
+                    "ResaleValue",
+                    "rank",
+                ]
+            )
+            df_search_result["check"] = False
+            return df_search_result
+        except ValueError:
+            return None
+
     def insert_user_customization(self, name, email, prefecture, baseid, colorids, interiorids, exteriorids):
         _db_manager = SQliteManager(self.dbname)
 

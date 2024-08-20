@@ -99,7 +99,7 @@ class UserInputDisplay(BaseDisplay, DataManager, UserSession):
             return False
 
 
-class SearchResultDisplay(BaseDisplay, UserSession):
+class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
     """
     検索結果を表示するクラス
     """
@@ -107,8 +107,16 @@ class SearchResultDisplay(BaseDisplay, UserSession):
     def preprocess(self):
         age = self.get_value("age")
         hour = self.get_value("hour")
-        self.calculate_costs(age, hour)
-        self.search_car_meet_customer_needs()
+        df_models = self.get_value("df_models")
+        car_category = self.get_value("car_category")
+        user_budget = self.get_value("user_budget")
+        df_grades_with_cost = self.calculate_costs(age, hour, self.get_value("df_grades").to_dataframe())
+        df_search_result = self.search_car_meet_customer_needs(df_models, car_category, df_grades_with_cost, user_budget)
+        if df_search_result is None:
+            self.meets_needs = False
+        else:
+            self.df_search_result = df_search_result
+            self.meets_needs = not (df_search_result.empty)
 
     def postprocess(self):
         if self.meets_needs:
@@ -156,81 +164,6 @@ class SearchResultDisplay(BaseDisplay, UserSession):
 
         else:
             st.write("該当車両がありません")
-
-    def calculate_costs(self, age, hour):
-        """
-        各種コストを計算するメソッド
-        """
-        # コストと売却価格
-        hold_month = age * 12
-        df_grades_with_cost = self.get_value("df_grades").to_dataframe()
-
-        df_grades_with_cost["FuelCost"] = (
-            df_grades_with_cost["FuelCostPerKilo"] * hour * 40 * hold_month * 30
-        ).astype(int)
-        df_grades_with_cost["MainteCost"] = (
-            df_grades_with_cost["MonthlyMainteCost"] * hold_month
-        ).astype(int)
-        df_grades_with_cost["InsuranceCost"] = (
-            df_grades_with_cost["MonthlyInsuranceCost"] * hold_month
-        ).astype(int)
-        df_grades_with_cost["ResaleValue"] = (
-            df_grades_with_cost["price"]
-            * (1 - df_grades_with_cost["MonthlyPriceDropRate"]) ** (hold_month)
-        ).astype(int)
-        df_grades_with_cost["MonthlyTotalCost"] = (
-            df_grades_with_cost["FuelCost"] / 30
-            + df_grades_with_cost["MonthlyMainteCost"]
-            + df_grades_with_cost["MonthlyInsuranceCost"]
-        )
-        df_grades_with_cost["MonthlyRealCost"] = (
-            df_grades_with_cost["price"]
-            - df_grades_with_cost["ResaleValue"]
-            + df_grades_with_cost["MonthlyTotalCost"]
-            + df_grades_with_cost["MonthlyTotalCost"] * hold_month
-        ) / hold_month
-        df_grades_with_cost["MonthlyTotalCost"] = df_grades_with_cost[
-            "MonthlyTotalCost"
-        ].astype(int)
-        df_grades_with_cost["MonthlyRealCost"] = df_grades_with_cost[
-            "MonthlyRealCost"
-        ].astype(int)
-
-        self.set_value("df_grades_with_cost", ImmutableDataFrame(df_grades_with_cost))
-
-    def search_car_meet_customer_needs(self):
-        """
-        ユーザーの要望に合う車両を検索する関数
-        入力が正しく、かつデータが存在していればTrueを返す
-        """
-        df_models = self.get_value("df_models")
-        car_category = self.get_value("car_category")
-        target_model_id = df_models[df_models["category_name"] == car_category][
-            "model_id"
-        ]
-        try:
-            df_grades_with_cost = self.get_value("df_grades_with_cost").to_dataframe()
-            user_budget = self.get_value("user_budget")
-            df_search_result = df_grades_with_cost[
-                df_grades_with_cost["model_id"].isin(target_model_id)
-                & (df_grades_with_cost["MonthlyRealCost"] < int(user_budget) / 12)
-            ]
-            df_search_result = df_search_result.reindex(
-                columns=[
-                    "image_url",
-                    "model_name",
-                    "name_desc",
-                    "MonthlyRealCost",
-                    "MonthlyTotalCost",
-                    "ResaleValue",
-                    "rank",
-                ]
-            )
-            df_search_result["check"] = False
-            self.df_search_result = df_search_result
-            self.meets_needs = not (df_search_result.empty)
-        except ValueError:
-            self.meets_needs = False
 
 
 class ResultComparison(BaseDisplay, UserSession):
