@@ -108,3 +108,42 @@ def test_load_data_from_db(data_manager):
     assert len(df_colors) == 1
     assert df_colors.iloc[0]['name'] == 'Red'
 
+def test_icalculate_costs(data_manager):
+    data = {
+            'price': [10000000, 5000000, 6000000],
+            'FuelCostPerKilo': [10, 2, 3],
+            'MonthlyMainteCost': [10000, 5000, 6000],
+            'MonthlyInsuranceCost': [4000, 5000, 6000],
+            'MonthlyPriceDropRate': [0.02, 0.03, 0.01],
+            }
+    df = pd.DataFrame(data)
+    age = 4
+    hour = 1
+    hold_month = age * 12
+
+    expected_fuel_costs = [10 * 1 * 40 * hold_month * 30, 2 * 1 * 40 * hold_month * 30, 3 * 1 * 40 * hold_month * 30]
+    expected_mainte_costs = [10000 * hold_month, 5000 * hold_month, 6000 * hold_month]
+    expected_insurance_costs = [4000 * hold_month, 5000 * hold_month, 6000 * hold_month]
+    expected_resale_values = [10000000 * (1 - 0.02) ** hold_month, 5000000 * (1 - 0.03) ** hold_month, 6000000 * (1 - 0.01) ** hold_month]
+
+    df = data_manager.calculate_costs(age, hour, df)
+
+    for i in range(len(df)):
+        assert df["FuelCost"][i] == expected_fuel_costs[i]
+        assert df["MainteCost"][i] == expected_mainte_costs[i]
+        assert df["InsuranceCost"][i] == expected_insurance_costs[i]
+        assert df["ResaleValue"][i] == int(expected_resale_values[i])
+        
+        expected_monthly_total_cost = (
+            df["FuelCost"][i] / 30 + df["MonthlyMainteCost"][i] + df["MonthlyInsuranceCost"][i]
+        )
+        assert df["MonthlyTotalCost"][i] == int(expected_monthly_total_cost)
+        
+        expected_monthly_real_cost = (
+            df["price"][i]
+            - df["ResaleValue"][i]
+            + df["MonthlyTotalCost"][i]
+            + df["MonthlyTotalCost"][i] * hold_month
+        ) / hold_month
+        
+        assert df["MonthlyRealCost"][i] == int(expected_monthly_real_cost)
