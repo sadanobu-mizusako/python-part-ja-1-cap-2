@@ -44,12 +44,12 @@ def test_user_input_display_postprocess(user_session):
     display.car_category = "SUV"
     display.user_budget = "30000"
     display.hour = 10
-    display.age = 25
+    display.age = 20
     display.postprocess()
     assert st.session_state["car_category"] == "SUV"
     assert st.session_state["user_budget"] == "30000"
     assert st.session_state["hour"] == 10
-    assert st.session_state["age"] == 25
+    assert st.session_state["age"] == 20
 
 def test_user_input_display_show(user_session):
     display = UserInputDisplay()
@@ -62,7 +62,7 @@ def test_user_input_display_show(user_session):
 
 def test_search_result_display_preprocess(user_session):
     display = SearchResultDisplay()
-    user_session.set_value("age", 25)
+    user_session.set_value("age", 20)
     user_session.set_value("hour", 10)
     display.preprocess()
     assert "df_grades_with_cost" in st.session_state
@@ -92,6 +92,22 @@ def test_search_result_display_show(user_session):
     assert True
 
 def test_result_comparison_preprocess(user_session):
+    # ageとchosen_gradesを設定
+    user_session.set_value("age", 5)
+    user_session.set_value("hour", 3)
+    user_session.set_value("chosen_grades", ["Grade A", "Grade B"])
+    user_session.set_value("df_grades", ImmutableDataFrame(pd.DataFrame({
+        "name_desc": ["Grade A", "Grade B"],
+        "price": [1000000, 1200000],
+        "ResaleValue": [800000, 900000],
+        "MonthlyTotalCost": [30000, 35000],
+        "MainteCost": [20000, 25000],
+        "FuelCostPerKilo": [10, 12],  # FuelCostPerKiloを追加
+        "MonthlyMainteCost": [1000, 1200],  # MonthlyMainteCostを追加
+        "MonthlyInsuranceCost": [500, 600],  # MonthlyInsuranceCostを追加
+        "MonthlyPriceDropRate": [0.01, 0.02]  # MonthlyPriceDropRateを追加
+    })))
+
     display = ResultComparison()
     display.preprocess()
     assert not display.df1.empty
@@ -99,6 +115,22 @@ def test_result_comparison_preprocess(user_session):
     assert not display.df3.empty
 
 def test_result_comparison_show(user_session):
+    # ageとchosen_gradesを設定
+    user_session.set_value("age", 5)
+    user_session.set_value("hour", 3)
+    user_session.set_value("chosen_grades", ["Grade A", "Grade B"])
+    user_session.set_value("df_grades", ImmutableDataFrame(pd.DataFrame({
+        "name_desc": ["Grade A", "Grade B"],
+        "price": [1000000, 1200000],
+        "ResaleValue": [800000, 900000],
+        "MonthlyTotalCost": [30000, 35000],
+        "MainteCost": [20000, 25000],
+        "FuelCostPerKilo": [10, 12],  # FuelCostPerKiloを追加
+        "MonthlyMainteCost": [1000, 1200],  # MonthlyMainteCostを追加
+        "MonthlyInsuranceCost": [500, 600],  # MonthlyInsuranceCostを追加
+        "MonthlyPriceDropRate": [0.01, 0.02]  # MonthlyPriceDropRateを追加
+    })))
+
     display = ResultComparison()
     display.preprocess()
     display.show()

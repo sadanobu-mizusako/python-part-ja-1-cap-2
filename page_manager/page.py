@@ -107,6 +107,9 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
     def preprocess(self):
         age = self.get_value("age")
         hour = self.get_value("hour")
+        if age is None or hour is None:
+            raise ValueError("Age or hour is not set. Please ensure both values are provided.")
+        
         df_models = self.get_value("df_models")
         car_category = self.get_value("car_category")
         user_budget = self.get_value("user_budget")
@@ -178,6 +181,9 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
         選択したグレードに対して経過年毎の出費額などを計算する関数
         """
         age = self.get_value("age")
+        if age is None:
+            raise ValueError("Age is not set. Please ensure the age value is provided.")
+        
         chosen_grades = self.get_value("chosen_grades")
         df_grades = self.get_value("df_grades").to_dataframe()
         df_calculated_costs = self.calculate_costs(
