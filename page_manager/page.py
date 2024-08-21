@@ -253,19 +253,29 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
     """
 
     def preprocess(self):
-        return
+        self.df_grades = self.get_value("df_grades").to_dataframe()  # df_gradesを取得
+        
+        # カスタマイズ情報を保存するリストをセッション内に初期化
+        if 'customizations' not in self.state:
+            self.state.customizations = []
 
     def postprocess(self):
-        if self.pushed:
-            self.insert_user_customization(
-                name=self.name,
-                email=self.email,
-                prefecture=self.prefecture,
-                baseid=self.target_base_id,
-                exteriorids=self.target_parts_ids,
-                interiorids=self.target_parts_interior_ids,
-                colorids=self.target_color_ids,
-            )
+        # postprocessではカスタマイズ情報を保存しない
+        pass
+
+    def save_customization(self):
+        """
+        現在のカスタマイズ情報を保存するメソッド
+        """
+        customization = {
+            "カスタマイズID": len(self.state.customizations) + 1,  # IDは1から始める
+            "グレード": self.target_grade,
+            "カラー": self.df_colors_target.loc[self.target_color_ids[0], "name"] if self.target_color_ids[0] else "None",
+            "エクステリア": self.df_parts_target.loc[self.target_parts_ids[0], "name"] if self.target_parts_ids[0] else "None",
+            "インテリア": self.df_parts_interior_target.loc[self.target_parts_interior_ids[0], "name"] if self.target_parts_interior_ids[0] else "None",
+            "価格": self.df_grades.loc[self.df_grades["grade_id"] == self.target_grade_id, "price"].iloc[0]
+        }
+        self.state.customizations.append(customization)
 
     def show(self):
         st.title("ディーラー予約・オプション追加")
@@ -289,8 +299,8 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
                 st.image(img_url)
 
         st.write("オプション追加を追加する場合は、タブから選択してください。")
-        tab0, tab1, tab2, tab3 = st.tabs(
-            ["ディーラー予約", "カラー", "インテリア", "エクステリア"]
+        tab0, tab1, tab2, tab3, tab4 = st.tabs(
+            ["ディーラー予約", "カラー", "インテリア", "エクステリア", "カスタマイズ比較"]
         )
         with tab0:
             self.user_registration()
@@ -300,6 +310,12 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
             self.parts_interior_selection()
         with tab3:
             self.parts_exterior_selection()
+        with tab4:
+            if st.button("カスタマイズ情報を保存"):
+                self.save_customization()
+                st.success("カスタマイズ情報が保存されました")
+            if st.button("カスタマイズ情報を表示"):
+                self.customization_comparison()
 
     def user_registration(self):
         """
@@ -420,3 +436,13 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
             colum_count=2,
         )
         self.target_color_ids = target_color_ids if target_color_ids else [None]
+
+    def customization_comparison(self):
+        """
+        カスタマイズ情報の比較を行うメソッド
+        """
+        # カスタマイズ情報をDataFrameに変換
+        comparison_df = pd.DataFrame(self.state.customizations)
+        
+        st.write("カスタマイズ情報の比較")
+        st.dataframe(comparison_df)
