@@ -137,7 +137,6 @@ class DataManager:
         df["MonthlyRealCost"] = (
             df["price"]
             - df["ResaleValue"]
-            + df["MonthlyTotalCost"]
             + df["MonthlyTotalCost"] * hold_month
         ) / hold_month
         df["MonthlyTotalCost"] = df["MonthlyTotalCost"].astype(int)

@@ -142,7 +142,6 @@ def test_icalculate_costs(data_manager):
         expected_monthly_real_cost = (
             df["price"][i]
             - df["ResaleValue"][i]
-            + df["MonthlyTotalCost"][i]
             + df["MonthlyTotalCost"][i] * hold_month
         ) / hold_month
         
