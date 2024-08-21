@@ -146,3 +146,41 @@ def test_icalculate_costs(data_manager):
         ) / hold_month
         
         assert df["MonthlyRealCost"][i] == int(expected_monthly_real_cost)
+
+def test_search_car_meet_customer_needs(data_manager):
+
+    # テスト用データ作成
+    df_models = pd.DataFrame({
+        "model_id": [1, 2, 3],
+        "category_name": ["ミニバン", "ワゴン", "SUV"]
+    })
+
+    df_grades_with_cost = pd.DataFrame({
+        "model_id": [1, 2, 1, 1],
+        "image_url": ["url1", "url2", "url3", "url4"],
+        "name_desc": ["ミニバン", "ワゴン", "ミニバン", "ミニバン"],
+        "MonthlyRealCost": [8000, 10000, 9000, 100000],
+        "MonthlyTotalCost": [8500, 10500, 9500, 8000],
+        "ResaleValue": [500000, 600000, 700000, 100000],
+        "rank": [1, 2, 3, 4],
+    })
+
+    car_category = "ミニバン"
+    user_budget = 120000
+
+    df_search_result = data_manager.search_car_meet_customer_needs(df_models, car_category, df_grades_with_cost, user_budget)
+
+    # 期待される出力
+    expected_data = {
+        "image_url": ["url1", "url3"],
+        "name_desc": ["ミニバン", "ミニバン"],
+        "MonthlyRealCost": [8000, 9000],
+        "MonthlyTotalCost": [8500, 9500],
+        "ResaleValue": [500000, 700000],
+        "rank": [1, 3],
+        "check": [False, False],
+    }
+    expected_df = pd.DataFrame(expected_data)
+
+    # 変換後のdataframeが期待と一致するか確認
+    pd.testing.assert_frame_equal(df_search_result.reset_index(drop=True), expected_df)
