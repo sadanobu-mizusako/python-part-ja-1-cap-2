@@ -168,7 +168,7 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
             st.write("該当車両がありません")
 
 
-class ResultComparison(BaseDisplay, UserSession):
+class ResultComparison(BaseDisplay, UserSession, DataManager):
     """
     予約とoption追加をするクラス
     """
@@ -177,31 +177,56 @@ class ResultComparison(BaseDisplay, UserSession):
         """
         選択したグレードに対して経過年毎の出費額などを計算する関数
         """
-        #### 以下ダミーデータ。今後、ユーザーの選択に応じて、動的に変化させる必要あり
+        age = self.get_value("age")
+        chosen_grades = self.get_value("chosen_grades")
+        df_grades = self.get_value("df_grades").to_dataframe()
+        df_calculated_costs = self.calculate_costs(
+            age, self.get_value("hour"), df_grades
+        )
+
+        df_filtered = df_calculated_costs[df_calculated_costs["name_desc"].isin(chosen_grades)]
+
         data1 = {
-            "経過年数": [1, 2, 3, 4, 5, 1, 2, 3, 4, 5],
-            "グレード": ["A", "A", "A", "A", "A", "B", "B", "B", "B", "B"],
-            "累計出費": [100, 200, 300, 150, 250, 140, 220, 310, 150, 350],
+            "経過年数": [],
+            "グレード": [],
+            "累計出費": [],
         }
 
         data2 = {
-            "経過年数": [1, 2, 3, 4, 5, 1, 2, 3, 4, 5],
-            "グレード": ["A", "A", "A", "A", "A", "B", "B", "B", "B", "B"],
-            "単年出費": [100, 200, 300, 150, 250, 140, 220, 310, 150, 350],
+            "経過年数": [],
+            "グレード": [],
+            "単年出費": [],
         }
 
         data3 = {
-            "グレード": ["A", "B", "A", "B", "A", "B"],
-            "費用項目": [
-                "初期費用",
-                "初期費用",
-                "メンテコスト",
-                "メンテコスト",
-                "売却益",
-                "売却益",
-            ],
-            "累計出費": [150, 150, 100, 150, -100, -120],
+            "グレード": [],
+            "費用項目": [],
+            "累計出費": [],
         }
+
+        for _, row in df_filtered.iterrows():
+            for year in range(1, age + 1):
+                data1["経過年数"].append(year)
+                data1["グレード"].append(row["name_desc"])
+                data1["累計出費"].append(
+                    row["price"] - row["ResaleValue"] + year * row["MonthlyTotalCost"]
+                )
+
+                data2["経過年数"].append(year)
+                data2["グレード"].append(row["name_desc"])
+                data2["単年出費"].append(row["MonthlyTotalCost"])
+
+            data3["グレード"].append(row["name_desc"])
+            data3["費用項目"].append("初期費用")
+            data3["累計出費"].append(row["price"])
+
+            data3["グレード"].append(row["name_desc"])
+            data3["費用項目"].append("メンテコスト")
+            data3["累計出費"].append(row["MainteCost"])
+
+            data3["グレード"].append(row["name_desc"])
+            data3["費用項目"].append("売却益")
+            data3["累計出費"].append(-row["ResaleValue"])
 
         self.df1 = pd.DataFrame(data1)
         self.df2 = pd.DataFrame(data2)
@@ -212,7 +237,7 @@ class ResultComparison(BaseDisplay, UserSession):
 
     def show(self):
         st.title("ライフサイクルコストの比較")
-        st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
+        #st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
 
         col1, col2 = st.columns(2)
 
@@ -253,29 +278,19 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
     """
 
     def preprocess(self):
-        self.df_grades = self.get_value("df_grades").to_dataframe()  # df_gradesを取得
-        
-        # カスタマイズ情報を保存するリストをセッション内に初期化
-        if 'customizations' not in self.state:
-            self.state.customizations = []
+        return
 
     def postprocess(self):
-        # postprocessではカスタマイズ情報を保存しない
-        pass
-
-    def save_customization(self):
-        """
-        現在のカスタマイズ情報を保存するメソッド
-        """
-        customization = {
-            "カスタマイズID": len(self.state.customizations) + 1,  # IDは1から始める
-            "グレード": self.target_grade,
-            "カラー": self.df_colors_target.loc[self.target_color_ids[0], "name"] if self.target_color_ids[0] else "None",
-            "エクステリア": self.df_parts_target.loc[self.target_parts_ids[0], "name"] if self.target_parts_ids[0] else "None",
-            "インテリア": self.df_parts_interior_target.loc[self.target_parts_interior_ids[0], "name"] if self.target_parts_interior_ids[0] else "None",
-            "価格": self.df_grades.loc[self.df_grades["grade_id"] == self.target_grade_id, "price"].iloc[0]
-        }
-        self.state.customizations.append(customization)
+        if self.pushed:
+            self.insert_user_customization(
+                name=self.name,
+                email=self.email,
+                prefecture=self.prefecture,
+                baseid=self.target_base_id,
+                exteriorids=self.target_parts_ids,
+                interiorids=self.target_parts_interior_ids,
+                colorids=self.target_color_ids,
+            )
 
     def show(self):
         st.title("ディーラー予約・オプション追加")
@@ -299,8 +314,8 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
                 st.image(img_url)
 
         st.write("オプション追加を追加する場合は、タブから選択してください。")
-        tab0, tab1, tab2, tab3, tab4 = st.tabs(
-            ["ディーラー予約", "カラー", "インテリア", "エクステリア", "カスタマイズ比較"]
+        tab0, tab1, tab2, tab3 = st.tabs(
+            ["ディーラー予約", "カラー", "インテリア", "エクステリア"]
         )
         with tab0:
             self.user_registration()
@@ -310,12 +325,6 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
             self.parts_interior_selection()
         with tab3:
             self.parts_exterior_selection()
-        with tab4:
-            if st.button("カスタマイズ情報を保存"):
-                self.save_customization()
-                st.success("カスタマイズ情報が保存されました")
-            if st.button("カスタマイズ情報を表示"):
-                self.customization_comparison()
 
     def user_registration(self):
         """
@@ -436,13 +445,3 @@ class BookAddOptions(BaseDisplay, UserSession, DataManager, UtilityElement):
             colum_count=2,
         )
         self.target_color_ids = target_color_ids if target_color_ids else [None]
-
-    def customization_comparison(self):
-        """
-        カスタマイズ情報の比較を行うメソッド
-        """
-        # カスタマイズ情報をDataFrameに変換
-        comparison_df = pd.DataFrame(self.state.customizations)
-        
-        st.write("カスタマイズ情報の比較")
-        st.dataframe(comparison_df)
