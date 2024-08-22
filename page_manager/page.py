@@ -107,6 +107,9 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
     def preprocess(self):
         age = self.get_value("age")
         hour = self.get_value("hour")
+        if age is None or hour is None:
+            raise ValueError("Age or hour is not set. Please ensure both values are provided.")
+        
         df_models = self.get_value("df_models")
         car_category = self.get_value("car_category")
         user_budget = self.get_value("user_budget")
@@ -128,6 +131,8 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
                 "name_desc"
             ].tolist()
             self.set_value("chosen_grades", chosen_grades)
+            chosen_index = self.edited_df[self.edited_df["check"]].index.tolist()
+            self.set_value("chosen_index", chosen_index)
 
     def show(self):
         """
@@ -144,7 +149,7 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
             self.edited_df = st.data_editor(
                 self.df_search_result.sort_values(by=sort_by).drop(
                     columns=["rank", "MonthlyRealCost"]
-                ),
+                ).reset_index(drop=True).rename_axis('index'),
                 column_config={
                     "image_url": st.column_config.ImageColumn(
                         "image",
@@ -160,7 +165,7 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
                         width="large",
                     ),
                 },
-                hide_index=True,
+                hide_index=False,
                 use_container_width=True,
             )
 
@@ -168,7 +173,7 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
             st.write("該当車両がありません")
 
 
-class ResultComparison(BaseDisplay, UserSession):
+class ResultComparison(BaseDisplay, UserSession, DataManager):
     """
     予約とoption追加をするクラス
     """
@@ -177,31 +182,61 @@ class ResultComparison(BaseDisplay, UserSession):
         """
         選択したグレードに対して経過年毎の出費額などを計算する関数
         """
-        #### 以下ダミーデータ。今後、ユーザーの選択に応じて、動的に変化させる必要あり
+        age = self.get_value("age")
+        if age is None:
+            raise ValueError("Age is not set. Please ensure the age value is provided.")
+        
+        chosen_grades = self.get_value("chosen_grades")
+        chosen_index = self.get_value("chosen_index")
+        df_grades = self.get_value("df_grades").to_dataframe()
+        df_calculated_costs = self.calculate_costs(
+            age, self.get_value("hour"), df_grades
+        )
+
+        df_filtered = df_calculated_costs[df_calculated_costs["name_desc"].isin(chosen_grades)]
+        df_filtered["index"] = chosen_index
+
         data1 = {
-            "経過年数": [1, 2, 3, 4, 5, 1, 2, 3, 4, 5],
-            "グレード": ["A", "A", "A", "A", "A", "B", "B", "B", "B", "B"],
-            "累計出費": [100, 200, 300, 150, 250, 140, 220, 310, 150, 350],
+            "経過年数": [],
+            "グレード": [],
+            "累計出費": [],
         }
 
         data2 = {
-            "経過年数": [1, 2, 3, 4, 5, 1, 2, 3, 4, 5],
-            "グレード": ["A", "A", "A", "A", "A", "B", "B", "B", "B", "B"],
-            "単年出費": [100, 200, 300, 150, 250, 140, 220, 310, 150, 350],
+            "経過年数": [],
+            "グレード": [],
+            "単年出費": [],
         }
 
         data3 = {
-            "グレード": ["A", "B", "A", "B", "A", "B"],
-            "費用項目": [
-                "初期費用",
-                "初期費用",
-                "メンテコスト",
-                "メンテコスト",
-                "売却益",
-                "売却益",
-            ],
-            "累計出費": [150, 150, 100, 150, -100, -120],
+            "グレード": [],
+            "費用項目": [],
+            "累計出費": [],
         }
+
+        for _, row in df_filtered.iterrows():
+            for year in range(1, age + 1):
+                data1["経過年数"].append(year)
+                data1["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+                data1["累計出費"].append(
+                    row["price"] - row["ResaleValue"] + year * row["MonthlyTotalCost"]
+                )
+
+                data2["経過年数"].append(year)
+                data2["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+                data2["単年出費"].append(row["MonthlyTotalCost"])
+
+            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+            data3["費用項目"].append("初期費用")
+            data3["累計出費"].append(row["price"])
+
+            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+            data3["費用項目"].append("メンテコスト")
+            data3["累計出費"].append(row["MainteCost"])
+
+            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+            data3["費用項目"].append("売却益")
+            data3["累計出費"].append(-row["ResaleValue"])
 
         self.df1 = pd.DataFrame(data1)
         self.df2 = pd.DataFrame(data2)
@@ -212,7 +247,7 @@ class ResultComparison(BaseDisplay, UserSession):
 
     def show(self):
         st.title("ライフサイクルコストの比較")
-        st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
+        #st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
 
         col1, col2 = st.columns(2)
 
