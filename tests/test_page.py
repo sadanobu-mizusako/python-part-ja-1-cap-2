@@ -16,6 +16,7 @@ def user_session():
         "hour": None,
         "age": None,
         "chosen_grades": None,
+        "chosen_index": None,
         "df_models": ImmutableDataFrame(pd.DataFrame({'category_name': ['SUV', 'Sedan'], "model_id": [1,2]})),
         "df_parts": ImmutableDataFrame(pd.DataFrame()),
         "df_parts_interior": ImmutableDataFrame(pd.DataFrame()),
