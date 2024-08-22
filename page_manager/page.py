@@ -131,6 +131,8 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
                 "name_desc"
             ].tolist()
             self.set_value("chosen_grades", chosen_grades)
+            chosen_index = self.edited_df[self.edited_df["check"]].index.tolist()
+            self.set_value("chosen_index", chosen_index)
 
     def show(self):
         """
@@ -147,7 +149,7 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
             self.edited_df = st.data_editor(
                 self.df_search_result.sort_values(by=sort_by).drop(
                     columns=["rank", "MonthlyRealCost"]
-                ),
+                ).reset_index(drop=True).rename_axis('index'),
                 column_config={
                     "image_url": st.column_config.ImageColumn(
                         "image",
@@ -163,7 +165,7 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
                         width="large",
                     ),
                 },
-                hide_index=True,
+                hide_index=False,
                 use_container_width=True,
             )
 
@@ -185,12 +187,14 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
             raise ValueError("Age is not set. Please ensure the age value is provided.")
         
         chosen_grades = self.get_value("chosen_grades")
+        chosen_index = self.get_value("chosen_index")
         df_grades = self.get_value("df_grades").to_dataframe()
         df_calculated_costs = self.calculate_costs(
             age, self.get_value("hour"), df_grades
         )
 
         df_filtered = df_calculated_costs[df_calculated_costs["name_desc"].isin(chosen_grades)]
+        df_filtered["index"] = chosen_index
 
         data1 = {
             "経過年数": [],
@@ -213,24 +217,24 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
         for _, row in df_filtered.iterrows():
             for year in range(1, age + 1):
                 data1["経過年数"].append(year)
-                data1["グレード"].append(row["name_desc"])
+                data1["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
                 data1["累計出費"].append(
                     row["price"] - row["ResaleValue"] + year * row["MonthlyTotalCost"]
                 )
 
                 data2["経過年数"].append(year)
-                data2["グレード"].append(row["name_desc"])
+                data2["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
                 data2["単年出費"].append(row["MonthlyTotalCost"])
 
-            data3["グレード"].append(row["name_desc"])
+            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
             data3["費用項目"].append("初期費用")
             data3["累計出費"].append(row["price"])
 
-            data3["グレード"].append(row["name_desc"])
+            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
             data3["費用項目"].append("メンテコスト")
             data3["累計出費"].append(row["MainteCost"])
 
-            data3["グレード"].append(row["name_desc"])
+            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
             data3["費用項目"].append("売却益")
             data3["累計出費"].append(-row["ResaleValue"])
 
