@@ -88,7 +88,7 @@ class UserInputDisplay(BaseDisplay, DataManager, UserSession):
             placeholder="使用年数を入力ください",
         )
 
-    def _is_number(self, value: any):
+    def _is_number(self, value):
         """
         値がfloatで変換可能か確認
         """
@@ -108,8 +108,10 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
         age = self.get_value("age")
         hour = self.get_value("hour")
         if age is None or hour is None:
-            raise ValueError("Age or hour is not set. Please ensure both values are provided.")
-        
+            raise ValueError(
+                "Age or hour is not set. Please ensure both values are provided."
+            )
+
         df_models = self.get_value("df_models")
         car_category = self.get_value("car_category")
         user_budget = self.get_value("user_budget")
@@ -127,10 +129,13 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
 
     def postprocess(self):
         if self.meets_needs:
-            chosen_grades = self.edited_df[self.edited_df["check"]][
-                "name_desc"
-            ].tolist()
+            chosen_grades = (
+                self.edited_df[self.edited_df["check"]]["name_desc"]
+                .apply(lambda x: x.split(".", 1)[1])
+                .tolist()
+            )
             self.set_value("chosen_grades", chosen_grades)
+            print(chosen_grades)
             chosen_index = self.edited_df[self.edited_df["check"]].index.tolist()
             self.set_value("chosen_index", chosen_index)
 
@@ -147,25 +152,33 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
         )
         if self.meets_needs:
             self.edited_df = st.data_editor(
-                self.df_search_result.sort_values(by=sort_by).drop(
-                    columns=["rank", "MonthlyRealCost"]
-                ).reset_index(drop=True).rename_axis('index'),
+                self.df_search_result.sort_values(by=sort_by)
+                .drop(columns=["rank", "MonthlyRealCost"])
+                .reset_index(drop=True)
+                .rename_axis("#")
+                .assign(name_desc=lambda df: df.index.astype(str) + "." + df.name_desc),
                 column_config={
                     "image_url": st.column_config.ImageColumn(
                         "image",
+                        width="small",
                     ),
                     "MonthlyTotalCost": st.column_config.NumberColumn(
                         label="出費/月",
+                        width="small",
                     ),
                     "ResaleValue": st.column_config.NumberColumn(
                         label="売価",
+                        width="small",
                     ),
                     "name_desc": st.column_config.TextColumn(
                         label="グレード",
                         width="large",
                     ),
+                    "check": st.column_config.CheckboxColumn(
+                        width="small",
+                    ),
                 },
-                hide_index=False,
+                hide_index=True,
                 use_container_width=True,
             )
 
@@ -185,7 +198,7 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
         age = self.get_value("age")
         if age is None:
             raise ValueError("Age is not set. Please ensure the age value is provided.")
-        
+
         chosen_grades = self.get_value("chosen_grades")
         chosen_index = self.get_value("chosen_index")
         df_grades = self.get_value("df_grades").to_dataframe()
@@ -193,7 +206,9 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
             age, self.get_value("hour"), df_grades
         )
 
-        df_filtered = df_calculated_costs[df_calculated_costs["name_desc"].isin(chosen_grades)]
+        df_filtered = df_calculated_costs[
+            df_calculated_costs["name_desc"].isin(chosen_grades)
+        ]
         df_filtered["index"] = chosen_index
 
         data1 = {
@@ -217,24 +232,34 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
         for _, row in df_filtered.iterrows():
             for year in range(1, age + 1):
                 data1["経過年数"].append(year)
-                data1["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+                data1["グレード"].append(
+                    str(row["index"]) + ". " + row["name_desc"][:10] + "..."
+                )
                 data1["累計出費"].append(
                     row["price"] - row["ResaleValue"] + year * row["MonthlyTotalCost"]
                 )
 
                 data2["経過年数"].append(year)
-                data2["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+                data2["グレード"].append(
+                    str(row["index"]) + ". " + row["name_desc"][:10] + "..."
+                )
                 data2["単年出費"].append(row["MonthlyTotalCost"])
 
-            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+            data3["グレード"].append(
+                str(row["index"]) + ". " + row["name_desc"][:10] + "..."
+            )
             data3["費用項目"].append("初期費用")
             data3["累計出費"].append(row["price"])
 
-            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+            data3["グレード"].append(
+                str(row["index"]) + ". " + row["name_desc"][:10] + "..."
+            )
             data3["費用項目"].append("メンテコスト")
             data3["累計出費"].append(row["MainteCost"])
 
-            data3["グレード"].append(str(row["index"]) + ". " + row["name_desc"][:10] + "...")
+            data3["グレード"].append(
+                str(row["index"]) + ". " + row["name_desc"][:10] + "..."
+            )
             data3["費用項目"].append("売却益")
             data3["累計出費"].append(-row["ResaleValue"])
 
@@ -247,7 +272,7 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
 
     def show(self):
         st.title("ライフサイクルコストの比較")
-        #st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
+        # st.write("選んだグレードのコストが動的に反映されるようになる予定・・・・")
 
         col1, col2 = st.columns(2)
 
@@ -259,6 +284,11 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
                 color="グレード",
                 title="累計出費 vs 経過年数",
             )
+            fig1.update_layout(
+                legend=dict(
+                    orientation="v", yanchor="bottom", y=1.02, xanchor="right", x=1
+                )
+            )
             st.plotly_chart(fig1)
 
             fig3 = px.bar(
@@ -267,6 +297,11 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
                 y="累計出費",
                 color="費用項目",
                 title="累計出費 vs 費用項目",
+            )
+            fig3.update_layout(
+                legend=dict(
+                    orientation="v", yanchor="bottom", y=1.02, xanchor="right", x=1
+                )
             )
             st.plotly_chart(fig3)
 
@@ -278,6 +313,11 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
                 color="グレード",
                 title="単年出費 vs 経過年数",
                 barmode="group",
+            )
+            fig2.update_layout(
+                legend=dict(
+                    orientation="v", yanchor="bottom", y=1.02, xanchor="right", x=1
+                )
             )
             st.plotly_chart(fig2)
 
