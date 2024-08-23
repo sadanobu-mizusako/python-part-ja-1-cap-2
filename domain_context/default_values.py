@@ -7,6 +7,7 @@ DEFAULT_VALUES = {
     "tmp_select": None,
     "final_select": None,
     "chosen_grades": None,
+    "chosen_index": None,
 
     "df_models": None,
     "df_parts": None,
