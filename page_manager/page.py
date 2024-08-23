@@ -60,43 +60,21 @@ class UserInputDisplay(BaseDisplay, DataManager, UserSession):
         """
         年間予算を入力部分
         """
-        self.user_budget = st.text_input(
-            "予算（円/年）", placeholder="年間希望予算を入力ください。例:700000"
+        self.user_budget = st.slider(
+            "年間希望予算を入力ください?", 0, 10000000, step=100000
         )
-        if not self._is_number(self.user_budget):
-            st.write("※数値を入力して下さい。")
 
     def hour(self):
         """
         使用時間の入力部分
         """
-        self.hour = st.selectbox(
-            "1日の乗車時間",
-            (i for i in range(1, 24)),
-            index=None,
-            placeholder="1日の乗車時間[H]を入力ください",
-        )
+        self.hour = st.slider("1日の乗車時間[H]を入力ください?", 1, 24, step=1)
 
     def age(self):
         """
         使用年数の入力部分
         """
-        self.age = st.selectbox(
-            "使用年数",
-            (i for i in range(1, 21)),
-            index=None,
-            placeholder="使用年数を入力ください",
-        )
-
-    def _is_number(self, value):
-        """
-        値がfloatで変換可能か確認
-        """
-        try:
-            float(value)
-            return True
-        except ValueError:
-            return False
+        self.age = st.slider("使用年数を入力ください?", 1, 21, step=1)
 
 
 class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
@@ -144,6 +122,7 @@ class SearchResultDisplay(BaseDisplay, DataManager, UserSession):
         検索結果の表示部分
         """
         st.title("検索結果")
+        st.write(f"{len(self.df_search_result)}件の検索結果が見つかりました。")
         sort_by = (
             "rank"
             if st.radio(label="並び順", options=("価格順", "人気順"), horizontal=True)
@@ -236,14 +215,21 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
                     str(row["index"]) + ". " + row["name_desc"][:10] + "..."
                 )
                 data1["累計出費"].append(
-                    row["price"] - row["ResaleValue"] + year * row["MonthlyTotalCost"]
+                    row["price"]
+                    - row["ResaleValue"]
+                    * (year == age)  # 売却年にのみリセールバリューを反映する
+                    + year * row["MonthlyTotalCost"] * 12
                 )
 
                 data2["経過年数"].append(year)
                 data2["グレード"].append(
                     str(row["index"]) + ". " + row["name_desc"][:10] + "..."
                 )
-                data2["単年出費"].append(row["MonthlyTotalCost"])
+                data2["単年出費"].append(
+                    row["MonthlyTotalCost"] * 12
+                    - row["ResaleValue"]
+                    * (year == age)  # 売却年にのみリセールバリューを反映する
+                )
 
             data3["グレード"].append(
                 str(row["index"]) + ". " + row["name_desc"][:10] + "..."
@@ -256,6 +242,18 @@ class ResultComparison(BaseDisplay, UserSession, DataManager):
             )
             data3["費用項目"].append("メンテコスト")
             data3["累計出費"].append(row["MainteCost"])
+
+            data3["グレード"].append(
+                str(row["index"]) + ". " + row["name_desc"][:10] + "..."
+            )
+            data3["費用項目"].append("保険料")
+            data3["累計出費"].append(row["InsuranceCost"])
+
+            data3["グレード"].append(
+                str(row["index"]) + ". " + row["name_desc"][:10] + "..."
+            )
+            data3["費用項目"].append("燃料費")
+            data3["累計出費"].append(row["FuelCost"])
 
             data3["グレード"].append(
                 str(row["index"]) + ". " + row["name_desc"][:10] + "..."
